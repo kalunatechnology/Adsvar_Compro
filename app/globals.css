@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   ADSVAR DESIGN SYSTEM TOKENS (Extracted from adsvar.svg)
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --adsvar-bg: #000000;
+  --adsvar-card-bg: #16161F;
+  --adsvar-card-border: #3F3F45;
+  --adsvar-card-border-subtle: #4C4C4C;
+  --adsvar-orange: #FF5500;
+  --adsvar-orange-light: #FF994B;
+  --adsvar-orange-mid: #FF6F00;
+  --adsvar-orange-dark: #863A00;
+  --adsvar-glass-btn: #797676;
+  --adsvar-border-light: #EEEEEE;
+  --adsvar-gray-dark: #13131D;
+  --adsvar-gray-card: #20202F;
+  --adsvar-pill-bg: #3C3C47;
+  --adsvar-pill-border: #525252;
+  --adsvar-circle-btn: #404040;
+  --adsvar-circle-border: #84849B;
+  --adsvar-text-main: #FFFFFF;
+  --adsvar-text-muted: #A9A9A9;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--adsvar-bg);
+  color: var(--adsvar-text-main);
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--adsvar-bg);
+  color: var(--adsvar-text-main);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   EXACT SVG REPLICA CLASSES
+   ========================================================================== */
+
+/* Ambient Lighting matching paint0, filter0_f in adsvar.svg */
+.adsvar-hero-glow-1 {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.28) 0%, rgba(134, 58, 0, 0.15) 45%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(95px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.adsvar-hero-glow-2 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  left: 20%;
+  top: 15%;
+  background: radial-gradient(circle, rgba(255, 111, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Standard Adsvar Card (rx: 24.5px, fill: #16161F, stroke: #3F3F45) */
+.adsvar-card {
+  background: #16161F;
+  border: 1px solid #3F3F45;
+  border-radius: 24.5px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adsvar-card:hover {
+  border-color: #FF5500;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -10px rgba(255, 85, 0, 0.18);
+}
+
+/* Featured / Most Popular Card in Pricing (stroke: #FF5500, 2px) */
+.adsvar-card-popular {
+  background: #16161F;
+  border: 2px solid #FF5500;
+  border-radius: 25.5px;
+  box-shadow: 0 0 30px -5px rgba(255, 85, 0, 0.3);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adsvar-card-popular:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 45px 0 rgba(255, 85, 0, 0.45);
+}
+
+/* Buttons matching exact SVG geometry (rx: 12px, h: 60px) */
+.adsvar-btn-primary {
+  height: 60px;
+  border-radius: 12px;
+  background-color: #FF5500;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px -4px rgba(255, 85, 0, 0.4);
+}
+
+.adsvar-btn-primary:hover {
+  background-color: #E64A00;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -4px rgba(255, 85, 0, 0.55);
+}
+
+.adsvar-btn-secondary {
+  height: 59px;
+  border-radius: 11.5px;
+  background-color: rgba(121, 118, 118, 0.35);
+  backdrop-filter: blur(12px);
+  border: 1px solid #EEEEEE;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.adsvar-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #FFFFFF;
+}
+
+/* Badge (rx: 12px, h: 30px, fill: #FF5500) */
+.adsvar-badge {
+  height: 30px;
+  border-radius: 12px;
+  background-color: #FF5500;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+/* Circular Arrow Button (rx: 19.5px, w: 39px, h: 39px, fill: #404040, stroke: #84849B) */
+.adsvar-circle-btn {
+  width: 39px;
+  height: 39px;
+  border-radius: 19.5px;
+  background-color: #404040;
+  border: 1px solid #84849B;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.adsvar-circle-btn:hover {
+  background-color: #FF5500;
+  border-color: #FF5500;
+  transform: scale(1.08);
+}
+
+/* Filter Pill in Portfolio / Pricing */
+.adsvar-tab-active {
+  height: 30px;
+  border-radius: 12px;
+  background-color: #FF5500;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.adsvar-tab-inactive {
+  height: 29px;
+  border-radius: 11.5px;
+  background-color: #383838;
+  border: 1px solid #525252;
+  color: #D9D9D9;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.adsvar-tab-inactive:hover {
+  background-color: #4A4A4A;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #20202F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5500;
 }
