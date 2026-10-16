@@ -7,7 +7,7 @@ import ServicesSection from "@/components/ServicesSection";
 import PricingSection from "@/components/PricingSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import Footer from "@/components/Footer";
-import ContactModal from "@/components/ContactModal";
+import BottomBar from "@/components/BottomBar";
 import type { Service, Project, PricingPlan, CompanyStat } from "@/lib/types";
 
 interface HomePageClientProps {
@@ -60,10 +60,7 @@ export default function HomePageClient({
       <Footer onOpenContact={() => setIsContactOpen(true)} />
 
       {/* 7. Interactive Contact Modal linked to SQLite Inquiries */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
+      <BottomBar />
     </div>
   );
 }
