@@ -41,6 +41,9 @@ export interface PricingPlan {
   features: string[];
   sortOrder: number;
   isActive: boolean;
+  number?: string;
+  currency?: string;
+  ctaText?: string;
 }
 
 export interface CompanyStat {

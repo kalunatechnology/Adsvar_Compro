@@ -1,121 +1,180 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Eye } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/types";
 
-interface PortfolioSectionProps {
+export interface PortfolioSectionProps {
   initialProjects: Project[];
-  onOpenContact: () => void;
+  onOpenContact: (project?: Project) => void;
+  eyebrow?: string;
+  headingWhite?: string;
+  headingMuted?: string;
+  subheading?: string;
 }
 
-const categories = ["Semua", "Video & Reels", "Sistem Web", "Brand Identity"];
+const CATEGORIES = [
+  "Semua",
+  "Video & Reels",
+  "Brand Identity",
+  "Sistem Web",
+];
+
+function AdsvarLogoMark({ className = "w-4 h-3.5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 20 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M1.5 12.5L6.2 2.2C6.6 1.3 7.8 1.3 8.2 2.2L11.8 10.2C12.2 11.1 13.4 11.1 13.8 10.2L18.5 1.5"
+        stroke="#E35F21"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function PortfolioSection({
   initialProjects,
   onOpenContact,
+  eyebrow = "PORTOFOLIO KAMI",
+  headingWhite = "Work that moves culture ",
+  headingMuted = "and metrics.",
+  subheading = "Not content for content's sake. Every campaign is designed around a measurable commercial outcome.",
 }: PortfolioSectionProps) {
   const [activeTab, setActiveTab] = useState("Semua");
 
   const filteredProjects =
-    activeTab === "Semua"
+    activeTab === "Semua" || activeTab === "All work"
       ? initialProjects
       : initialProjects.filter((p) => p.category === activeTab);
 
   return (
-    <section id="portofolio" className="py-24 relative bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#FF5500] mb-3 block">
-              PORTOFOLIO KAMI
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-              Karya Nyata yang Menghasilkan Dampak
-            </h2>
-          </div>
-          <p className="mt-4 md:mt-0 text-zinc-400 text-sm sm:text-base max-w-md">
-            Setiap proyek dikurasi dan diproduksi dengan ketelitian sinematik dan arsitektur kode modern.
+    <section
+      id="portofolio"
+      className="py-20 sm:py-28 relative bg-black text-white antialiased"
+    >
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14">
+        {/* Bar 1: Eyebrow Badge (Adsvar Logo Mark + Orange Uppercase Ribbon) */}
+        <div className="flex items-center gap-2.5 mb-8">
+          <AdsvarLogoMark className="w-4 h-3.5 shrink-0" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
+            {eyebrow}
+          </span>
+        </div>
+
+        {/* Bar 2: Split Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-[-0.025em] leading-[1.12]">
+            <span className="text-white">{headingWhite}</span>
+            <span className="text-[#7D7D8C]">{headingMuted}</span>
+          </h2>
+          <p className="text-[13.5px] sm:text-[14px] text-[#8B8B97] leading-[1.6] lg:max-w-[340px] font-normal">
+            {subheading}
           </p>
         </div>
 
-        {/* Filter Tabs matching adsvar.svg: y: 3580 */}
+        {/* Bar 3: Filter Pill Tabs */}
         <div className="flex flex-wrap items-center gap-2.5 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={activeTab === cat ? "adsvar-tab-active" : "adsvar-tab-inactive"}
-            >
-              {cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const isActive = activeTab === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveTab(cat)}
+                className={`px-5 py-2 rounded-full text-xs transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#FF5400] text-white font-semibold border border-[#FF5400] shadow-[0_4px_14px_rgba(255,84,0,0.3)]"
+                    : "bg-[#121218] text-zinc-300 font-medium border border-[#2C2C35] hover:border-zinc-500 hover:text-white"
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
 
-        {/* 3 Large Showcase Cards from SQLite (rx: 24px) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="adsvar-card overflow-hidden flex flex-col justify-between"
-            >
-              {/* Media Container */}
-              <div className="relative aspect-[16/10] w-full bg-black overflow-hidden rounded-t-[23px]">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#16161F] via-transparent to-black/20" />
+        {/* Bar 4: Showcase Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project, index) => {
+            const cardNumber = project.number || String(index + 1).padStart(2, "0");
 
-                {/* Badge Metrik from SVG: y: 3956, w: 160, h: 30, rx: 12, fill: black */}
-                <div className="absolute top-4 left-4 px-3 py-1.5 rounded-[12px] bg-black/85 backdrop-blur-md border border-white/10 text-xs font-semibold text-white flex items-center gap-1.5 shadow-lg">
-                  <Eye className="w-3.5 h-3.5 text-[#FF5500]" />
-                  <span>{project.metrics}</span>
+            return (
+              <div
+                key={project.id}
+                onClick={() => onOpenContact(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onOpenContact(project);
+                  }
+                }}
+                className="adsvar-card group relative rounded-[24px] bg-[#16161F] border border-[#292A2E] hover:border-[#52525E] overflow-hidden flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none focus:border-[#52525E]"
+              >
+                {/* Media Container with Grayscale -> Color on Hover */}
+                <div className="relative aspect-[462/311] w-full bg-black overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-500 ease-out"
+                  />
+
+                  {/* Top Contrast Vignette */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+
+                  {/* Large Index Number (01, 02, 03) */}
+                  <span className="pointer-events-none absolute top-5 right-6 text-[44px] sm:text-[48px] font-semibold text-white leading-none tracking-[-0.03em] select-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                    {cardNumber}
+                  </span>
+
+                  {/* Metrics Badge */}
+                  {project.metrics && (
+                    <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-[8px] bg-[#1E1E26]/85 backdrop-blur-md border border-white/10 text-[11px] font-medium text-white flex items-center gap-2 shadow-lg">
+                      <AdsvarLogoMark className="w-3.5 h-3 shrink-0" />
+                      <span>{project.metrics}</span>
+                    </div>
+                  )}
                 </div>
-              </div>
 
-              {/* Content Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="text-xs font-bold text-[#FF5500] uppercase tracking-wider mb-1">
-                    {project.client}
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Tags and Exact Circular SVG Action Button: y: 4086, w: 39, h: 39, rx: 19.5, fill: #404040, stroke: #84849B */}
-                <div className="pt-4 border-t border-[#3F3F45] flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2.5 py-1 rounded-[6px] bg-[#20202F] text-[11px] font-medium text-zinc-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {/* Card Footer Content */}
+                <div className="px-6 py-6 bg-[#16161F] flex items-center justify-between gap-4 border-t border-white/[0.04]">
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.09em] text-[#E35F21] mb-1.5">
+                      {project.client || project.category}
+                    </div>
+                    <h3 className="text-[18px] sm:text-[19px] font-semibold text-white tracking-[-0.015em] leading-snug">
+                      {project.title}
+                    </h3>
                   </div>
 
+                  {/* Interactive Rotating Circle Button */}
                   <button
-                    onClick={onOpenContact}
-                    className="adsvar-circle-btn shrink-0 ml-3"
-                    aria-label="Lihat Proyek"
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpenContact(project);
+                    }}
+                    aria-label={`Lihat proyek ${project.title}`}
+                    className="w-10 h-10 rounded-full bg-transparent border border-[#52525E] text-[#9898A6] group-hover:bg-[#FF5400] group-hover:border-[#FF5400] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 transform group-hover:-rotate-45 transition-transform duration-300 stroke-[2]" />
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -13,6 +13,8 @@ const DB_PATH = process.env.ADSVAR_DB_PATH
   : path.join(process.cwd(), "data", "adsvar.db");
 const DB_DIR = path.dirname(DB_PATH);
 
+const CURRENT_SEED_VERSION = "v4_adsvar_capability_cards_seed";
+
 const globalForDb = globalThis as unknown as { __adsvarDb?: Database.Database };
 
 function init(db: Database.Database) {
@@ -91,74 +93,80 @@ function init(db: Database.Database) {
     );
   `);
 
+  const hasMigration = db
+    .prepare("SELECT key FROM adsvar_seed_migrations WHERE key = ?")
+    .get(CURRENT_SEED_VERSION);
+
   const count = (table: string) =>
     (db.prepare(`SELECT COUNT(*) AS c FROM ${table}`).get() as { c: number }).c;
 
-  // 1. Seed Services
-  if (count("services") === 0) {
-    const insert = db.prepare(
-      `INSERT INTO services (slug, name, tag, description, image, href, points_json, sort_order, is_active)
-       VALUES (@slug, @name, @tag, @description, @image, @href, @pointsJson, @sortOrder, @isActive)`
-    );
+  // Run or refresh seed if version not applied or tables are empty
+  const shouldSyncSeed = !hasMigration || count("services") === 0 || count("pricing_plans") === 0;
+
+  if (shouldSyncSeed) {
     db.transaction(() => {
+      // Clear non-user tables to sync with latest dummy schema while preserving inquiries
+      db.prepare("DELETE FROM services").run();
+      db.prepare("DELETE FROM projects").run();
+      db.prepare("DELETE FROM pricing_plans").run();
+      db.prepare("DELETE FROM company_stats").run();
+
+      // 1. Seed Services
+      const insertService = db.prepare(
+        `INSERT INTO services (slug, name, tag, description, image, href, points_json, sort_order, is_active)
+         VALUES (@slug, @name, @tag, @description, @image, @href, @pointsJson, @sortOrder, @isActive)`
+      );
       for (const s of dummyServices) {
-        insert.run({
+        insertService.run({
           ...s,
           pointsJson: JSON.stringify(s.points || []),
           isActive: s.isActive ? 1 : 0,
         });
       }
-    })();
-  }
 
-  // 2. Seed Projects
-  if (count("projects") === 0) {
-    const insert = db.prepare(
-      `INSERT INTO projects (slug, number, title, client, category, metrics, description, image, tags_json, href, sort_order, is_active)
-       VALUES (@slug, @number, @title, @client, @category, @metrics, @description, @image, @tagsJson, @href, @sortOrder, @isActive)`
-    );
-    db.transaction(() => {
+      // 2. Seed Projects
+      const insertProject = db.prepare(
+        `INSERT INTO projects (slug, number, title, client, category, metrics, description, image, tags_json, href, sort_order, is_active)
+         VALUES (@slug, @number, @title, @client, @category, @metrics, @description, @image, @tagsJson, @href, @sortOrder, @isActive)`
+      );
       for (const p of dummyProjects) {
-        insert.run({
+        insertProject.run({
           ...p,
           tagsJson: JSON.stringify(p.tags || []),
           isActive: p.isActive ? 1 : 0,
         });
       }
-    })();
-  }
 
-  // 3. Seed Pricing Plans
-  if (count("pricing_plans") === 0) {
-    const insert = db.prepare(
-      `INSERT INTO pricing_plans (slug, name, description, price_project, price_monthly, is_popular, badge, features_json, sort_order, is_active)
-       VALUES (@slug, @name, @description, @priceProject, @priceMonthly, @isPopular, @badge, @featuresJson, @sortOrder, @isActive)`
-    );
-    db.transaction(() => {
+      // 3. Seed Pricing Plans
+      const insertPlan = db.prepare(
+        `INSERT INTO pricing_plans (slug, name, description, price_project, price_monthly, is_popular, badge, features_json, sort_order, is_active)
+         VALUES (@slug, @name, @description, @priceProject, @priceMonthly, @isPopular, @badge, @featuresJson, @sortOrder, @isActive)`
+      );
       for (const plan of dummyPricingPlans) {
-        insert.run({
+        insertPlan.run({
           ...plan,
           isPopular: plan.isPopular ? 1 : 0,
           featuresJson: JSON.stringify(plan.features || []),
           isActive: plan.isActive ? 1 : 0,
         });
       }
-    })();
-  }
 
-  // 4. Seed Company Stats
-  if (count("company_stats") === 0) {
-    const insert = db.prepare(
-      `INSERT INTO company_stats (key, value, suffix, prefix, label_line1, label_line2, sort_order, is_active)
-       VALUES (@key, @value, @suffix, @prefix, @labelLine1, @labelLine2, @sortOrder, @isActive)`
-    );
-    db.transaction(() => {
+      // 4. Seed Company Stats
+      const insertStat = db.prepare(
+        `INSERT INTO company_stats (key, value, suffix, prefix, label_line1, label_line2, sort_order, is_active)
+         VALUES (@key, @value, @suffix, @prefix, @labelLine1, @labelLine2, @sortOrder, @isActive)`
+      );
       for (const st of dummyStats) {
-        insert.run({
+        insertStat.run({
           ...st,
           isActive: st.isActive ? 1 : 0,
         });
       }
+
+      // Record migration
+      db.prepare(
+        "INSERT OR REPLACE INTO adsvar_seed_migrations (key, applied_at) VALUES (?, CURRENT_TIMESTAMP)"
+      ).run(CURRENT_SEED_VERSION);
     })();
   }
 }
