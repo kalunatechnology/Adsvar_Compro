@@ -174,45 +174,45 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#08080C]/85 backdrop-blur-md border-b border-[#3F3F45]/50 py-3 shadow-lg shadow-black/40"
-          : "bg-transparent py-5 lg:py-[32px]"
+          ? "bg-[#08080C]/85 backdrop-blur-md border-b border-[#3F3F45]/50 py-2.5 shadow-lg shadow-black/40"
+          : "bg-transparent py-3.5 lg:py-5"
       }`}
     >
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-[5%]">
         <div className="relative flex items-center justify-between">
           {/* Bar 1: Brand Logo (x=60..210.64 di navbar.svg) */}
           <Link href="/" className="flex items-center group" aria-label="Adsvar Home">
-            <BrandLogoSvg className="h-[22px] sm:h-[25px] w-auto group-hover:scale-105 transition-transform duration-200" />
+            <BrandLogoSvg className="h-[19px] sm:h-[22px] w-auto group-hover:scale-105 transition-transform duration-200" />
           </Link>
 
-          {/* Bar 2: Desktop Nav Links (x=687.12..1119.92, gap ~70px di navbar.svg) */}
-          <nav className="hidden md:flex items-center md:gap-10 lg:gap-[70px] xl:absolute xl:left-[35.79%]">
+          {/* Bar 2: Desktop Nav Links (x=687.12..1119.92) */}
+          <nav className="hidden md:flex items-center md:gap-8 lg:gap-[52px] xl:absolute xl:left-[36%]">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-white hover:text-[#FF5500] transition-colors duration-200 py-2"
+                className="text-white hover:text-[#FF5500] transition-colors duration-200 py-1.5"
                 aria-label={item.label}
               >
                 <NavItemSvg
                   viewBox={item.viewBox}
                   d={item.d}
                   label={item.label}
-                  className="h-[15px] lg:h-[16px] w-auto"
+                  className="h-[13.5px] lg:h-[14px] w-auto"
                 />
               </Link>
             ))}
           </nav>
 
-          {/* Bar 3: Desktop CTA Button (x=1600..1860, 260x60 rx=12 di navbar.svg) */}
+          {/* Bar 3: Desktop CTA Button */}
           <div className="hidden md:flex items-center">
             <button
               type="button"
               onClick={onOpenContact}
-              className="relative group overflow-hidden rounded-xl shadow-lg shadow-[#FF5500]/30 hover:shadow-[#FF5500]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="relative group overflow-hidden rounded-lg shadow-lg shadow-[#FF5500]/30 hover:shadow-[#FF5500]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
               aria-label="Book A Consultation"
             >
-              <CtaButtonSvg className="h-[48px] lg:h-[60px] w-auto block" />
+              <CtaButtonSvg className="h-[40px] lg:h-[46px] w-auto block" />
             </button>
           </div>
 

@@ -10,7 +10,7 @@ interface FooterProps {
 export default function Footer({ onOpenContact }: FooterProps) {
   return (
     <footer 
-      className="relative w-full bg-[#111116] py-20 lg:py-32 px-4 sm:px-6 lg:px-[5%] flex items-center justify-center overflow-hidden"
+      className="relative w-full bg-[#111116] py-16 lg:py-24 px-4 sm:px-6 lg:px-[5%] flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: "url('/background_cta.svg')",
         backgroundSize: "cover",
@@ -18,11 +18,11 @@ export default function Footer({ onOpenContact }: FooterProps) {
         backgroundRepeat: "no-repeat"
       }}
     >
-      <div className="relative z-10 w-full max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+      <div className="relative z-10 w-full max-w-[1520px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
         
         {/* Kiri: Tipografi & Tombol */}
         <div className="flex flex-col">
-          <h2 className="text-[40px] sm:text-[48px] lg:text-[56px] font-bold leading-[1.15] tracking-tight">
+          <h2 className="text-[32px] sm:text-[40px] lg:text-[46px] font-bold leading-[1.15] tracking-tight">
             <span className="text-white">Your audience is</span>
             <br />
             <span className="text-white">already scrolling.</span>
@@ -32,15 +32,15 @@ export default function Footer({ onOpenContact }: FooterProps) {
             <span className="text-[#848494]">reason to stop.</span>
           </h2>
 
-          <div className="mt-12 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
             <button 
               onClick={onOpenContact}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-[8px] bg-[#FF5500] hover:bg-[#E04B00] text-white font-medium text-[16px] transition-all shadow-[0_4px_14px_0_rgba(255,85,0,0.39)]"
+              className="w-full sm:w-auto px-6 py-3 rounded-[8px] bg-[#FF5500] hover:bg-[#E04B00] text-white font-medium text-[14px] transition-all shadow-[0_4px_14px_0_rgba(255,85,0,0.39)] cursor-pointer"
             >
               Book A Consultation &rarr;
             </button>
             
-            <button className="w-full sm:w-auto px-10 py-3.5 rounded-[8px] bg-transparent border border-[#555] hover:border-[#888] hover:bg-white/5 text-white font-medium text-[16px] transition-all">
+            <button className="w-full sm:w-auto px-7 py-3 rounded-[8px] bg-transparent border border-[#555] hover:border-[#888] hover:bg-white/5 text-white font-medium text-[14px] transition-all cursor-pointer">
               Visit Us
             </button>
           </div>
@@ -49,8 +49,8 @@ export default function Footer({ onOpenContact }: FooterProps) {
         {/* Kanan: Logo & Informasi Kontak */}
         <div className="flex flex-col w-full lg:max-w-md lg:ml-auto">
           
-          {/* Logo AdsVar dengan Tagline (Menggunakan logo_teks.svg) */}
-          <div className="relative w-full max-w-[300px] h-[80px] mb-8">
+          {/* Logo AdsVar dengan Tagline */}
+          <div className="relative w-full max-w-[260px] h-[65px] mb-6">
             <Image 
               src="/logo_teks.svg" 
               alt="AdsVar - Your business one stop digital solution" 
@@ -61,7 +61,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
           </div>
 
           {/* Garis Pemisah (Divider) */}
-          <hr className="border-[#33333C] mb-10" />
+          <hr className="border-[#33333C] mb-8" />
 
           {/* Grid Informasi Kontak & Kantor */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">

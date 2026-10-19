@@ -50,30 +50,30 @@ export default function PortfolioSection({
   return (
     <section
       id="portofolio"
-      className="py-20 sm:py-28 relative bg-black text-white antialiased"
+      className="py-16 sm:py-20 relative bg-black text-white antialiased"
     >
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-[5%]">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-[5%]">
         {/* Bar 1: Eyebrow Badge (Adsvar Logo Mark + Orange Uppercase Ribbon) */}
-        <div className="flex items-center gap-2.5 mb-8">
-          <AdsvarLogoMark className="w-4 h-3.5 shrink-0" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
+        <div className="flex items-center gap-2 mb-6">
+          <AdsvarLogoMark className="h-3 w-auto" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
             {eyebrow}
           </span>
         </div>
 
         {/* Bar 2: Split Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold tracking-[-0.025em] leading-[1.12]">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-semibold tracking-[-0.025em] leading-[1.12]">
             <span className="text-white">{headingWhite}</span>
             <span className="text-[#7D7D8C]">{headingMuted}</span>
           </h2>
-          <p className="text-[13.5px] sm:text-[14px] text-[#8B8B97] leading-[1.6] lg:max-w-[340px] font-normal">
+          <p className="text-[12px] sm:text-[13px] text-[#8B8B97] leading-[1.6] lg:max-w-[320px] font-normal">
             {subheading}
           </p>
         </div>
 
         {/* Bar 3: Filter Pill Tabs */}
-        <div className="flex flex-wrap items-center gap-2.5 mb-12">
+        <div className="flex flex-wrap items-center gap-2 mb-8">
           {CATEGORIES.map((cat) => {
             const isActive = activeTab === cat;
             return (
@@ -81,9 +81,9 @@ export default function PortfolioSection({
                 key={cat}
                 type="button"
                 onClick={() => setActiveTab(cat)}
-                className={`px-5 py-2 rounded-full text-xs transition-all duration-200 ${
+                className={`px-3.5 py-1.5 rounded-full text-[11px] transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "bg-[#FF5400] text-white font-semibold border border-[#FF5400] shadow-[0_4px_14px_rgba(255,84,0,0.3)]"
+                    ? "bg-[#FF5400] text-white font-semibold border border-[#FF5400] shadow-[0_4px_12px_rgba(255,84,0,0.3)]"
                     : "bg-[#121218] text-zinc-300 font-medium border border-[#2C2C35] hover:border-zinc-500 hover:text-white"
                 }`}
               >
@@ -94,7 +94,7 @@ export default function PortfolioSection({
         </div>
 
         {/* Bar 4: Showcase Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProjects.map((project, index) => {
             const cardNumber = project.number || String(index + 1).padStart(2, "0");
 
@@ -110,7 +110,7 @@ export default function PortfolioSection({
                     onOpenContact(project);
                   }
                 }}
-                className="adsvar-card group relative rounded-[24px] bg-[#16161F] border border-[#292A2E] hover:border-[#52525E] overflow-hidden flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none focus:border-[#52525E]"
+                className="adsvar-card group relative rounded-[18px] bg-[#16161F] border border-[#292A2E] hover:border-[#52525E] overflow-hidden flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none focus:border-[#52525E]"
               >
                 {/* Media Container with Grayscale -> Color on Hover */}
                 <div className="relative aspect-[462/311] w-full bg-black overflow-hidden">
@@ -123,29 +123,29 @@ export default function PortfolioSection({
                   />
 
                   {/* Top Contrast Vignette */}
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
 
                   {/* Large Index Number (01, 02, 03) */}
-                  <span className="pointer-events-none absolute top-5 right-6 text-[44px] sm:text-[48px] font-semibold text-white leading-none tracking-[-0.03em] select-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                  <span className="pointer-events-none absolute top-4 right-5 text-[34px] sm:text-[38px] font-semibold text-white leading-none tracking-[-0.03em] select-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
                     {cardNumber}
                   </span>
 
                   {/* Metrics Badge */}
                   {project.metrics && (
-                    <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-[8px] bg-[#1E1E26]/85 backdrop-blur-md border border-white/10 text-[11px] font-medium text-white flex items-center gap-2 shadow-lg">
-                      <AdsvarLogoMark className="w-3.5 h-3 shrink-0" />
+                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-[6px] bg-[#1E1E26]/85 backdrop-blur-md border border-white/10 text-[10px] font-medium text-white flex items-center gap-1.5 shadow-lg">
+                      <AdsvarLogoMark className="h-2.5 w-auto shrink-0" />
                       <span>{project.metrics}</span>
                     </div>
                   )}
                 </div>
 
                 {/* Card Footer Content */}
-                <div className="px-6 py-6 bg-[#16161F] flex items-center justify-between gap-4 border-t border-white/[0.04]">
+                <div className="px-5 py-4 bg-[#16161F] flex items-center justify-between gap-3 border-t border-white/[0.04]">
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-[0.09em] text-[#E35F21] mb-1.5">
+                    <div className="text-[9.5px] font-bold uppercase tracking-[0.09em] text-[#E35F21] mb-1">
                       {project.client || project.category}
                     </div>
-                    <h3 className="text-[18px] sm:text-[19px] font-semibold text-white tracking-[-0.015em] leading-snug">
+                    <h3 className="text-[16px] sm:text-[17px] font-semibold text-white tracking-[-0.015em] leading-snug">
                       {project.title}
                     </h3>
                   </div>
@@ -158,9 +158,9 @@ export default function PortfolioSection({
                       onOpenContact(project);
                     }}
                     aria-label={`Lihat proyek ${project.title}`}
-                    className="w-10 h-10 rounded-full bg-transparent border border-[#52525E] text-[#9898A6] group-hover:bg-[#FF5400] group-hover:border-[#FF5400] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300"
+                    className="w-8 h-8 rounded-full bg-transparent border border-[#52525E] text-[#9898A6] group-hover:bg-[#FF5400] group-hover:border-[#FF5400] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300"
                   >
-                    <ArrowRight className="w-4 h-4 transform group-hover:-rotate-45 transition-transform duration-300 stroke-[2]" />
+                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:-rotate-45 transition-transform duration-300 stroke-[2]" />
                   </button>
                 </div>
               </div>

@@ -129,7 +129,7 @@ export default function ContactModal({
       role="dialog"
     >
       <div
-        className="relative w-full max-w-lg rounded-[24px] bg-[#16161F] border border-[#2D2D38] p-6 sm:p-8 text-white shadow-2xl transition-all duration-300 overflow-hidden"
+        className="relative w-full max-w-[460px] rounded-[20px] bg-[#16161F] border border-[#2D2D38] p-5 sm:p-6 text-white shadow-2xl transition-all duration-300 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Subtle orange ambient glow */}
@@ -139,39 +139,39 @@ export default function ContactModal({
         <button
           type="button"
           onClick={handleResetAndClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-[#20202C] text-zinc-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 p-1.5 rounded-full bg-[#20202C] text-zinc-400 hover:text-white transition-colors cursor-pointer"
           aria-label="Tutup modal"
         >
-          <X className="w-4 h-4" />
+          <X className="w-3.5 h-3.5" />
         </button>
 
         {isSuccess ? (
           <div className="py-6 text-center">
-            <div className="w-16 h-16 rounded-full bg-[#E35F21]/15 border border-[#E35F21]/40 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-8 h-8 text-[#E35F21]" />
+            <div className="w-14 h-14 rounded-full bg-[#E35F21]/15 border border-[#E35F21]/40 flex items-center justify-center mx-auto mb-3">
+              <CheckCircle2 className="w-7 h-7 text-[#E35F21]" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <h3 className="text-xl font-bold text-white mb-2">
               Permintaan Konsultasi Diterima!
             </h3>
-            <p className="text-xs sm:text-sm text-[#8B8B97] leading-relaxed max-w-sm mx-auto mb-6">
+            <p className="text-xs text-[#8B8B97] leading-relaxed max-w-sm mx-auto mb-5">
               Data Anda telah tersimpan dengan aman di sistem SQLite kami. Tim Adsvar akan segera menghubungi{" "}
               <span className="text-white font-medium">{contact || "Anda"}</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
               <a
                 href={`https://wa.me/6282322308719?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-lg"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-lg"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
+                <MessageSquare className="w-3.5 h-3.5 fill-current" />
                 <span>Lanjutkan via WhatsApp</span>
               </a>
               <button
                 type="button"
                 onClick={handleResetAndClose}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#252530] hover:bg-[#30303D] text-white text-xs font-medium transition-colors"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#252530] hover:bg-[#30303D] text-white text-xs font-medium transition-colors"
               >
                 Selesai
               </button>
@@ -180,17 +180,17 @@ export default function ContactModal({
         ) : (
           <div>
             {/* Modal Header */}
-            <div className="flex items-center gap-2 mb-2">
-              <AdsvarLogoMark className="w-4 h-3.5" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
+            <div className="flex items-center gap-2 mb-1.5">
+              <AdsvarLogoMark className="h-3 w-auto" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
                 BOOK A CONSULTATION
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-[26px] font-semibold text-white tracking-tight mb-2">
+            <h3 className="text-[19px] sm:text-[21px] font-semibold text-white tracking-tight mb-1.5">
               Mulai Langkah Transformasi Brand
             </h3>
-            <p className="text-xs sm:text-sm text-[#8B8B97] leading-relaxed mb-6">
+            <p className="text-xs text-[#8B8B97] leading-relaxed mb-4">
               Diskusikan target kampanye, arsitektur web, atau produksi video reels eksklusif bersama tim kami.
             </p>
 
