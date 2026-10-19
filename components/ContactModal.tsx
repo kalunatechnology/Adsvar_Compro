@@ -11,23 +11,14 @@ interface ContactModalProps {
   defaultService?: string;
 }
 
-function AdsvarLogoMark({ className = "w-4 h-3.5" }: { className?: string }) {
+function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M1.5 12.5L6.2 2.2C6.6 1.3 7.8 1.3 8.2 2.2L11.8 10.2C12.2 11.1 13.4 11.1 13.8 10.2L18.5 1.5"
-        stroke="#E35F21"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/Adsvar_icon.svg"
+      alt="Adsvar Icon"
+      className={`${className} object-contain shrink-0`}
+    />
   );
 }
 

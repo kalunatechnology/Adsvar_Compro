@@ -30,22 +30,25 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
       />
 
       {/* Main Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 w-full max-w-[1240px]">
-        {/* Headline */}
-        <h1 className="text-[40px] sm:text-[54px] md:text-[64px] lg:text-[72px] font-bold text-white tracking-[-0.025em] leading-[1.12] text-center w-full max-w-[1100px]">
-          Scale your brand with{" "}
-          <span className="text-[#FF5500]">AI Powered &</span>
-          <br className="hidden sm:block" />
-          <span className="text-[#FF5500]">Human Crafted</span> social media strategy
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-[5%] w-full max-w-[1920px]">
+        {/* Headline: Spacious max-width (1380px), large font, and clean 2-line layout */}
+        <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[66px] xl:text-[72px] font-bold text-white tracking-[-0.025em] leading-[1.14] text-center w-full max-w-[1380px] mx-auto">
+          <span className="inline sm:block">
+            Scale your brand with{" "}
+            <span className="text-[#FF5500]">AI Powered &amp;</span>
+          </span>
+          <span className="inline sm:block">
+            <span className="text-[#FF5500]">Human Crafted</span> social media strategy
+          </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="mt-7 text-[15px] sm:text-[17px] md:text-[19px] text-[#A1A1AA] font-normal text-center leading-[1.65] max-w-[820px]">
+        {/* Subtitle: Expanded max-width (860px) */}
+        <p className="mt-7 text-[15px] sm:text-[17px] md:text-[18.5px] text-[#A1A1AA] font-normal text-center leading-[1.65] max-w-[860px] mx-auto">
           End-to-end execution across content planning, high-converting copywriting, AI
-          <br className="hidden md:block" /> creation, short-form reels, and custom graphic & print design.
+          <br className="hidden md:block" /> creation, short-form reels, and custom graphic &amp; print design.
         </p>
 
-        {/* Action Buttons Group */}
+        {/* Action Buttons Group: +15% font size (15px) */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
           <button
             type="button"
@@ -64,7 +67,7 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
           </button>
         </div>
 
-        {/* Social Proof Group */}
+        {/* Social Proof Group: +15% font size (14px / 10px) */}
         <div className="mt-14 flex items-center justify-center gap-4">
           {/* Overlapping Circles */}
           <div className="flex items-center -space-x-3">

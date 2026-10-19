@@ -178,7 +178,7 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
           : "bg-transparent py-5 lg:py-[32px]"
       }`}
     >
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-[60px]">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-[5%]">
         <div className="relative flex items-center justify-between">
           {/* Bar 1: Brand Logo (x=60..210.64 di navbar.svg) */}
           <Link href="/" className="flex items-center group" aria-label="Adsvar Home">

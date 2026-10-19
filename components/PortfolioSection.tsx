@@ -21,23 +21,14 @@ const CATEGORIES = [
   "Sistem Web",
 ];
 
-function AdsvarLogoMark({ className = "w-4 h-3.5" }: { className?: string }) {
+function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M1.5 12.5L6.2 2.2C6.6 1.3 7.8 1.3 8.2 2.2L11.8 10.2C12.2 11.1 13.4 11.1 13.8 10.2L18.5 1.5"
-        stroke="#E35F21"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/Adsvar_icon.svg"
+      alt="Adsvar Icon"
+      className={`${className} object-contain shrink-0`}
+    />
   );
 }
 
@@ -61,7 +52,7 @@ export default function PortfolioSection({
       id="portofolio"
       className="py-20 sm:py-28 relative bg-black text-white antialiased"
     >
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-[5%]">
         {/* Bar 1: Eyebrow Badge (Adsvar Logo Mark + Orange Uppercase Ribbon) */}
         <div className="flex items-center gap-2.5 mb-8">
           <AdsvarLogoMark className="w-4 h-3.5 shrink-0" />

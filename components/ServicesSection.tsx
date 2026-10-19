@@ -13,23 +13,14 @@ export interface ServicesSectionProps {
   subheading?: string;
 }
 
-function AdsvarLogoMark({ className = "w-4 h-3.5" }: { className?: string }) {
+function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 20 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M1.5 12.5L6.2 2.2C6.6 1.3 7.8 1.3 8.2 2.2L11.8 10.2C12.2 11.1 13.4 11.1 13.8 10.2L18.5 1.5"
-        stroke="#E35F21"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/Adsvar_icon.svg"
+      alt="Adsvar Icon"
+      className={`${className} object-contain shrink-0`}
+    />
   );
 }
 
@@ -45,7 +36,7 @@ export default function ServicesSection({
       id="layanan"
       className="py-20 sm:py-24 relative bg-black text-white antialiased selection:bg-[#E35F21] selection:text-white"
     >
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-14">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-[5%]">
         {/* Section Header Bar 1: Eyebrow with Adsvar Orange Mark */}
         <div className="flex items-center gap-2.5 mb-8">
           <AdsvarLogoMark className="w-4 h-3.5 shrink-0" />
@@ -64,8 +55,8 @@ export default function ServicesSection({
           </p>
         </div>
 
-        {/* 4 Cards Grid - 1:1 Pixel-Accurate to Target Reference */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* 4 Cards Grid - Proporsi identik dengan desain referensi (352x458) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((item) => (
             <div
               key={item.id}
@@ -78,39 +69,39 @@ export default function ServicesSection({
                   onOpenContact(item);
                 }
               }}
-              className="adsvar-card group relative rounded-[20px] bg-[#16161F] border border-[#26262E] hover:border-[#98989A] px-6 pt-7 pb-6 flex flex-col justify-between min-h-[460px] transition-all duration-300 cursor-pointer text-left focus:outline-none focus:border-[#98989A]"
+              className="adsvar-card group relative flex flex-col justify-between w-full min-h-[458px] p-[24px] rounded-[20px] bg-[#121216] border border-white/[0.08] hover:border-white/[0.28] focus:outline-none focus:border-white/[0.28] transition-all duration-300 cursor-pointer text-left"
             >
               <div>
-                {/* Card Top Category Tag (Grey -> Orange on Hover, no number index) */}
-                <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#8B8B97] group-hover:text-[#E35F21] transition-colors duration-300 mb-6">
+                {/* Card Top Category Tag */}
+                <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#8B8B97] group-hover:text-[#E35F21] transition-colors duration-300 mb-[16px]">
                   {item.tag}
                 </div>
 
-                {/* Card Media: Pattern Rect Image Banner (h: 134.5px, rx: 6px) */}
-                <div className="relative w-full h-[134.5px] rounded-[6px] overflow-hidden bg-black mb-7 border border-white/[0.04]">
+                {/* Card Media: Rasio 304:170 mengikuti desain asli secara proporsional */}
+                <div className="relative w-full aspect-[304/170] rounded-[6px] overflow-hidden bg-black mb-[28px] border border-white/[0.04]">
                   <Image
                     src={item.image}
                     alt={item.name.replace("\n", " ")}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                   />
                 </div>
 
                 {/* Card Title (2 lines) */}
-                <h3 className="text-[23px] sm:text-[24px] font-semibold text-white leading-[1.22] tracking-[-0.02em] mb-4 whitespace-pre-line">
+                <h3 className="text-[26px] xl:text-[28px] font-semibold text-white leading-[1.22] tracking-[-0.02em] mb-[16px] whitespace-pre-line">
                   {item.name}
                 </h3>
 
                 {/* Card Description */}
-                <p className="text-[13.5px] text-[#8B8B97] leading-[1.65] font-normal">
+                <p className="text-[14px] xl:text-[14.5px] text-[#8B8B97] leading-[1.6] font-normal line-clamp-3">
                   {item.description}
                 </p>
               </div>
 
-              {/* Card Bottom: Simple Diagonal Arrow at Bottom-Right (Grey -> Orange on Hover) */}
+              {/* Card Bottom: Diagonal Arrow */}
               <div className="flex justify-end items-center pt-6 mt-auto">
-                <ArrowDownRight className="w-5 h-5 text-[#8B8B97] group-hover:text-[#E35F21] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all duration-300 stroke-[1.75]" />
+                <ArrowDownRight className="w-[18px] h-[18px] text-[#8B8B97] group-hover:text-[#E35F21] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all duration-300 stroke-[1.75]" />
               </div>
             </div>
           ))}

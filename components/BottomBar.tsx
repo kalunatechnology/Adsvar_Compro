@@ -4,12 +4,12 @@ import React from "react";
 
 export default function BottomBar() {
   return (
-    <div className="w-full bg-black py-5 px-6 md:px-16 flex flex-col sm:flex-row items-center justify-between z-20 relative">
-      
-      {/* Kiri: Copyright Text */}
-      <p className="text-[#A1A1AA] text-[13px] font-medium tracking-wide mb-4 sm:mb-0">
-        © 2026 AdsVar Digital
-      </p>
+    <div className="w-full bg-black py-5 px-4 sm:px-6 lg:px-[5%] z-20 relative">
+      <div className="w-full max-w-[1920px] mx-auto flex flex-col sm:flex-row items-center justify-between">
+        {/* Kiri: Copyright Text */}
+        <p className="text-[#A1A1AA] text-[13px] font-medium tracking-wide mb-4 sm:mb-0">
+          © 2026 AdsVar Digital
+        </p>
 
       {/* Kanan: Social Icons */}
       <div className="flex items-center gap-6">
@@ -48,7 +48,7 @@ export default function BottomBar() {
           </svg>
         </a>
       </div>
-
     </div>
-  );
+  </div>
+);
 }

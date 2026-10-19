@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const funnelDisplay = localFont({
+  src: "./fonts/FunnelDisplay-Variable.ttf",
+  variable: "--font-funnel-display",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const readexPro = localFont({
+  src: "./fonts/ReadexPro-Variable.ttf",
+  variable: "--font-readex-pro",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -44,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`${geistSans.variable} ${geistMono.variable} dark`}>
-      <body className="min-h-screen bg-[#08080C] text-[#F3F4F6] selection:bg-[#FF5500] selection:text-white">
+    <html lang="id" className={`${funnelDisplay.variable} ${readexPro.variable} dark`}>
+      <body className="min-h-screen bg-[#08080C] text-[#F3F4F6] selection:bg-[#FF5500] selection:text-white font-sans">
         {children}
       </body>
     </html>

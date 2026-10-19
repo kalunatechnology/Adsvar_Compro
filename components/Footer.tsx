@@ -10,7 +10,7 @@ interface FooterProps {
 export default function Footer({ onOpenContact }: FooterProps) {
   return (
     <footer 
-      className="relative w-full bg-[#111116] py-20 lg:py-32 px-6 flex items-center justify-center overflow-hidden"
+      className="relative w-full bg-[#111116] py-20 lg:py-32 px-4 sm:px-6 lg:px-[5%] flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: "url('/background_cta.svg')",
         backgroundSize: "cover",
@@ -18,7 +18,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
         backgroundRepeat: "no-repeat"
       }}
     >
-      <div className="relative z-10 w-full max-w-[1200px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+      <div className="relative z-10 w-full max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
         
         {/* Kiri: Tipografi & Tombol */}
         <div className="flex flex-col">

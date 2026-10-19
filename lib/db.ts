@@ -13,7 +13,7 @@ const DB_PATH = process.env.ADSVAR_DB_PATH
   : path.join(process.cwd(), "data", "adsvar.db");
 const DB_DIR = path.dirname(DB_PATH);
 
-const CURRENT_SEED_VERSION = "v4_adsvar_capability_cards_seed";
+const CURRENT_SEED_VERSION = "v5_adsvar_pricing_exact_reference";
 
 const globalForDb = globalThis as unknown as { __adsvarDb?: Database.Database };
 
