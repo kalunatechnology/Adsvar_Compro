@@ -10,6 +10,8 @@ interface FooterProps {
 export default function Footer({ onOpenContact }: FooterProps) {
   return (
     <footer 
+      id="tentang"
+      aria-label="Tentang Kami dan Kontak Adsvar"
       className="relative w-full bg-[#111116] py-16 lg:py-24 px-4 sm:px-6 lg:px-[5%] flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage: "url('/background_cta.svg')",

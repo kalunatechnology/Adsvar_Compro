@@ -186,14 +186,22 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
           </Link>
 
           {/* Bar 2: Desktop Nav Links (x=687.12..1119.92) */}
-          <nav className="hidden md:flex items-center md:gap-8 lg:gap-[52px] xl:absolute xl:left-[36%]">
+          {/* Bar 2: Desktop Nav Links (x=687.12..1119.92) */}
+          <nav
+            aria-label="Navigasi Utama"
+            itemScope
+            itemType="https://schema.org/SiteNavigationElement"
+            className="hidden md:flex items-center md:gap-8 lg:gap-[52px] xl:absolute xl:left-[36%]"
+          >
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                itemProp="url"
                 className="text-white hover:text-[#FF5500] transition-colors duration-200 py-1.5"
                 aria-label={item.label}
               >
+                <span className="sr-only" itemProp="name">{item.label}</span>
                 <NavItemSvg
                   viewBox={item.viewBox}
                   d={item.d}
