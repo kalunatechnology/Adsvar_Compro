@@ -71,39 +71,40 @@ export default function ProjectDetailModal({
       aria-label={`Detail proyek ${project.title}`}
     >
       <div
-        className="relative w-full max-w-[1000px] max-h-[92dvh] sm:max-h-[90vh] rounded-[20px] sm:rounded-[28px] border border-white/[0.08] bg-[#16161F] shadow-2xl overflow-hidden flex flex-col"
+        className="relative w-full max-w-[1040px] max-h-[92dvh] sm:max-h-[90vh] rounded-[20px] sm:rounded-[28px] border border-white/[0.08] bg-[#16161F] shadow-2xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Floating Close Button */}
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Tutup detail proyek"
-          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 shadow-lg"
-        >
-          <X className="w-4 h-4" />
-        </button>
-
         <div ref={scrollRef} className="overflow-y-auto overscroll-contain custom-modal-scroll">
-          {/* Detail area */}
-          <div className="px-4 sm:px-8 lg:px-[64px] pt-4 sm:pt-7 pb-8 sm:pb-12">
-            {/* Back Button */}
+          {/* Top Bar with aligned left & right margins */}
+          <div className="sticky top-0 z-20 flex items-center justify-between px-5 sm:px-8 lg:px-10 pt-4 sm:pt-6 pb-2 sm:pb-3 bg-[#16161F]/90 backdrop-blur-md">
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center gap-1.5 text-[12px] sm:text-[13.5px] text-white/90 hover:text-[#FF5500] transition-colors mb-3.5 sm:mb-6 cursor-pointer"
+              className="flex items-center gap-1.5 text-[12px] sm:text-[13.5px] text-white/90 hover:text-[#FF5500] transition-colors cursor-pointer group"
             >
-              <ArrowDownLeft className="w-3.5 h-3.5 text-[#8B8B9E]" />
+              <ArrowDownLeft className="w-3.5 h-3.5 text-[#8B8B9E] group-hover:text-[#FF5500] transition-colors" />
               <span>Back to Project List</span>
             </button>
 
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Tutup detail proyek"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 shadow-lg"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Detail area */}
+          <div className="px-5 sm:px-8 lg:px-10 pt-2 sm:pt-3 pb-8 sm:pb-12">
             {/* Hero image with responsive aspect ratio */}
             <div className="relative w-full aspect-[16/10] sm:aspect-[21/9] lg:aspect-[1400/430] min-h-[170px] sm:min-h-[220px] rounded-[14px] sm:rounded-[18px] overflow-hidden bg-black border border-white/[0.06]">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 900px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 960px"
                 className="object-cover"
                 priority
               />
@@ -160,7 +161,7 @@ export default function ProjectDetailModal({
 
           {/* Similar Projects */}
           {similar.length > 0 && (
-            <div className="bg-[#12121B] px-4 sm:px-8 lg:px-[64px] py-8 sm:py-12 border-t border-white/[0.04]">
+            <div className="bg-[#12121B] px-5 sm:px-8 lg:px-10 py-8 sm:py-12 border-t border-white/[0.04]">
               <h3 className="text-[19px] sm:text-[26px] lg:text-[30px] font-medium text-white tracking-[-0.02em] text-center mb-6 sm:mb-8">
                 Similar Projects
               </h3>
