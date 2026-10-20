@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/types";
+import ProjectDetailModal from "@/components/ProjectDetailModal";
 
 export interface PortfolioSectionProps {
   initialProjects: Project[];
@@ -41,6 +42,7 @@ export default function PortfolioSection({
   subheading = "Not content for content's sake. Every campaign is designed around a measurable commercial outcome.",
 }: PortfolioSectionProps) {
   const [activeTab, setActiveTab] = useState("Semua");
+  const [detailProject, setDetailProject] = useState<Project | null>(null);
 
   const filteredProjects =
     activeTab === "Semua" || activeTab === "All work"
@@ -101,13 +103,13 @@ export default function PortfolioSection({
             return (
               <div
                 key={project.id}
-                onClick={() => onOpenContact(project)}
+                onClick={() => setDetailProject(project)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    onOpenContact(project);
+                    setDetailProject(project);
                   }
                 }}
                 className="adsvar-card group relative rounded-[18px] bg-[#16161F] border border-[#292A2E] hover:border-[#52525E] overflow-hidden flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none focus:border-[#52525E]"
@@ -155,7 +157,7 @@ export default function PortfolioSection({
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      onOpenContact(project);
+                      setDetailProject(project);
                     }}
                     aria-label={`Lihat proyek ${project.title}`}
                     className="w-8 h-8 rounded-full bg-transparent border border-[#52525E] text-[#9898A6] group-hover:bg-[#FF5400] group-hover:border-[#FF5400] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300"
@@ -168,6 +170,17 @@ export default function PortfolioSection({
           })}
         </div>
       </div>
+
+      <ProjectDetailModal
+        project={detailProject}
+        projects={initialProjects}
+        onClose={() => setDetailProject(null)}
+        onSelectProject={setDetailProject}
+        onBookConsultation={(p) => {
+          setDetailProject(null);
+          onOpenContact(p);
+        }}
+      />
     </section>
   );
 }

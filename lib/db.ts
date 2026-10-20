@@ -78,13 +78,20 @@ function init(db: Database.Database) {
     );
 
     CREATE TABLE IF NOT EXISTS inquiries (
-      id          INTEGER PRIMARY KEY AUTOINCREMENT,
-      name        TEXT NOT NULL,
-      contact     TEXT NOT NULL,
-      service     TEXT NOT NULL,
-      message     TEXT NOT NULL DEFAULT '',
-      created_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      status      TEXT NOT NULL DEFAULT 'pending'
+      id                INTEGER PRIMARY KEY AUTOINCREMENT,
+      name              TEXT NOT NULL,
+      phone             TEXT NOT NULL DEFAULT '',
+      email             TEXT NOT NULL DEFAULT '',
+      contact           TEXT NOT NULL DEFAULT '',
+      service           TEXT NOT NULL DEFAULT '',
+      package_choice    TEXT NOT NULL DEFAULT '',
+      billing_cycle     TEXT NOT NULL DEFAULT '',
+      price             TEXT NOT NULL DEFAULT '',
+      message           TEXT NOT NULL DEFAULT '',
+      brand_description TEXT NOT NULL DEFAULT '',
+      source            TEXT NOT NULL DEFAULT 'book_consultation',
+      created_at        TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      status            TEXT NOT NULL DEFAULT 'pending'
     );
 
     CREATE TABLE IF NOT EXISTS adsvar_seed_migrations (
@@ -92,6 +99,27 @@ function init(db: Database.Database) {
       applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
   `);
+
+  // Auto-migrate columns if database was created with older schema
+  try {
+    const existingCols = (db.pragma("table_info(inquiries)") as { name: string }[]).map(
+      (c) => c.name
+    );
+    const addCol = (col: string, def: string) => {
+      if (!existingCols.includes(col)) {
+        db.exec(`ALTER TABLE inquiries ADD COLUMN ${col} ${def};`);
+      }
+    };
+    addCol("phone", "TEXT NOT NULL DEFAULT ''");
+    addCol("email", "TEXT NOT NULL DEFAULT ''");
+    addCol("package_choice", "TEXT NOT NULL DEFAULT ''");
+    addCol("billing_cycle", "TEXT NOT NULL DEFAULT ''");
+    addCol("price", "TEXT NOT NULL DEFAULT ''");
+    addCol("brand_description", "TEXT NOT NULL DEFAULT ''");
+    addCol("source", "TEXT NOT NULL DEFAULT 'book_consultation'");
+  } catch (err) {
+    console.error("Inquiries table migration check error:", err);
+  }
 
   const hasMigration = db
     .prepare("SELECT key FROM adsvar_seed_migrations WHERE key = ?")

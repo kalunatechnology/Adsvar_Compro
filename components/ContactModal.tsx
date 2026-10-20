@@ -1,65 +1,61 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, Send, CheckCircle2, MessageSquare, Sparkles } from "lucide-react";
+import { X, Send, CheckCircle2, MessageSquare, ChevronDown } from "lucide-react";
 import type { Service, Project, PricingPlan } from "@/lib/types";
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedItem?: Service | Project | PricingPlan | null;
-  defaultService?: string;
+  defaultPackageChoice?: string;
+  availablePlans?: PricingPlan[];
+  availableServices?: Service[];
 }
 
-function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/Adsvar_icon.svg"
-      alt="Adsvar Icon"
-      className={`${className} object-contain shrink-0`}
-    />
-  );
-}
-
-const POPULAR_SERVICES = [
+const DEFAULT_PACKAGES = [
+  "01 Starter Landing Page",
+  "02 Social Media & Reels Scale",
+  "03 High-Impact Visuals & Brand",
+  "04 Paid Acquisition & Growth",
+  "05 Enterprise Custom System",
   "AI-Powered Content Creation",
   "Short-Form Video & Reels",
-  "High-Impact Visuals & Brand",
   "Paid Acquisition & Performance Ads",
-  "Starter Landing Page",
-  "Growth Scale Retainer",
-  "Enterprise Custom System",
+  "Konsultasi Brand & Strategy",
 ];
 
 export default function ContactModal({
   isOpen,
   onClose,
   selectedItem,
-  defaultService = "",
+  defaultPackageChoice = "",
+  availablePlans = [],
+  availableServices = [],
 }: ContactModalProps) {
   const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [service, setService] = useState(defaultService);
-  const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [packageChoice, setPackageChoice] = useState("");
+  const [brandDescription, setBrandDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Update selected item name when modal opens or item changes
+  // Sync initial selection
   useEffect(() => {
     if (selectedItem) {
       if ("name" in selectedItem && selectedItem.name) {
-        setService(selectedItem.name.replace("\n", " "));
+        setPackageChoice(selectedItem.name.replace("\n", " "));
       } else if ("title" in selectedItem && selectedItem.title) {
-        setService(selectedItem.title);
+        setPackageChoice(selectedItem.title);
       }
-    } else if (defaultService) {
-      setService(defaultService);
+    } else if (defaultPackageChoice) {
+      setPackageChoice(defaultPackageChoice);
     }
-  }, [selectedItem, defaultService, isOpen]);
+  }, [selectedItem, defaultPackageChoice, isOpen]);
 
-  // Handle ESC key to close modal
+  // Handle ESC key to close
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -85,9 +81,14 @@ export default function ContactModal({
         },
         body: JSON.stringify({
           name: name.trim(),
-          contact: contact.trim(),
-          service: service.trim() || "Konsultasi Umum",
-          message: message.trim(),
+          phone: phone.trim(),
+          email: email.trim(),
+          contact: `${phone.trim()} | ${email.trim()}`.trim(),
+          packageChoice: packageChoice || "Konsultasi Umum",
+          service: packageChoice || "Konsultasi Umum",
+          brandDescription: brandDescription.trim(),
+          message: brandDescription.trim(),
+          source: "book_consultation",
         }),
       });
 
@@ -100,7 +101,7 @@ export default function ContactModal({
       setIsSuccess(true);
     } catch (err: unknown) {
       const errObj = err as Error;
-      setErrorMessage(errObj.message || "Terjadi kesalahan koneksi.");
+      setErrorMessage(errObj.message || "Terjadi kesalahan saat menyimpan formulir.");
     } finally {
       setIsSubmitting(false);
     }
@@ -109,69 +110,95 @@ export default function ContactModal({
   const handleResetAndClose = () => {
     setIsSuccess(false);
     setName("");
-    setContact("");
-    setMessage("");
+    setPhone("");
+    setEmail("");
+    setBrandDescription("");
     setErrorMessage("");
     onClose();
   };
 
   const waText = encodeURIComponent(
-    `Halo Adsvar Digital, saya ${name || "klien"} tertarik untuk konsultasi mengenai ${service || "layanan"}. ${
-      message ? `Detail: ${message}` : ""
-    }`
+    `Halo Adsvar Digital, saya ${name || "Klien"}.\n` +
+    `Saya telah mengisi formulir Book A Consultation:\n` +
+    `• Telepon: ${phone || "-"}\n` +
+    `• Email: ${email || "-"}\n` +
+    `• Pilihan Paket: ${packageChoice || "Konsultasi Umum"}\n` +
+    `• Catatan Brand: ${brandDescription || "-"}\n\n` +
+    `Mohon info jadwal konsultasi lebih lanjut. Terima kasih!`
   );
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/85 backdrop-blur-md transition-opacity duration-300 overflow-y-auto"
       onClick={handleResetAndClose}
       aria-modal="true"
       role="dialog"
     >
       <div
-        className="relative w-full max-w-[460px] rounded-[20px] bg-[#16161F] border border-[#2D2D38] p-5 sm:p-6 text-white shadow-2xl transition-all duration-300 overflow-hidden"
+        className="relative w-full max-w-[560px] my-auto rounded-[24px] bg-[#13141F] border border-[#27283B] p-6 sm:p-9 text-white shadow-2xl transition-all duration-300 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Subtle orange ambient glow */}
-        <div className="pointer-events-none absolute -top-24 -right-24 w-52 h-52 bg-[#FF5500]/15 rounded-full blur-3xl" />
+        {/* Subtle orange ambient glow in top right */}
+        <div className="pointer-events-none absolute -top-24 -right-24 w-60 h-60 bg-[#FF5500]/15 rounded-full blur-3xl" />
 
         {/* Close Button */}
         <button
           type="button"
           onClick={handleResetAndClose}
-          className="absolute top-4 right-4 p-1.5 rounded-full bg-[#20202C] text-zinc-400 hover:text-white transition-colors cursor-pointer"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#1C1D2C] hover:bg-[#27283D] text-[#8E8EA0] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
           aria-label="Tutup modal"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="w-4 h-4" />
         </button>
 
         {isSuccess ? (
-          <div className="py-6 text-center">
-            <div className="w-14 h-14 rounded-full bg-[#E35F21]/15 border border-[#E35F21]/40 flex items-center justify-center mx-auto mb-3">
-              <CheckCircle2 className="w-7 h-7 text-[#E35F21]" />
+          <div className="py-6 sm:py-8 text-center">
+            <div className="w-16 h-16 rounded-full bg-[#FF5500]/15 border border-[#FF5500]/40 flex items-center justify-center mx-auto mb-4 shadow-[0_0_24px_rgba(255,85,0,0.2)]">
+              <CheckCircle2 className="w-8 h-8 text-[#FF5500]" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">
-              Permintaan Konsultasi Diterima!
+
+            <h3 className="text-2xl font-bold text-white mb-2 font-heading">
+              Consultation Scheduled!
             </h3>
-            <p className="text-xs text-[#8B8B97] leading-relaxed max-w-sm mx-auto mb-5">
-              Data Anda telah tersimpan dengan aman di sistem SQLite kami. Tim Adsvar akan segera menghubungi{" "}
-              <span className="text-white font-medium">{contact || "Anda"}</span>.
+            <p className="text-[13px] text-[#8B8B9E] leading-relaxed max-w-sm mx-auto mb-6">
+              Data Anda telah tersinkronisasi ke sistem CRM Adsvar. Tim konsultan kami akan segera menghubungi{" "}
+              <span className="text-white font-medium">{phone || email || name}</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+            <div className="p-4 rounded-[14px] bg-[#181926] border border-[#262738] mb-6 text-left text-xs space-y-1.5">
+              <div className="text-[10.5px] uppercase font-bold tracking-wider text-[#FF5500] mb-2">
+                Ringkasan CRM Lead
+              </div>
+              <div className="flex justify-between text-[#8E8EA0]">
+                <span>Nama:</span>
+                <span className="text-white font-medium">{name}</span>
+              </div>
+              <div className="flex justify-between text-[#8E8EA0]">
+                <span>Pilihan Paket:</span>
+                <span className="text-white font-medium">{packageChoice || "Umum"}</span>
+              </div>
+              {phone && (
+                <div className="flex justify-between text-[#8E8EA0]">
+                  <span>WhatsApp:</span>
+                  <span className="text-white font-medium">{phone}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href={`https://wa.me/6282322308719?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-xs transition-colors flex items-center justify-center gap-2 shadow-lg"
+                className="w-full sm:w-auto px-6 py-3 rounded-[12px] bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-[13px] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
-                <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                <span>Lanjutkan via WhatsApp</span>
+                <MessageSquare className="w-4 h-4 fill-current" />
+                <span>Chat Langsung via WhatsApp</span>
               </a>
               <button
                 type="button"
                 onClick={handleResetAndClose}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#252530] hover:bg-[#30303D] text-white text-xs font-medium transition-colors"
+                className="w-full sm:w-auto px-6 py-3 rounded-[12px] bg-[#212233] hover:bg-[#2A2B3D] text-white text-[13px] font-medium transition-colors cursor-pointer"
               >
                 Selesai
               </button>
@@ -179,112 +206,143 @@ export default function ContactModal({
           </div>
         ) : (
           <div>
-            {/* Modal Header */}
-            <div className="flex items-center gap-2 mb-1.5">
-              <AdsvarLogoMark className="h-3 w-auto" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#E35F21]">
-                BOOK A CONSULTATION
-              </span>
-            </div>
+            {/* Form Headline matching Pop Up Form for adsvar.svg */}
+            <h2 className="text-[26px] sm:text-[32px] font-bold text-white tracking-[-0.03em] leading-[1.12] mb-1.5 font-heading">
+              Your brand<br />
+              transformation.<br />
+              Starts today.
+            </h2>
 
-            <h3 className="text-[19px] sm:text-[21px] font-semibold text-white tracking-tight mb-1.5">
-              Mulai Langkah Transformasi Brand
-            </h3>
-            <p className="text-xs text-[#8B8B97] leading-relaxed mb-4">
-              Diskusikan target kampanye, arsitektur web, atau produksi video reels eksklusif bersama tim kami.
+            {/* Subtitle in bright orange #FF5500 */}
+            <p className="text-[13.5px] sm:text-[14px] text-[#FF5500] font-normal leading-normal mb-6">
+              Discuss and consult your brand needs with our team.
             </p>
 
             {errorMessage && (
-              <div className="p-3 mb-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-xs">
+              <div className="p-3 mb-4 rounded-[10px] bg-red-500/10 border border-red-500/30 text-red-400 text-xs">
                 {errorMessage}
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Field 1: Your Name */}
               <div>
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">
-                  Nama Lengkap / Brand
+                <label className="block text-[13px] sm:text-[13.5px] font-medium text-white mb-1.5">
+                  Your Name
                 </label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Contoh: Sarah — Aurora Living"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-[#2B2B36] focus:border-[#FF5500] focus:outline-none text-xs text-white placeholder-zinc-600 transition-colors"
+                  placeholder="John Doe"
+                  className="w-full h-[46px] px-4 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13.5px] text-white placeholder-[#5A5A72] outline-none transition-all"
                 />
               </div>
 
+              {/* Field 2: Phone */}
               <div>
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">
-                  Nomor WhatsApp / Email Bisnis
+                <label className="block text-[13px] sm:text-[13.5px] font-medium text-white mb-1.5">
+                  Phone
                 </label>
                 <input
-                  type="text"
+                  type="tel"
                   required
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                  placeholder="Contoh: +62 812-3456-7890 atau name@brand.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-[#2B2B36] focus:border-[#FF5500] focus:outline-none text-xs text-white placeholder-zinc-600 transition-colors"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+62 812 3456 7890"
+                  className="w-full h-[46px] px-4 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13.5px] text-white placeholder-[#5A5A72] outline-none transition-all"
                 />
               </div>
 
+              {/* Field 3: Business Email */}
               <div>
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center justify-between">
-                  <span>Layanan / Paket yang Diminati</span>
-                  <Sparkles className="w-3 h-3 text-[#FF5500]" />
+                <label className="block text-[13px] sm:text-[13.5px] font-medium text-white mb-1.5">
+                  Business Email
                 </label>
                 <input
-                  type="text"
-                  value={service}
-                  onChange={(e) => setService(e.target.value)}
-                  placeholder="Pilih atau ketik layanan..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-black border border-[#2B2B36] focus:border-[#FF5500] focus:outline-none text-xs text-white placeholder-zinc-600 mb-2 transition-colors"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@brand.com"
+                  className="w-full h-[46px] px-4 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13.5px] text-white placeholder-[#5A5A72] outline-none transition-all"
                 />
+              </div>
 
-                {/* Quick suggestions pills */}
-                <div className="flex flex-wrap gap-1.5">
-                  {POPULAR_SERVICES.map((s, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => setService(s)}
-                      className={`text-[10px] px-2.5 py-1 rounded-full border transition-all ${
-                        service === s
-                          ? "bg-[#FF5500]/15 border-[#FF5500] text-[#FF5500]"
-                          : "bg-[#101017] border-[#2B2B36] text-zinc-400 hover:text-white"
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
+              {/* Field 4: Package Choice */}
+              <div>
+                <label className="block text-[13px] sm:text-[13.5px] font-medium text-white mb-1.5">
+                  Package Choice
+                </label>
+                <div className="relative">
+                  <select
+                    value={packageChoice}
+                    onChange={(e) => setPackageChoice(e.target.value)}
+                    className="w-full h-[46px] px-4 pr-10 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13.5px] text-white outline-none appearance-none transition-all cursor-pointer"
+                  >
+                    <option value="" className="bg-[#171826] text-[#5A5A72]">
+                      Pilih Paket atau Layanan...
+                    </option>
+
+                    {availablePlans.length > 0 ? (
+                      <optgroup label="Paket Scaling (Pricing Tiers)" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        {availablePlans.map((p) => (
+                          <option key={p.id} value={p.name.replace("\n", " ")} className="bg-[#171826] text-white font-normal">
+                            {p.number ? `${p.number} ` : ""}{p.name.replace("\n", " ")} ({p.priceMonthly || p.priceProject})
+                          </option>
+                        ))}
+                      </optgroup>
+                    ) : (
+                      <optgroup label="Paket Populer" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        {DEFAULT_PACKAGES.map((pkg, idx) => (
+                          <option key={idx} value={pkg} className="bg-[#171826] text-white font-normal">
+                            {pkg}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+
+                    {availableServices.length > 0 && (
+                      <optgroup label="Layanan Utama" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        {availableServices.map((s) => (
+                          <option key={s.id} value={s.name.replace("\n", " ")} className="bg-[#171826] text-white font-normal">
+                            {s.name.replace("\n", " ")}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+                  </select>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8EA0] pointer-events-none" />
                 </div>
               </div>
 
+              {/* Field 5: Tell us about your brand */}
               <div>
-                <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">
-                  Catatan Kebutuhan Singkat (Opsional)
+                <label className="block text-[13px] sm:text-[13.5px] font-medium text-white mb-1.5">
+                  Tell us about your brand
                 </label>
                 <textarea
-                  rows={2}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Ceritakan gambaran singkat kebutuhan atau timeline yang diharapkan..."
-                  className="w-full px-3.5 py-2 rounded-xl bg-black border border-[#2B2B36] focus:border-[#FF5500] focus:outline-none text-xs text-white placeholder-zinc-600 resize-none transition-colors"
+                  rows={3}
+                  value={brandDescription}
+                  onChange={(e) => setBrandDescription(e.target.value)}
+                  placeholder="Your brand short description"
+                  className="w-full h-[95px] p-3.5 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13.5px] text-white placeholder-[#5A5A72] resize-none outline-none transition-all"
                 />
               </div>
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 px-4 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-xs font-semibold text-white transition-all shadow-[0_4px_14px_rgba(255,85,0,0.39)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full h-[48px] sm:h-[50px] mt-2 rounded-[14px] bg-[#FF5500] hover:bg-[#E04B00] active:scale-[0.99] text-[14px] font-medium text-white shadow-[0_4px_18px_rgba(255,85,0,0.35)] flex items-center justify-center gap-2.5 transition-all cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <span>Menyimpan ke Sistem...</span>
                 ) : (
                   <>
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Kirim & Jadwalkan Konsultasi</span>
+                    <Send className="w-4 h-4 stroke-[2]" />
+                    <span>Send &amp; Schedule Consultation</span>
                   </>
                 )}
               </button>

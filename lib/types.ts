@@ -61,15 +61,35 @@ export interface CompanyStat {
 export interface Inquiry {
   id: number;
   name: string;
+  phone: string;
+  email: string;
   contact: string;
   service: string;
+  packageChoice: string;
+  billingCycle: string;
+  price: string;
   message: string;
+  brandDescription: string;
+  source: string;
   createdAt: string;
-  status: "pending" | "contacted" | "completed";
+  status: "pending" | "contacted" | "deal" | "completed" | "archived";
 }
 
 export type ServiceInput = Omit<Service, "id">;
 export type ProjectInput = Omit<Project, "id">;
 export type PricingPlanInput = Omit<PricingPlan, "id">;
 export type CompanyStatInput = Omit<CompanyStat, "id">;
-export type InquiryInput = Omit<Inquiry, "id" | "createdAt" | "status">;
+export type InquiryInput = {
+  name: string;
+  phone?: string;
+  email?: string;
+  contact?: string;
+  service?: string;
+  packageChoice?: string;
+  billingCycle?: string;
+  price?: string;
+  message?: string;
+  brandDescription?: string;
+  source?: string;
+  status?: Inquiry["status"];
+};
