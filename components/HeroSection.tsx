@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import type { CompanyStat } from "@/lib/types";
 
 interface HeroSectionProps {
@@ -72,9 +73,33 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
         <div className="mt-9 sm:mt-10 flex items-center justify-center gap-3.5">
           {/* Overlapping Circles */}
           <div className="flex items-center -space-x-2.5">
-            <div className="w-[36px] h-[36px] rounded-full bg-[#FF9D5C] relative z-30 shadow-[0_0_12px_rgba(0,0,0,0.5)] border border-black/20" />
-            <div className="w-[36px] h-[36px] rounded-full bg-[#CC4E00] relative z-20 shadow-[0_0_12px_rgba(0,0,0,0.5)] border border-black/20" />
-            <div className="w-[36px] h-[36px] rounded-full bg-[#702D00] relative z-10 shadow-[0_0_12px_rgba(0,0,0,0.5)] border border-black/20" />
+            <div className="w-[36px] h-[36px] rounded-full overflow-hidden relative z-30 shadow-[0_0_12px_rgba(0,0,0,0.5)] border-2 border-black">
+              <Image
+                src="/avatars/avatar-1.png"
+                alt="Client 1"
+                width={72}
+                height={72}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="w-[36px] h-[36px] rounded-full overflow-hidden relative z-20 shadow-[0_0_12px_rgba(0,0,0,0.5)] border-2 border-black">
+              <Image
+                src="/avatars/avatar-2.png"
+                alt="Client 2"
+                width={72}
+                height={72}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="w-[36px] h-[36px] rounded-full overflow-hidden relative z-10 shadow-[0_0_12px_rgba(0,0,0,0.5)] border-2 border-black">
+              <Image
+                src="/avatars/avatar-3.png"
+                alt="Client 3"
+                width={72}
+                height={72}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
           </div>
 
           {/* Proof Texts */}
