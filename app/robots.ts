@@ -1,13 +1,16 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adsvar.com";
+  const origin = process.env.PUBLIC_ORIGIN_DOMAIN
+    ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
+    : "https://adsvar-compro.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/favicon.ico", "/icon.svg", "/favicon-48x48.png", "/og-image.png"],
         disallow: ["/api/*", "/_next/*"],
       },
       {
@@ -15,7 +18,17 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/*"],
       },
+      {
+        userAgent: "Googlebot-Image",
+        allow: ["/", "/favicon.ico", "/favicon-48x48.png", "/favicon-96x96.png", "/apple-touch-icon.png", "/icon.svg", "/og-image.png", "/extracted/*"],
+      },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: ["/api/*"],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }

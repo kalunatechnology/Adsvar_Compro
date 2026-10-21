@@ -14,7 +14,11 @@ const readexPro = localFont({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adsvar.com";
+// Dynamic Base URL Resolution
+const origin = process.env.PUBLIC_ORIGIN_DOMAIN
+  ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
+  : "https://adsvar-compro.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
 
 export const viewport: Viewport = {
   themeColor: "#FF5500",
@@ -26,7 +30,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Adsvar | Creative Digital Agency & Production Studio",
+    default: "Adsvar | Creative Digital Agency & AI Production Studio",
     template: "%s | Adsvar",
   },
   description:
@@ -41,11 +45,12 @@ export const metadata: Metadata = {
     "AI Content Workflows",
     "Brand Architecture",
     "Performance Marketing",
+    "Social Media Strategy",
     "Next.js Web Development",
   ],
-  authors: [{ name: "Adsvar Digital", url: siteUrl }],
-  creator: "Adsvar Digital",
-  publisher: "Adsvar Digital",
+  authors: [{ name: "Adsvar Digital Agency", url: siteUrl }],
+  creator: "Adsvar Digital Agency",
+  publisher: "Adsvar Digital Agency",
   formatDetection: {
     telephone: true,
     email: true,
@@ -54,35 +59,31 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Adsvar | Creative Digital Agency & Production Studio",
+    title: "Adsvar | Creative Digital Agency & AI Production Studio",
     description:
-      "Scale your brand with AI Powered & Human Crafted social media strategy, video reels, and digital growth.",
+      "Scale your brand with AI-powered social media strategy, viral short-form video reels, brand architecture, and scalable digital acquisition.",
     type: "website",
     locale: "id_ID",
     url: siteUrl,
-    siteName: "Adsvar Digital",
+    siteName: "Adsvar Digital Agency",
     images: [
       {
-        url: `${siteUrl}/logo_teks.svg`,
+        url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Adsvar - Your business one stop digital solution",
-      },
-      {
-        url: `${siteUrl}/Adsvar_icon.svg`,
-        width: 512,
-        height: 512,
-        alt: "Adsvar Icon Logo",
+        type: "image/png",
+        alt: "Adsvar - Creative Digital Agency & AI Production Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adsvar | Creative Digital Agency & Production Studio",
+    title: "Adsvar | Creative Digital Agency & AI Production Studio",
     description:
-      "Transforming ideas into high-performance digital experiences, AI-driven content, and scalable brand growth.",
-    images: [`${siteUrl}/logo_teks.svg`],
+      "Transforming ideas into high-performance digital experiences, AI-driven content, viral short-form reels, and scalable brand growth.",
+    images: [`${siteUrl}/og-image.png`],
     creator: "@adsvar",
   },
   robots: {
@@ -98,11 +99,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/Adsvar_icon.svg", type: "image/svg+xml" },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
     ],
-    apple: "/Adsvar_icon.svg",
-    shortcut: "/Adsvar_icon.svg",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    other: [
+      { rel: "mask-icon", url: "/icon.svg", color: "#FF5500" },
+    ],
   },
 };
 
@@ -111,7 +119,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Schema.org Structured Data (WebSite with Sitelinks Searchbox + Organization + SiteNavigationElement + Service Catalog)
+  // Schema.org Structured Data Suite (WebSite, Organization, Sitelinks, FAQPage, BreadcrumbList)
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -124,9 +132,10 @@ export default function RootLayout({
           "Adsvar Digital",
           "Adsvar Agency",
           "Adsvar Production Studio",
+          "PT Sinergi Muda Arsa",
         ],
         "description":
-          "Transform your brand with AI-powered social media strategy and human-crafted video production.",
+          "Transform your brand with AI-powered social media strategy, viral video reels, and performance brand architecture.",
         "publisher": {
           "@id": `${siteUrl}/#organization`,
         },
@@ -145,8 +154,8 @@ export default function RootLayout({
         "@id": `${siteUrl}/#organization`,
         "name": "Adsvar Digital Agency",
         "url": siteUrl,
-        "logo": `${siteUrl}/Adsvar_icon.svg`,
-        "image": `${siteUrl}/logo_teks.svg`,
+        "logo": `${siteUrl}/icon-512x512.png`,
+        "image": `${siteUrl}/og-image.png`,
         "telephone": "+6282322308719",
         "email": "corporate@adsvar.com",
         "priceRange": "IDR 8.000.000 - IDR 22.000.000",
@@ -163,6 +172,13 @@ export default function RootLayout({
           "https://linkedin.com/company/adsvar",
           "https://youtube.com/@adsvar",
         ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "48",
+          "bestRating": "5",
+          "worstRating": "1",
+        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Adsvar Capabilities & Scaling Tiers",
@@ -173,7 +189,7 @@ export default function RootLayout({
                 "@type": "Service",
                 "name": "AI-Powered Content Creation",
                 "description":
-                  "Synthetic media generation, workflow automation, and custom prompt modeling built around your brand.",
+                  "Synthetic media generation, automated workflow pipelines, and custom prompt models tailored for your brand.",
                 "url": `${siteUrl}/#layanan`,
               },
             },
@@ -183,7 +199,7 @@ export default function RootLayout({
                 "@type": "Service",
                 "name": "Strategic Copywriting",
                 "description":
-                  "Brand voice formulation, direct-response copy, and viral hook structures that move people to act.",
+                  "Brand voice formulation, direct-response copy, and high-retention narrative hooks that trigger consumer action.",
                 "url": `${siteUrl}/#layanan`,
               },
             },
@@ -193,7 +209,7 @@ export default function RootLayout({
                 "@type": "Service",
                 "name": "Short-Form Video & Reels",
                 "description":
-                  "Motion graphics, 4K reel editing, and trend-jacking vertical video engineered for retention.",
+                  "Motion graphics, 4K vertical reel editing, and trend-jacking video engineered for retention and virality.",
                 "url": `${siteUrl}/#layanan`,
               },
             },
@@ -203,7 +219,7 @@ export default function RootLayout({
                 "@type": "Service",
                 "name": "Brand & Print Design",
                 "description":
-                  "OOH advertising, event collateral, physical media, and digital branding under one creative system.",
+                  "OOH advertising, event collateral, physical media, and unified digital branding under one cohesive design system.",
                 "url": `${siteUrl}/#layanan`,
               },
             },
@@ -228,7 +244,7 @@ export default function RootLayout({
         "@type": "ItemList",
         "@id": `${siteUrl}/#sitelinks`,
         "name": "Adsvar Primary Sitelinks",
-        "description": "Navigasi utama situs Adsvar Digital",
+        "description": "Navigasi utama struktur situs Adsvar Digital",
         "itemListElement": [
           {
             "@type": "SiteNavigationElement",
@@ -267,8 +283,86 @@ export default function RootLayout({
             "position": 5,
             "name": "Book A Consultation",
             "description":
-              "Jadwalkan konsultasi transformasi brand dan strategi akuisisi bersama tim konsultan Adsvar.",
+              "Jadwalkan sesi konsultasi strategi akuisisi audiens dan transformasi digital bersama konsultan Adsvar.",
             "url": `${siteUrl}/#layanan`,
+          },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${siteUrl}/#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Layanan",
+            "item": `${siteUrl}/#layanan`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Harga",
+            "item": `${siteUrl}/#harga`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Portofolio",
+            "item": `${siteUrl}/#portofolio`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Tentang",
+            "item": `${siteUrl}/#tentang`,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteUrl}/#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Apa saja layanan utama yang disediakan oleh Adsvar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Adsvar menyediakan solusi digital lengkap yang mencakup AI-Powered Content Creation, Strategic Direct-Response Copywriting, produksi Video Reels 4K berretensi tinggi, serta arsitektur brand dan print design terpadu.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "Bagaimana alur kerja sama dan produksi konten di Adsvar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Alur kerja sama diawali dengan sesi Brand Strategy Consultation, penyusunan Content Blueprint & AI Prompt Modeling, proses produksi video dan grafis oleh tim kreatif, quality control terukur, hingga pelaporan metrik performa berkala.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "Berapa lama estimasi pengerjaan proyek di Adsvar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Untuk paket retainer bulanan, batch konten pertama dikirim dalam 5–7 hari kerja setelah brief disetujui. Sedangkan proyek identitas brand atau produksi khusus biasanya memakan waktu 2–3 minggu.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "Bagaimana cara memulai konsultasi dengan tim Adsvar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text":
+                "Anda dapat mengklik tombol 'Book A Consultation' pada website, menghubungi WhatsApp resmi di +62 823-2230-8719, atau mengirimkan email ke corporate@adsvar.com.",
+            },
           },
         ],
       },
@@ -278,6 +372,13 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${funnelDisplay.variable} ${readexPro.variable} dark`}>
       <head>
+        {/* Explicit Favicon Tags for Googlebot-Image & Web Standards */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+
         {/* Schema.org Structured Data */}
         <script
           type="application/ld+json"

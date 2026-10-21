@@ -1,14 +1,34 @@
-<svg width="44" height="25" viewBox="0 0 44 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M27.5518 24.7139H20.9775L18.7949 7.94434H12.6777L6.57422 24.7139H0L6.74609 6.17969H13.3223L15.5703 0.00195312H24.3359L27.5518 24.7139Z" fill="url(#paint0_linear_94_1147)"/>
-<path d="M36.5525 18.5342H36.2898L36.2888 18.5369H29.6774L27.4299 24.7119H20.8557L23.1042 18.5342H23.1413L23.7829 16.7713H30.6199L36.7241 0H43.2983L36.5525 18.5342Z" fill="url(#paint1_linear_94_1147)"/>
-<defs>
-<linearGradient id="paint0_linear_94_1147" x1="13.7759" y1="0.00195312" x2="13.7759" y2="24.7139" gradientUnits="userSpaceOnUse">
-<stop offset="0.264423" stop-color="#FF994B"/>
-<stop offset="1" stop-opacity="0"/>
-</linearGradient>
-<linearGradient id="paint1_linear_94_1147" x1="36.5918" y1="0" x2="36.5918" y2="24.7151" gradientUnits="userSpaceOnUse">
-<stop stop-opacity="0"/>
-<stop offset="1" stop-color="#FF8F52"/>
-</linearGradient>
-</defs>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#FF5500" stop-opacity="0.32" />
+      <stop offset="65%" stop-color="#FF5500" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#08080C" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#151624" />
+      <stop offset="100%" stop-color="#090A10" />
+    </linearGradient>
+    <linearGradient id="paintLeft" x1="0" y1="0" x2="28" y2="25" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB370" />
+      <stop offset="100%" stop-color="#FF5500" />
+    </linearGradient>
+    <linearGradient id="paintRight" x1="20" y1="0" x2="44" y2="25" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5500" />
+      <stop offset="100%" stop-color="#FF9040" />
+    </linearGradient>
+    <filter id="shadowGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#FF5500" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Background Squircle (1:1 Ratio for Google & Apple) -->
+  <rect width="512" height="512" rx="116" fill="url(#cardGrad)" stroke="#27283C" stroke-width="6" />
+  <circle cx="256" cy="256" r="230" fill="url(#bgGlow)" />
+
+  <!-- Centered Adsvar Emblem Vector -->
+  <g transform="translate(91, 162) scale(7.62)" filter="url(#shadowGlow)">
+    <path d="M27.5518 24.7139H20.9775L18.7949 7.94434H12.6777L6.57422 24.7139H0L6.74609 6.17969H13.3223L15.5703 0.00195312H24.3359L27.5518 24.7139Z" fill="url(#paintLeft)"/>
+    <path d="M36.5525 18.5342H36.2898L36.2888 18.5369H29.6774L27.4299 24.7119H20.8557L23.1042 18.5342H23.1413L23.7829 16.7713H30.6199L36.7241 0H43.2983L36.5525 18.5342Z" fill="url(#paintRight)"/>
+  </g>
 </svg>
