@@ -13,11 +13,10 @@ interface ProjectDetailModalProps {
   onBookConsultation: (project: Project) => void;
 }
 
+import AdsvarEmblem from "@/components/AdsvarEmblem";
+
 function AdsvarLogoMark({ className = "h-2.5 w-auto" }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src="/Adsvar_icon.svg" alt="Adsvar Icon" className={`${className} object-contain shrink-0`} />
-  );
+  return <AdsvarEmblem className={className} />;
 }
 
 export default function ProjectDetailModal({

@@ -20,15 +20,10 @@ import {
 } from "lucide-react";
 import type { Inquiry } from "@/lib/types";
 
+import AdsvarEmblem from "@/components/AdsvarEmblem";
+
 function AdsvarLogoMark({ className = "h-4 w-auto" }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/Adsvar_icon.svg"
-      alt="Adsvar Icon"
-      className={`${className} object-contain shrink-0`}
-    />
-  );
+  return <AdsvarEmblem className={className} />;
 }
 
 export default function CrmDashboardPage() {

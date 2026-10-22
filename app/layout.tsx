@@ -157,7 +157,7 @@ export default function RootLayout({
         "logo": `${siteUrl}/icon-512x512.png`,
         "image": `${siteUrl}/og-image.png`,
         "telephone": "+6282322308719",
-        "email": "corporate@adsvar.com",
+        "email": "corporate@adsvar.id",
         "priceRange": "IDR 8.000.000 - IDR 22.000.000",
         "address": {
           "@type": "PostalAddress",
@@ -168,7 +168,7 @@ export default function RootLayout({
           "addressCountry": "ID",
         },
         "sameAs": [
-          "https://instagram.com/adsvar",
+          "https://instagram.com/adsvar.digital",
           "https://linkedin.com/company/adsvar",
           "https://youtube.com/@adsvar",
         ],
@@ -361,7 +361,7 @@ export default function RootLayout({
             "acceptedAnswer": {
               "@type": "Answer",
               "text":
-                "Anda dapat mengklik tombol 'Book A Consultation' pada website, menghubungi WhatsApp resmi di +62 823-2230-8719, atau mengirimkan email ke corporate@adsvar.com.",
+                "Anda dapat mengklik tombol 'Book A Consultation' pada website, menghubungi WhatsApp resmi di +62 823-2230-8719, atau mengirimkan email ke corporate@adsvar.id.",
             },
           },
         ],

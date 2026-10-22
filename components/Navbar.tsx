@@ -246,6 +246,7 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
                 className="py-2.5 text-white hover:text-[#FF5500] transition-colors flex items-center"
                 aria-label={item.label}
               >
+                <span className="sr-only">{item.label}</span>
                 <NavItemSvg
                   viewBox={item.viewBox}
                   d={item.d}
