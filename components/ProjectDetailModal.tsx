@@ -153,7 +153,7 @@ export default function ProjectDetailModal({
               onClick={() => onBookConsultation(project)}
               className="mt-6 sm:mt-8 w-full sm:w-auto px-6 py-2.5 sm:py-3 rounded-[10px] bg-[#FF5500] hover:bg-[#E04B00] text-white text-[13px] sm:text-[13.5px] font-medium shadow-[0_4px_16px_rgba(255,85,0,0.35)] transition-all cursor-pointer flex items-center justify-center gap-1.5"
             >
-              <span>Book A Consultation</span>
+              <span>Book a Free Consultation</span>
               <span>&rarr;</span>
             </button>
           </div>

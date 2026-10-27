@@ -16,10 +16,12 @@ export interface PortfolioSectionProps {
 }
 
 const CATEGORIES = [
-  "Semua",
-  "Video & Reels",
-  "Brand Identity",
-  "Sistem Web",
+  "All",
+  "Meta",
+  "Google",
+  "TikTok",
+  "Shopee",
+  "Content",
 ];
 
 import AdsvarEmblem from "@/components/AdsvarEmblem";
@@ -31,18 +33,26 @@ function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) 
 export default function PortfolioSection({
   initialProjects,
   onOpenContact,
-  eyebrow = "PORTOFOLIO KAMI",
-  headingWhite = "Work that moves culture ",
-  headingMuted = "and metrics.",
-  subheading = "Not content for content's sake. Every campaign is designed around a measurable commercial outcome.",
+  eyebrow = "OUR WORK",
+  headingWhite = "Numbers we're ",
+  headingMuted = "proud of.",
+  subheading = "Every campaign is judged by what it delivers: sales, leads, and the profit left over.",
 }: PortfolioSectionProps) {
-  const [activeTab, setActiveTab] = useState("Semua");
+  const [activeTab, setActiveTab] = useState("All");
   const [detailProject, setDetailProject] = useState<Project | null>(null);
 
   const filteredProjects =
-    activeTab === "Semua" || activeTab === "All work"
+    activeTab === "All" || activeTab === "Semua" || activeTab === "All work"
       ? initialProjects
-      : initialProjects.filter((p) => p.category === activeTab);
+      : initialProjects.filter((p) => {
+          if (p.category === activeTab) return true;
+          if (activeTab === "Content" && (p.category === "Video & Reels" || p.category === "Brand Identity" || p.category === "Content")) return true;
+          if (activeTab === "TikTok" && (p.category === "TikTok" || p.tags?.some((t) => t.toLowerCase().includes("tiktok")))) return true;
+          if (activeTab === "Shopee" && (p.category === "Shopee" || p.client?.toLowerCase().includes("shopee") || p.tags?.some((t) => t.toLowerCase().includes("shopee")))) return true;
+          if (activeTab === "Meta" && (p.category === "Meta" || p.client?.toLowerCase().includes("meta") || p.tags?.some((t) => t.toLowerCase().includes("meta") || t.toLowerCase().includes("instagram") || t.toLowerCase().includes("reels")))) return true;
+          if (activeTab === "Google" && (p.category === "Google" || p.tags?.some((t) => t.toLowerCase().includes("google")))) return true;
+          return p.tags?.some((t) => t.toLowerCase().includes(activeTab.toLowerCase()));
+        });
 
   return (
     <section

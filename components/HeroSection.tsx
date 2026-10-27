@@ -10,8 +10,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ stats = [], onOpenContact }: HeroSectionProps) {
-  const handleScrollToPortfolio = () => {
-    const el = document.getElementById("portofolio");
+  const handleScrollToPackages = () => {
+    const el = document.getElementById("harga");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -32,22 +32,27 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
 
       {/* Main Content Container */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-[5%] w-full max-w-[1920px]">
-        {/* Headline: Clean 2-line layout matching Image 2 perfectly */}
+        {/* Label Atas (Kecil) */}
+        <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.2em] text-[#FF5500] mb-3 select-none">
+          PERFORMANCE ADS AGENCY
+        </span>
+
+        {/* Headline: Clean 2-line layout */}
         <h1 className="text-[28px] sm:text-[38px] md:text-[46px] lg:text-[54px] xl:text-[58px] font-bold text-white tracking-[-0.025em] leading-[1.14] text-center w-full max-w-[1360px] mx-auto">
           <span className="inline sm:block">
-            Scale your brand with{" "}
+            Scale Your Brand with{" "}
             <span className="text-[#FF5500] whitespace-nowrap">AI Powered &amp;</span>
           </span>
           <span className="inline sm:block">
-            <span className="text-[#FF5500]">Human Crafted</span>{" "}
-            <span className="whitespace-nowrap">social media strategy</span>
+            <span className="text-[#FF5500]">Growth Performance</span>{" "}
+            <span className="whitespace-nowrap">Strategy</span>
           </span>
         </h1>
 
-        {/* Subtitle */}
+        {/* Subheadline */}
         <p className="mt-5 text-[13px] sm:text-[14.5px] md:text-[15.5px] text-[#A1A1AA] font-normal text-center leading-[1.65] max-w-[760px] mx-auto">
-          End-to-end execution across content planning, high-converting copywriting, AI
-          <br className="hidden md:block" /> creation, short-form reels, and custom graphic &amp; print design.
+          We run your Meta, Google, TikTok, GMV Max, and Shopee ads.
+          <br className="hidden md:block" /> Our team produces them, from script to ready-to-launch video.
         </p>
 
         {/* Action Buttons Group */}
@@ -57,15 +62,15 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
             onClick={onOpenContact}
             className="w-full sm:w-auto px-6 py-2.5 rounded-[8px] bg-[#FF5500] hover:bg-[#E04B00] text-white font-medium text-[13.5px] transition-all shadow-[0_4px_16px_rgba(255,85,0,0.35)] cursor-pointer"
           >
-            Book A Consultation &rarr;
+            Book a Free Consultation &rarr;
           </button>
 
           <button
             type="button"
-            onClick={handleScrollToPortfolio}
+            onClick={handleScrollToPackages}
             className="w-full sm:w-auto px-6 py-2.5 rounded-[8px] bg-transparent border border-[#444] hover:border-zinc-400 hover:bg-white/5 text-white font-medium text-[13.5px] transition-all cursor-pointer"
           >
-            View Works
+            See Packages
           </button>
         </div>
 
@@ -105,10 +110,10 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
           {/* Proof Texts */}
           <div className="flex flex-col text-left justify-center gap-[2px]">
             <span className="text-[12.5px] font-semibold text-white tracking-wide">
-              Trusted by 20+ growth teams
+              Trusted by 20+ growth teams, One Marketing Solution Partner
             </span>
             <span className="text-[9.5px] text-zinc-500 font-bold uppercase tracking-[0.16em]">
-              STRATEGY, CONTENT, DISTRIBUTION, ONE PARTNER.
+              Meta · Google · TikTok · TikTok Shop · Shopee
             </span>
           </div>
         </div>

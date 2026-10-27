@@ -14,15 +14,19 @@ interface ContactModalProps {
 }
 
 const DEFAULT_PACKAGES = [
-  "01 Starter Landing Page",
-  "02 Social Media & Reels Scale",
-  "03 High-Impact Visuals & Brand",
-  "04 Paid Acquisition & Growth",
-  "05 Enterprise Custom System",
-  "AI-Powered Content Creation",
-  "Short-Form Video & Reels",
-  "Paid Acquisition & Performance Ads",
-  "Konsultasi Brand & Strategy",
+  "Ads Only · Starter",
+  "Ads Only · Growth",
+  "Ads Only · Scale",
+  "Ads + Content · Growth",
+  "Ads + Content · Pro",
+  "Bespoke Custom Scope",
+  "Meta Ads (Facebook & Instagram)",
+  "Google Ads",
+  "TikTok Ads",
+  "TikTok Shop GMV Max",
+  "Shopee Ads",
+  "Setup & Tracking Audit",
+  "Free Ads Audit & Consultation",
 ];
 
 export default function ContactModal({
@@ -126,10 +130,10 @@ export default function ContactModal({
 
   const waText = encodeURIComponent(
     `Halo Adsvar Digital, saya ${name || "Klien"}.\n` +
-    `Saya telah mengisi formulir Book A Consultation:\n` +
+    `Saya telah mengisi formulir Book a Free Consultation:\n` +
     `• Telepon: ${phone || "-"}\n` +
     `• Email: ${email || "-"}\n` +
-    `• Pilihan Paket: ${packageChoice || "Konsultasi Umum"}\n` +
+    `• Pilihan Paket: ${packageChoice || "Free Ads Audit & Consultation"}\n` +
     `• Catatan Brand: ${brandDescription || "-"}\n\n` +
     `Mohon info jadwal konsultasi lebih lanjut. Terima kasih!`
   );

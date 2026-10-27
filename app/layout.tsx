@@ -30,23 +30,21 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Adsvar | Creative Digital Agency & AI Production Studio",
+    default: "Adsvar | Meta, Google, TikTok Shop & Shopee Ads Agency",
     template: "%s | Adsvar",
   },
   description:
-    "Scale brand Anda bersama Adsvar. Agensi kreatif dan studio produksi digital spesialis strategi konten AI, video reels berkinerja tinggi, arsitektur brand premium, dan akuisisi audiens terukur.",
+    "Adsvar runs your Meta, Google, TikTok, GMV Max, and Shopee ads, and can make the creatives too. Choose Ads Only or Ads + Content, with transparent pricing from IDR 4.9M a month.",
   keywords: [
+    "Meta ads agency Indonesia",
+    "Google Ads agency Indonesia",
+    "TikTok Shop GMV Max agency",
+    "Shopee ads agency",
+    "jasa iklan Meta Ads",
+    "jasa GMV Max TikTok Shop",
+    "jasa Shopee Ads",
     "Adsvar",
-    "Adsvar Digital",
-    "Digital Agency Jakarta",
-    "Creative Studio Semarang",
-    "Video Production Agency",
-    "Short-Form Video Reels",
-    "AI Content Workflows",
-    "Brand Architecture",
-    "Performance Marketing",
-    "Social Media Strategy",
-    "Next.js Web Development",
+    "Performance Marketing Indonesia",
   ],
   authors: [{ name: "Adsvar Digital Agency", url: siteUrl }],
   creator: "Adsvar Digital Agency",
@@ -61,9 +59,9 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Adsvar | Creative Digital Agency & AI Production Studio",
+    title: "Adsvar | Performance Ads Agency + Creative Engine",
     description:
-      "Scale your brand with AI-powered social media strategy, viral short-form video reels, brand architecture, and scalable digital acquisition.",
+      "Ads that run. Content that sells. Meta, Google, TikTok Shop GMV Max, and Shopee Ads, handled by one team.",
     type: "website",
     locale: "id_ID",
     url: siteUrl,
@@ -74,15 +72,15 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "Adsvar - Creative Digital Agency & AI Production Studio",
+        alt: "Adsvar | Performance Ads Agency + Creative Engine",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adsvar | Creative Digital Agency & AI Production Studio",
+    title: "Adsvar | Performance Ads Agency + Creative Engine",
     description:
-      "Transforming ideas into high-performance digital experiences, AI-driven content, viral short-form reels, and scalable brand growth.",
+      "Ads that run. Content that sells. Meta, Google, TikTok Shop GMV Max, and Shopee Ads, handled by one team.",
     images: [`${siteUrl}/og-image.png`],
     creator: "@adsvar",
   },
@@ -135,7 +133,7 @@ export default function RootLayout({
           "PT Sinergi Muda Arsa",
         ],
         "description":
-          "Transform your brand with AI-powered social media strategy, viral video reels, and performance brand architecture.",
+          "Adsvar runs your Meta, Google, TikTok, GMV Max, and Shopee ads, and can make the creatives too. Choose Ads Only or Ads + Content, with transparent pricing from IDR 4.9M a month.",
         "publisher": {
           "@id": `${siteUrl}/#organization`,
         },
@@ -158,7 +156,7 @@ export default function RootLayout({
         "image": `${siteUrl}/og-image.png`,
         "telephone": "+6282322308719",
         "email": "corporate@adsvar.id",
-        "priceRange": "IDR 8.000.000 - IDR 22.000.000",
+        "priceRange": "IDR 4.900.000 - IDR 14.900.000",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Menara Rajawali 26th Floor, Mega Kuningan",
@@ -181,61 +179,57 @@ export default function RootLayout({
         },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          "name": "Adsvar Capabilities & Scaling Tiers",
+          "name": "Adsvar Performance Ads & Content Capabilities",
           "itemListElement": [
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "AI-Powered Content Creation",
+                "name": "Meta Ads (Facebook & Instagram)",
                 "description":
-                  "Synthetic media generation, automated workflow pipelines, and custom prompt models tailored for your brand.",
-                "url": `${siteUrl}/#layanan`,
+                  "Facebook and Instagram ads that find new buyers, bring back past visitors, and drive conversions.",
+                "url": `${siteUrl}/#harga`,
               },
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Strategic Copywriting",
+                "name": "Google Ads",
                 "description":
-                  "Brand voice formulation, direct-response copy, and high-retention narrative hooks that trigger consumer action.",
-                "url": `${siteUrl}/#layanan`,
+                  "Show up on Google the moment people search for what you offer, with full conversion tracking.",
+                "url": `${siteUrl}/#harga`,
               },
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Short-Form Video & Reels",
+                "name": "TikTok Ads",
                 "description":
-                  "Motion graphics, 4K vertical reel editing, and trend-jacking video engineered for retention and virality.",
-                "url": `${siteUrl}/#layanan`,
+                  "Short-form video ads driving traffic to website or leads, with creatives refreshed regularly.",
+                "url": `${siteUrl}/#harga`,
               },
             },
             {
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Brand & Print Design",
+                "name": "TikTok Shop GMV Max",
                 "description":
-                  "OOH advertising, event collateral, physical media, and unified digital branding under one cohesive design system.",
-                "url": `${siteUrl}/#layanan`,
+                  "Automated TikTok Shop ads with targets built on margin and affiliate curation.",
+                "url": `${siteUrl}/#harga`,
               },
             },
             {
               "@type": "Offer",
-              "name": "Growth Scale Retainer",
-              "price": "18000000",
-              "priceCurrency": "IDR",
-              "url": `${siteUrl}/#harga`,
-            },
-            {
-              "@type": "Offer",
-              "name": "Enterprise All-Rounder",
-              "price": "22000000",
-              "priceCurrency": "IDR",
-              "url": `${siteUrl}/#harga`,
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Shopee Ads",
+                "description":
+                  "Push products up Shopee search with adjusted bids and profitable ad spend.",
+                "url": `${siteUrl}/#harga`,
+              },
             },
           ],
         },
@@ -249,42 +243,37 @@ export default function RootLayout({
           {
             "@type": "SiteNavigationElement",
             "position": 1,
-            "name": "Layanan Digital & AI Content",
-            "description":
-              "Layanan pembuatan konten AI, video reels berkinerja tinggi, copywriting strategis, dan arsitektur brand.",
+            "name": "Services",
+            "description": "One Ads and Content Solution.",
             "url": `${siteUrl}/#layanan`,
           },
           {
             "@type": "SiteNavigationElement",
             "position": 2,
-            "name": "Paket Harga & Scaling Tiers",
-            "description":
-              "Pilihan tier scaling bulanan dan tahunan mulai dari Personal Branding hingga Enterprise Custom System.",
+            "name": "Packages",
+            "description": "Pick your track. Scale at your pace.",
             "url": `${siteUrl}/#harga`,
           },
           {
             "@type": "SiteNavigationElement",
             "position": 3,
-            "name": "Portofolio Proyek & Studi Kasus",
-            "description":
-              "Koleksi hasil karya nyata, kampanye viral, video reels, dan transformasi brand klien Adsvar.",
+            "name": "Work",
+            "description": "Every campaign is judged by what it delivers.",
             "url": `${siteUrl}/#portofolio`,
           },
           {
             "@type": "SiteNavigationElement",
             "position": 4,
-            "name": "Tentang Kami & Kantor",
-            "description":
-              "Informasi kontak kantor Jakarta Menara Rajawali, nomor WhatsApp, email bisnis, dan profil tim Adsvar.",
+            "name": "About",
+            "description": "Menara Rajawali 26th Floor, Mega Kuningan, Jakarta.",
             "url": `${siteUrl}/#tentang`,
           },
           {
             "@type": "SiteNavigationElement",
             "position": 5,
-            "name": "Book A Consultation",
-            "description":
-              "Jadwalkan sesi konsultasi strategi akuisisi audiens dan transformasi digital bersama konsultan Adsvar.",
-            "url": `${siteUrl}/#layanan`,
+            "name": "Book a Free Consultation",
+            "description": "Get a free ads audit and strategy consultation.",
+            "url": `${siteUrl}/#tentang`,
           },
         ],
       },
@@ -301,68 +290,26 @@ export default function RootLayout({
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Layanan",
+            "name": "Services",
             "item": `${siteUrl}/#layanan`,
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "Harga",
+            "name": "Packages",
             "item": `${siteUrl}/#harga`,
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Portofolio",
+            "name": "Work",
             "item": `${siteUrl}/#portofolio`,
           },
           {
             "@type": "ListItem",
             "position": 5,
-            "name": "Tentang",
+            "name": "About",
             "item": `${siteUrl}/#tentang`,
-          },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${siteUrl}/#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Apa saja layanan utama yang disediakan oleh Adsvar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text":
-                "Adsvar menyediakan solusi digital lengkap yang mencakup AI-Powered Content Creation, Strategic Direct-Response Copywriting, produksi Video Reels 4K berretensi tinggi, serta arsitektur brand dan print design terpadu.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "Bagaimana alur kerja sama dan produksi konten di Adsvar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text":
-                "Alur kerja sama diawali dengan sesi Brand Strategy Consultation, penyusunan Content Blueprint & AI Prompt Modeling, proses produksi video dan grafis oleh tim kreatif, quality control terukur, hingga pelaporan metrik performa berkala.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "Berapa lama estimasi pengerjaan proyek di Adsvar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text":
-                "Untuk paket retainer bulanan, batch konten pertama dikirim dalam 5–7 hari kerja setelah brief disetujui. Sedangkan proyek identitas brand atau produksi khusus biasanya memakan waktu 2–3 minggu.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "Bagaimana cara memulai konsultasi dengan tim Adsvar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text":
-                "Anda dapat mengklik tombol 'Book A Consultation' pada website, menghubungi WhatsApp resmi di +62 823-2230-8719, atau mengirimkan email ke corporate@adsvar.id.",
-            },
           },
         ],
       },

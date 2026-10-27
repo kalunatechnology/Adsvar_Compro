@@ -105,26 +105,15 @@ function NavItemSvg({
   );
 }
 
-function CtaButtonSvg({ className = "h-[52px] lg:h-[60px] w-auto block" }: { className?: string }) {
+function CtaButtonSvg({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="1600 32 260 60"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="Book A Consultation"
+    <div
+      className={`h-[40px] lg:h-[46px] px-5 sm:px-6 rounded-[12px] bg-[#FF5500] group-hover:bg-[#FF661A] text-white font-semibold text-[13px] lg:text-[14px] flex items-center justify-center gap-1.5 transition-colors whitespace-nowrap shadow-md shadow-[#FF5500]/25 select-none ${className}`}
+      aria-label="Book a Free Consultation"
     >
-      <rect
-        x="1600"
-        y="32"
-        width="260"
-        height="60"
-        rx="12"
-        fill="#FF5500"
-        className="group-hover:fill-[#FF661A] transition-colors duration-200"
-      />
-      <path d={CTA_TEXT_PATH} fill="white" />
-    </svg>
+      <span>Book a Free Consultation</span>
+      <span className="text-base font-bold transition-transform group-hover:translate-x-0.5">→</span>
+    </div>
   );
 }
 
@@ -218,7 +207,7 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
               type="button"
               onClick={onOpenContact}
               className="relative group overflow-hidden rounded-lg shadow-lg shadow-[#FF5500]/30 hover:shadow-[#FF5500]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
-              aria-label="Book A Consultation"
+              aria-label="Book a Free Consultation"
             >
               <CtaButtonSvg className="h-[40px] lg:h-[46px] w-auto block" />
             </button>
@@ -263,7 +252,7 @@ export default function Navbar({ onOpenContact = () => {} }: NavbarProps) {
                 onOpenContact();
               }}
               className="w-full mt-2 group rounded-xl bg-[#FF5500] hover:bg-[#FF661A] flex justify-center items-center shadow-md shadow-[#FF5500]/30 overflow-hidden transition-colors"
-              aria-label="Book A Consultation"
+              aria-label="Book a Free Consultation"
             >
               <CtaButtonSvg className="h-[52px] w-auto block" />
             </button>

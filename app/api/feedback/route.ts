@@ -1,0 +1,56 @@
+import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "node:crypto";
+import { sendMarkaEvent } from "@/lib/marka-crm";
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json().catch(() => ({}));
+    const customerCode =
+      body.customerCode ||
+      body.customer_code ||
+      body.party_code ||
+      body.customerPartyId ||
+      body.customer_party_id;
+    const { rating, feedbackText, salesOrderId } = body;
+
+    if (!customerCode || rating === undefined || rating === null) {
+      return NextResponse.json(
+        { error: "Kode Customer (customer_code) dan rating (1-5) wajib diisi" },
+        { status: 400 }
+      );
+    }
+
+    const numRating = Number(rating);
+    if (isNaN(numRating) || numRating < 1 || numRating > 5) {
+      return NextResponse.json(
+        { error: "Rating harus berupa angka antara 1 sampai 5" },
+        { status: 400 }
+      );
+    }
+
+    const eventId = `fb-${Date.now()}-${randomUUID().slice(0, 8)}`;
+
+    const result = await sendMarkaEvent(eventId, "feedback.submitted", {
+      customer_code: String(customerCode).trim(),
+      rating: numRating,
+      feedback_text: feedbackText ? String(feedbackText).trim() : "",
+      feedback_type: "CUSTOMER_REVIEW",
+      ...(salesOrderId && String(salesOrderId).trim()
+        ? { sales_order_id: String(salesOrderId).trim() }
+        : {}),
+    });
+
+    return NextResponse.json(
+      {
+        success: result.success,
+        eventId,
+        status: result.status,
+        markaResponse: result.data || result.error,
+      },
+      { status: result.success ? 202 : result.status || 500 }
+    );
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : "Gagal mengirim feedback";
+    return NextResponse.json({ error: msg }, { status: 500 });
+  }
+}

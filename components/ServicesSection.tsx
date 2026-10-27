@@ -23,8 +23,8 @@ export default function ServicesSection({
   services,
   onOpenContact,
   eyebrow = "ADSVAR ADVANTAGE",
-  heading = "One team. Every Capability",
-  subheading = "We combine creative instinct with intelligent systems to make brands impossible to ignore.",
+  heading = "One Ads and Content Solution.",
+  subheading = "Most agencies only run the ads and leave the content to you. At Adsvar, both live under one roof.",
 }: ServicesSectionProps) {
   return (
     <section
@@ -45,7 +45,7 @@ export default function ServicesSection({
           <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-semibold text-white tracking-[-0.025em] leading-[1.12]">
             {heading}
           </h2>
-          <p className="text-[12px] sm:text-[13px] text-[#8B8B97] leading-[1.6] lg:max-w-[300px] font-normal">
+          <p className="text-[12px] sm:text-[13px] text-[#8B8B97] leading-[1.6] lg:max-w-[340px] font-normal">
             {subheading}
           </p>
         </div>
@@ -100,6 +100,13 @@ export default function ServicesSection({
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Baris Tambahan di Bawah Kartu */}
+        <div className="mt-8 pt-6 border-t border-white/[0.06] text-center sm:text-left">
+          <p className="text-[12.5px] sm:text-[13px] text-[#A1A1AA] leading-relaxed">
+            <span className="text-white font-semibold">Your account, your data.</span> Ad accounts, pixels, and all your data stay under your business name, even if we stop working together.
+          </p>
         </div>
       </div>
     </section>

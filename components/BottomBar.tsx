@@ -6,16 +6,9 @@ export default function BottomBar() {
   return (
     <div className="w-full bg-transparent border-t border-white/[0.08] py-4 px-4 sm:px-6 lg:px-[5%] z-20 relative">
       <div className="w-full max-w-[1520px] mx-auto flex flex-col sm:flex-row items-center justify-between">
-        {/* Kiri: Copyright Text & CRM Portal */}
-        <div className="flex items-center gap-3 text-[#A1A1AA] text-[12px] font-medium tracking-wide mb-3 sm:mb-0">
+        {/* Kiri: Copyright Text */}
+        <div className="flex items-center text-[#A1A1AA] text-[12px] font-medium tracking-wide mb-3 sm:mb-0">
           <span>© 2026 AdsVar Digital</span>
-          <span className="text-zinc-700">•</span>
-          <a
-            href="/crm"
-            className="text-zinc-500 hover:text-[#FF5500] transition-colors flex items-center gap-1"
-          >
-            <span>CRM Leads</span>
-          </a>
         </div>
 
       {/* Kanan: Social & Contact Icons */}

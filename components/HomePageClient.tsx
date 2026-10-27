@@ -56,13 +56,13 @@ export default function HomePageClient({
   return (
     <div className="relative min-h-screen bg-black text-[#F3F4F6] selection:bg-[#FF5500] selection:text-white">
       {/* 1. Header / Navbar */}
-      <Navbar onOpenContact={() => handleOpenConsultation(null, "Konsultasi Umum")} />
+      <Navbar onOpenContact={() => handleOpenConsultation(null, "Book a Free Consultation")} />
 
       <main>
         {/* 2. Hero Section with dynamic SQLite stats */}
         <HeroSection
           stats={initialStats}
-          onOpenContact={() => handleOpenConsultation(null, "Konsultasi Strategi")}
+          onOpenContact={() => handleOpenConsultation(null, "Free Strategy Consultation")}
         />
 
         {/* 3. Core Services Section with dynamic SQLite services */}
@@ -85,7 +85,7 @@ export default function HomePageClient({
       </main>
 
       {/* 6. Footer & Pre-Footer Call to Action */}
-      <Footer onOpenContact={() => handleOpenConsultation(null, "Konsultasi Brand")} />
+      <Footer onOpenContact={() => handleOpenConsultation(null, "Free Ads Audit")} />
 
       {/* 7. Bottom Copyright & Social Media Bar */}
       <BottomBar />
