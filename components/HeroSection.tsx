@@ -41,18 +41,18 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
         <h1 className="text-[28px] sm:text-[38px] md:text-[46px] lg:text-[54px] xl:text-[58px] font-bold text-white tracking-[-0.025em] leading-[1.14] text-center w-full max-w-[1360px] mx-auto">
           <span className="inline sm:block">
             Scale Your Brand with{" "}
-            <span className="text-[#FF5500] whitespace-nowrap">AI Powered &amp;</span>
-          </span>
+            <span className="text-[#FF5500]">AI Powered &amp;</span>
+          </span>{" "}
           <span className="inline sm:block">
             <span className="text-[#FF5500]">Growth Performance</span>{" "}
-            <span className="whitespace-nowrap">Strategy</span>
+            <span>Strategy</span>
           </span>
         </h1>
 
         {/* Subheadline */}
         <p className="mt-5 text-[13px] sm:text-[14.5px] md:text-[15.5px] text-[#A1A1AA] font-normal text-center leading-[1.65] max-w-[760px] mx-auto">
-          We run your Meta, Google, TikTok, GMV Max, and Shopee ads.
-          <br className="hidden md:block" /> Our team produces them, from script to ready-to-launch video.
+          We run your performance marketing, and produces them,
+          <br className="hidden md:block" /> from script to ready-to-launch video.
         </p>
 
         {/* Action Buttons Group */}
