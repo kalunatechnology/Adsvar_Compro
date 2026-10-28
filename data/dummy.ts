@@ -8,11 +8,11 @@ import type {
 export const dummyServices: ServiceInput[] = [
   {
     slug: "meta-ads",
-    name: "From chat to\ncheckout.",
+    name: "Meta Ads",
     tag: "META ADS",
     description:
       "Facebook and Instagram ads to find new customers, retarget previous visitors, and direct shoppers straight to WhatsApp or your online storefront.",
-    image: "/services/meta_ads.jpg",
+    image: "/services/meta_ads_ticket.jpg",
     href: "#layanan",
     points: [
       "Service businesses, F&B, online brands",
@@ -24,11 +24,11 @@ export const dummyServices: ServiceInput[] = [
   },
   {
     slug: "google-ads",
-    name: "Be there when\nthey search.",
+    name: "Google Ads",
     tag: "GOOGLE ADS",
     description:
       "Search, Performance Max, and YouTube ads for a single website, complete with conversion tracking for lead forms, phone calls, and WhatsApp.",
-    image: "/services/google_ads.jpg",
+    image: "/services/google_ads_ticket.jpg",
     href: "#layanan",
     points: [
       "Clinics, real estate, schools, B2B",
@@ -40,11 +40,11 @@ export const dummyServices: ServiceInput[] = [
   },
   {
     slug: "tiktok-ads",
-    name: "Short videos.\nReal leads.",
+    name: "TikTok Ads",
     tag: "TIKTOK ADS",
     description:
       "Short-form video ads driving qualified traffic to your website or lead form, featuring Spark Ads to amplify top-performing organic videos on your handle.",
-    image: "/services/tiktok_ads.jpg",
+    image: "/services/tiktok_ads_ticket.jpg",
     href: "#layanan",
     points: [
       "Brands selling via website or capturing leads",
@@ -56,11 +56,11 @@ export const dummyServices: ServiceInput[] = [
   },
   {
     slug: "tiktok-shop-gmv-max",
-    name: "More videos.\nMore GMV.",
+    name: "TikTok Shop GMV Max",
     tag: "TIKTOK SHOP GMV MAX",
     description:
       "Automated TikTok Shop ads calibrated to your target profit margins, affiliate creator video curation, and LIVE GMV Max scaling.",
-    image: "/services/tiktok_shop.jpg",
+    image: "/services/tiktok_shop_ticket.jpg",
     href: "#layanan",
     points: [
       "TikTok Shop & Tokopedia merchants",
@@ -72,11 +72,11 @@ export const dummyServices: ServiceInput[] = [
   },
   {
     slug: "shopee-ads",
-    name: "Rank higher.\nStay profitable.",
+    name: "Shopee Ads",
     tag: "SHOPEE ADS",
     description:
       "Search, discovery, and shop ads with scheduled bid optimizations and strategic voucher planning for twin-date promotional campaigns.",
-    image: "/services/shopee_ads.jpg",
+    image: "/services/shopee_ads_ticket.jpg",
     href: "#layanan",
     points: [
       "Shopee marketplace sellers",

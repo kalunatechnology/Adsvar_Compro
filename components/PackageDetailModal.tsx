@@ -152,11 +152,10 @@ export default function PackageDetailModal({
                     key={p}
                     type="button"
                     onClick={() => setActivePlatform(p)}
-                    className={`px-3 py-1.5 rounded-[7px] text-[12px] font-medium transition-all whitespace-nowrap cursor-pointer ${
-                      isSelected
+                    className={`px-3 py-1.5 rounded-[7px] text-[12px] font-medium transition-all whitespace-nowrap cursor-pointer ${isSelected
                         ? "bg-[#E35F21] text-white font-semibold shadow-sm"
                         : "bg-white/[0.04] text-[#8B8B97] hover:text-white hover:bg-white/[0.08]"
-                    }`}
+                      }`}
                   >
                     {p}
                   </button>
@@ -169,11 +168,10 @@ export default function PackageDetailModal({
               <button
                 type="button"
                 onClick={() => setViewMode("detail")}
-                className={`px-3 py-1 rounded-[6px] text-[11.5px] font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
-                  viewMode === "detail"
+                className={`px-3 py-1 rounded-[6px] text-[11.5px] font-medium transition-all flex items-center gap-1.5 cursor-pointer ${viewMode === "detail"
                     ? "bg-[#E35F21] text-white font-semibold shadow-sm"
                     : "text-[#8B8B97] hover:text-white"
-                }`}
+                  }`}
               >
                 <SlidersHorizontal className="w-3.5 h-3.5" />
                 <span>Tier Details</span>
@@ -181,11 +179,10 @@ export default function PackageDetailModal({
               <button
                 type="button"
                 onClick={() => setViewMode("table")}
-                className={`px-3 py-1 rounded-[6px] text-[11.5px] font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
-                  viewMode === "table"
+                className={`px-3 py-1 rounded-[6px] text-[11.5px] font-medium transition-all flex items-center gap-1.5 cursor-pointer ${viewMode === "table"
                     ? "bg-[#E35F21] text-white font-semibold shadow-sm"
                     : "text-[#8B8B97] hover:text-white"
-                }`}
+                  }`}
               >
                 <TableIcon className="w-3.5 h-3.5" />
                 <span>Comparison Table</span>
@@ -207,11 +204,10 @@ export default function PackageDetailModal({
                       key={tier.id}
                       type="button"
                       onClick={() => setSelectedTierId(tier.id)}
-                      className={`px-3.5 py-2 rounded-[10px] text-left transition-all border shrink-0 cursor-pointer ${
-                        isCur
+                      className={`px-3.5 py-2 rounded-[10px] text-left transition-all border shrink-0 cursor-pointer ${isCur
                           ? "bg-[#E35F21]/15 border-[#E35F21] text-white shadow-sm"
                           : "bg-[#14151D] border-white/[0.08] text-[#8B8B97] hover:text-white hover:border-white/[0.18]"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-2 mb-0.5">
                         <span className="text-[10px] font-mono opacity-60">
@@ -479,11 +475,10 @@ export default function PackageDetailModal({
                       {currentPlatformData.tiers.map((tier) => (
                         <th
                           key={tier.id}
-                          className={`p-3.5 font-semibold text-center w-[180px] ${
-                            tier.id === selectedTierId
+                          className={`p-3.5 font-semibold text-center w-[180px] ${tier.id === selectedTierId
                               ? "bg-[#E35F21]/15 text-white border-x border-[#E35F21]/40"
                               : "text-white"
-                          }`}
+                            }`}
                         >
                           <div className="text-[10px] font-mono opacity-60">
                             {tier.number}

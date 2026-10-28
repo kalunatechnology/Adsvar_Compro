@@ -643,11 +643,10 @@ export default function PricingSection({
                 key={platform}
                 type="button"
                 onClick={() => setActivePlatform(platform)}
-                className={`px-4 py-2 rounded-[8px] text-[12.5px] font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                  isActive
+                className={`px-4 py-2 rounded-[8px] text-[12.5px] font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${isActive
                     ? "bg-[#E35F21] text-white shadow-sm font-semibold"
                     : "bg-[#121216] text-[#8B8B97] hover:text-white hover:bg-[#181820] border border-white/[0.06]"
-                }`}
+                  }`}
               >
                 {platform}
               </button>
@@ -686,33 +685,30 @@ export default function PricingSection({
               <button
                 type="button"
                 onClick={() => setActiveTrack("all")}
-                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                  activeTrack === "all"
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${activeTrack === "all"
                     ? "bg-[#E35F21] text-white font-semibold"
                     : "text-[#8B8B97] hover:text-white"
-                }`}
+                  }`}
               >
                 All
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTrack("ads-only")}
-                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                  activeTrack === "ads-only"
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${activeTrack === "ads-only"
                     ? "bg-[#E35F21] text-white font-semibold"
                     : "text-[#8B8B97] hover:text-white"
-                }`}
+                  }`}
               >
                 Ads Only
               </button>
               <button
                 type="button"
                 onClick={() => setActiveTrack("ads-content")}
-                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                  activeTrack === "ads-content"
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${activeTrack === "ads-content"
                     ? "bg-[#E35F21] text-white font-semibold"
                     : "text-[#8B8B97] hover:text-white"
-                }`}
+                  }`}
               >
                 Ads + Content
               </button>
@@ -750,11 +746,10 @@ export default function PricingSection({
                     onOpenContact(fakePlan, "monthly");
                   }
                 }}
-                className={`group relative rounded-[16px] bg-[#121216] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none ${
-                  tier.isPopular
+                className={`group relative rounded-[16px] bg-[#121216] p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 cursor-pointer text-left focus:outline-none ${tier.isPopular
                     ? "border-2 border-[#E35F21] shadow-[0_0_24px_rgba(227,95,33,0.18)]"
                     : "border border-white/[0.08] hover:border-white/[0.22]"
-                }`}
+                  }`}
               >
                 <div>
                   {/* Top: Tier index & optional badge */}
@@ -814,11 +809,10 @@ export default function PricingSection({
                       e.stopPropagation();
                       onOpenContact(fakePlan, "monthly");
                     }}
-                    className={`w-full py-2.5 px-4 rounded-[8px] text-[12.5px] font-medium transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
-                      tier.isPopular
+                    className={`w-full py-2.5 px-4 rounded-[8px] text-[12.5px] font-medium transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${tier.isPopular
                         ? "bg-[#E35F21] hover:bg-[#D05318] text-white font-semibold shadow-sm"
                         : "bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white"
-                    }`}
+                      }`}
                   >
                     <span>Choose this package</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1035,22 +1029,20 @@ export default function PricingSection({
                   <button
                     type="button"
                     onClick={() => setTermsLanguage("en")}
-                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${
-                      termsLanguage === "en"
+                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${termsLanguage === "en"
                         ? "bg-[#E35F21] text-white font-bold"
                         : "text-[#8B8B97] hover:text-white"
-                    }`}
+                      }`}
                   >
                     🇬🇧 EN
                   </button>
                   <button
                     type="button"
                     onClick={() => setTermsLanguage("id")}
-                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${
-                      termsLanguage === "id"
+                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${termsLanguage === "id"
                         ? "bg-[#E35F21] text-white font-bold"
                         : "text-[#8B8B97] hover:text-white"
-                    }`}
+                      }`}
                   >
                     🇮🇩 ID
                   </button>

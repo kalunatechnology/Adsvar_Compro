@@ -300,22 +300,20 @@ export default function PackageModal({
                         <button
                           type="button"
                           onClick={() => setBillingCycle("monthly")}
-                          className={`px-2 py-0.5 rounded-[5px] font-medium transition-all cursor-pointer ${
-                            billingCycle === "monthly"
+                          className={`px-2 py-0.5 rounded-[5px] font-medium transition-all cursor-pointer ${billingCycle === "monthly"
                               ? "bg-[#252638] text-white font-semibold"
                               : "text-[#7A7A8E] hover:text-white"
-                          }`}
+                            }`}
                         >
                           Monthly
                         </button>
                         <button
                           type="button"
                           onClick={() => setBillingCycle("project")}
-                          className={`px-2 py-0.5 rounded-[5px] font-medium transition-all cursor-pointer ${
-                            billingCycle === "project"
+                          className={`px-2 py-0.5 rounded-[5px] font-medium transition-all cursor-pointer ${billingCycle === "project"
                               ? "bg-[#252638] text-white font-semibold"
                               : "text-[#7A7A8E] hover:text-white"
-                          }`}
+                            }`}
                         >
                           Annual -20%
                         </button>
