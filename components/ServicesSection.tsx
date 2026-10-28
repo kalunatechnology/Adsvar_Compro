@@ -2,17 +2,26 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowDownRight, ArrowRight } from "lucide-react";
 import type { Service } from "@/lib/types";
 import AdsvarEmblem from "@/components/AdsvarEmblem";
 
 export interface ServicesSectionProps {
   services?: Service[];
   onOpenContact: (service?: Service) => void;
+  onSelectPlatform?: (platform: "Meta" | "Google" | "TikTok" | "GMV Max" | "Shopee") => void;
   eyebrow?: string;
   heading?: string;
   subheading?: string;
 }
+
+const PLATFORM_SLUG_MAP: Record<string, "Meta" | "Google" | "TikTok" | "GMV Max" | "Shopee"> = {
+  "meta-ads": "Meta",
+  "google-ads": "Google",
+  "tiktok-ads": "TikTok",
+  "tiktok-shop-gmv-max": "GMV Max",
+  "shopee-ads": "Shopee",
+};
 
 function AdsvarLogoMark({ className = "h-3.5 w-auto" }: { className?: string }) {
   return <AdsvarEmblem className={className} />;
@@ -90,6 +99,7 @@ export const DEFAULT_SERVICES: Service[] = [
 export default function ServicesSection({
   services,
   onOpenContact,
+  onSelectPlatform,
   eyebrow = "ADSVAR ADVANTAGE",
   heading = "One Creative Engine Solution.",
   subheading = "Most agencies only run the ads and leave the creative to you. At Adsvar, both live under one roof.",
@@ -97,6 +107,19 @@ export default function ServicesSection({
   // Use provided services if available and matches the 5 platforms, otherwise use DEFAULT_SERVICES
   const displayServices =
     services && services.length === 5 ? services : DEFAULT_SERVICES;
+
+  const handleCardClick = (item: Service) => {
+    const targetPlatform = PLATFORM_SLUG_MAP[item.slug];
+    if (targetPlatform && onSelectPlatform) {
+      onSelectPlatform(targetPlatform);
+      const targetElement = document.getElementById("paket");
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+    onOpenContact(item);
+  };
 
   return (
     <section
@@ -127,13 +150,13 @@ export default function ServicesSection({
           {displayServices.map((item) => (
             <div
               key={item.id}
-              onClick={() => onOpenContact(item)}
+              onClick={() => handleCardClick(item)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  onOpenContact(item);
+                  handleCardClick(item);
                 }
               }}
               className="adsvar-card group relative flex flex-col justify-between w-full min-h-[360px] sm:min-h-[380px] p-[18px] sm:p-[20px] rounded-[16px] bg-[#121216] border border-white/[0.08] hover:border-white/[0.28] focus:outline-none focus:border-white/[0.28] transition-all duration-300 cursor-pointer text-left"
@@ -166,8 +189,12 @@ export default function ServicesSection({
                 </p>
               </div>
 
-              {/* Card Bottom: Diagonal Arrow (Tanpa Tampilan Harga) */}
-              <div className="flex justify-end items-center pt-4 mt-auto">
+              {/* Card Bottom: See packages action button */}
+              <div className="flex items-center justify-between pt-4 mt-auto border-t border-white/[0.05]">
+                <span className="text-[12px] font-semibold text-white/90 group-hover:text-[#E35F21] flex items-center gap-1.5 transition-colors">
+                  <span>See packages</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
                 <ArrowDownRight className="w-4 h-4 text-[#8B8B97] group-hover:text-[#E35F21] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all duration-300 stroke-[1.75]" />
               </div>
             </div>

@@ -9,14 +9,19 @@ import {
   ShieldCheck,
   X,
   ArrowRight,
+  SlidersHorizontal,
+  Table as TableIcon,
 } from "lucide-react";
 import type { PricingPlan } from "@/lib/types";
 import AdsvarEmblem from "@/components/AdsvarEmblem";
+import PackageDetailModal from "@/components/PackageDetailModal";
 
 export interface PricingSectionProps {
   plans?: PricingPlan[];
   onOpenContact: (plan?: PricingPlan, billingCycle?: "monthly" | "project") => void;
   onOpenConsultation?: (title?: string) => void;
+  selectedPlatform?: PlatformKey;
+  onSelectPlatform?: (platform: PlatformKey) => void;
   eyebrow?: string;
   heading?: string;
   subheading?: string;
@@ -569,14 +574,32 @@ const TERMS_DATA: Record<"id" | "en", { heading: string; subtitle: string; items
 export default function PricingSection({
   onOpenContact,
   onOpenConsultation,
-  eyebrow = "PLANS & PRICING",
-  heading = "Transparent Packages Built for Scale.",
-  subheading = "Choose a platform and tier tailored to drive measurable return on investment for your brand.",
+  selectedPlatform,
+  onSelectPlatform,
+  eyebrow = "PACKAGES",
+  heading = "Pick your track. Scale at your pace.",
+  subheading = "Already have your own content? Go Ads Only. Want us to make it for you? Choose Ads + Content.",
 }: PricingSectionProps) {
-  const [activePlatform, setActivePlatform] = useState<PlatformKey>("Meta");
+  const [internalPlatform, setInternalPlatform] = useState<PlatformKey>("Meta");
+  const activePlatform = selectedPlatform || internalPlatform;
+
+  const setActivePlatform = (p: PlatformKey) => {
+    if (onSelectPlatform) onSelectPlatform(p);
+    setInternalPlatform(p);
+  };
+
   const [activeTrack, setActiveTrack] = useState<TrackKey>("all");
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [termsLanguage, setTermsLanguage] = useState<"en" | "id">("en");
+
+  // State for Pop up Detail Spesifikasi Paket
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
+  const [detailModalTierId, setDetailModalTierId] = useState<string>("ads-content-growth");
+
+  const openPackageDetail = (tierId: string) => {
+    setDetailModalTierId(tierId);
+    setIsDetailModalOpen(true);
+  };
 
   const currentMeta = PLATFORM_META[activePlatform];
 
@@ -611,7 +634,7 @@ export default function PricingSection({
           </p>
         </div>
 
-        {/* Bar 1: Platform Selector Tabs */}
+        {/* Bar 1: Platform Selector Tabs (Meta | Google | TikTok | GMV Max | Shopee) */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 scrollbar-none">
           {PLATFORM_LIST.map((platform) => {
             const isActive = activePlatform === platform;
@@ -626,13 +649,13 @@ export default function PricingSection({
                     : "bg-[#121216] text-[#8B8B97] hover:text-white hover:bg-[#181820] border border-white/[0.06]"
                 }`}
               >
-                {PLATFORM_META[platform].displayName}
+                {platform}
               </button>
             );
           })}
         </div>
 
-        {/* Bar 2: Active Platform Info & Track Filter */}
+        {/* Bar 2: Active Platform Info, Track Filter, & Full Comparison Table Trigger */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-[12px] bg-[#121216] border border-white/[0.06] mb-8">
           <div>
             <div className="flex items-center gap-2 text-white font-medium text-[13px]">
@@ -647,41 +670,53 @@ export default function PricingSection({
             </p>
           </div>
 
-          {/* Track Filter Segments */}
-          <div className="flex items-center gap-1.5 p-1 rounded-[8px] bg-black/40 border border-white/[0.06] self-start md:self-auto">
+          <div className="flex flex-wrap items-center gap-2.5 self-start md:self-auto">
+            {/* Full Comparison Table Trigger */}
             <button
               type="button"
-              onClick={() => setActiveTrack("all")}
-              className={`px-3 py-1.5 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                activeTrack === "all"
-                  ? "bg-white text-black font-semibold shadow-xs"
-                  : "text-[#8B8B97] hover:text-white"
-              }`}
+              onClick={() => openPackageDetail(displayedTiers[0]?.id || "ads-content-growth")}
+              className="px-3 py-1.5 rounded-[7px] text-[11.5px] font-medium text-white/90 bg-[#E35F21]/15 hover:bg-[#E35F21]/25 border border-[#E35F21]/30 transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
             >
-              All Packages
+              <TableIcon className="w-3.5 h-3.5 text-[#E35F21]" />
+              <span>Full Comparison Table</span>
             </button>
-            <button
-              type="button"
-              onClick={() => setActiveTrack("ads-only")}
-              className={`px-3 py-1.5 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                activeTrack === "ads-only"
-                  ? "bg-white text-black font-semibold shadow-xs"
-                  : "text-[#8B8B97] hover:text-white"
-              }`}
-            >
-              Ads Only
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTrack("ads-content")}
-              className={`px-3 py-1.5 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
-                activeTrack === "ads-content"
-                  ? "bg-white text-black font-semibold shadow-xs"
-                  : "text-[#8B8B97] hover:text-white"
-              }`}
-            >
-              Ads + Content
-            </button>
+
+            {/* Track Filter Segments */}
+            <div className="flex items-center gap-1 p-0.5 rounded-[8px] bg-black/40 border border-white/[0.06]">
+              <button
+                type="button"
+                onClick={() => setActiveTrack("all")}
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
+                  activeTrack === "all"
+                    ? "bg-[#E35F21] text-white font-semibold"
+                    : "text-[#8B8B97] hover:text-white"
+                }`}
+              >
+                All
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTrack("ads-only")}
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
+                  activeTrack === "ads-only"
+                    ? "bg-[#E35F21] text-white font-semibold"
+                    : "text-[#8B8B97] hover:text-white"
+                }`}
+              >
+                Ads Only
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTrack("ads-content")}
+                className={`px-2.5 py-1 rounded-[6px] text-[11px] font-medium transition-all cursor-pointer ${
+                  activeTrack === "ads-content"
+                    ? "bg-[#E35F21] text-white font-semibold"
+                    : "text-[#8B8B97] hover:text-white"
+                }`}
+              >
+                Ads + Content
+              </button>
+            </div>
           </div>
         </div>
 
@@ -771,8 +806,8 @@ export default function PricingSection({
                   </div>
                 </div>
 
-                {/* Bottom Action Button */}
-                <div className="pt-4 mt-auto">
+                {/* Bottom Action Buttons: Choose this package + Small Detail Button */}
+                <div className="pt-4 mt-auto space-y-2">
                   <button
                     type="button"
                     onClick={(e) => {
@@ -781,12 +816,24 @@ export default function PricingSection({
                     }}
                     className={`w-full py-2.5 px-4 rounded-[8px] text-[12.5px] font-medium transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                       tier.isPopular
-                        ? "bg-[#E35F21] hover:bg-[#D05318] text-white font-semibold"
+                        ? "bg-[#E35F21] hover:bg-[#D05318] text-white font-semibold shadow-sm"
                         : "bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white"
                     }`}
                   >
                     <span>Choose this package</span>
                     <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openPackageDetail(tier.id);
+                    }}
+                    className="w-full py-1.5 px-3 rounded-[6px] text-[11px] font-medium text-[#8B8B97] hover:text-white bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.16] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <SlidersHorizontal className="w-3 h-3 text-[#E35F21]" />
+                    <span>View Package Details</span>
                   </button>
                 </div>
               </div>
@@ -860,6 +907,21 @@ export default function PricingSection({
               </div>
             </div>
           )}
+        </div>
+
+        {/* Catatan Harga di Bawah Kartu & Shortcut Perbandingan */}
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[12px] text-[#8B8B97] border-t border-white/[0.06] pt-4">
+          <p className="italic">
+            * Per platform, per month. Excludes ad spend and 12% VAT.
+          </p>
+          <button
+            type="button"
+            onClick={() => openPackageDetail(displayedTiers[0]?.id || "ads-content-growth")}
+            className="text-[#E35F21] hover:underline font-medium inline-flex items-center gap-1.5 cursor-pointer self-start sm:self-auto"
+          >
+            <TableIcon className="w-3.5 h-3.5" />
+            <span>Compare All Package Features &amp; Deliverables →</span>
+          </button>
         </div>
 
         {/* Standard Features Included Bar */}
@@ -1045,6 +1107,16 @@ export default function PricingSection({
           </div>
         </div>
       )}
+
+      {/* Pop-up Detail Spesifikasi & Perbandingan Paket */}
+      <PackageDetailModal
+        isOpen={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        initialPlatform={activePlatform}
+        initialTierId={detailModalTierId}
+        onSelectPackage={(plan, cycle) => onOpenContact(plan, cycle || "monthly")}
+        onOpenConsultation={onOpenConsultation}
+      />
     </section>
   );
 }

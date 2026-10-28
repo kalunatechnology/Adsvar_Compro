@@ -130,18 +130,18 @@ export default function PackageModal({
   };
 
   const packageName = activePlan ? activePlan.name.replace("\n", " ") : "Custom Package";
-  const billingLabel = billingCycle === "monthly" ? "Bulanan (Monthly)" : "Tahunan (Annual Save -20%)";
+  const billingLabel = billingCycle === "monthly" ? "Monthly" : "Annual (Save 20%)";
 
   const waText = encodeURIComponent(
-    `Halo Tim CRM Adsvar Digital, saya ${name || "Klien"}.\n` +
-    `Saya berminat untuk memilih paket:\n` +
-    `• Paket: ${packageName}\n` +
-    `• Siklus Billing: ${billingLabel}\n` +
-    `• Harga: ${currentPrice}\n` +
+    `Hello Adsvar Digital CRM Team, I am ${name || "Client"}.\n` +
+    `I would like to choose the package:\n` +
+    `• Package: ${packageName}\n` +
+    `• Billing Cycle: ${billingLabel}\n` +
+    `• Price: ${currentPrice}\n` +
     `• WhatsApp: ${phone || "-"}\n` +
     `• Email: ${email || "-"}\n` +
-    `• Catatan Brand: ${brandDescription || "-"}\n\n` +
-    `Mohon proses onboarding & penawaran resmi. Terima kasih!`
+    `• Brand Notes: ${brandDescription || "-"}\n\n` +
+    `Please proceed with onboarding & proposal. Thank you!`
   );
 
   return (
@@ -163,7 +163,7 @@ export default function PackageModal({
           type="button"
           onClick={handleResetAndClose}
           className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 w-8 h-8 rounded-full bg-[#1C1D2C]/90 hover:bg-[#27283D] text-[#8E8EA0] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/5 shadow-md"
-          aria-label="Tutup modal"
+          aria-label="Close modal"
         >
           <X className="w-4 h-4" />
         </button>
@@ -185,8 +185,8 @@ export default function PackageModal({
                 Package Request Confirmed!
               </h3>
               <p className="text-[12.5px] sm:text-[13px] text-[#8B8B9E] leading-relaxed max-w-sm mx-auto mb-5 sm:mb-6">
-                Pesanan paket Anda telah tercatat di CRM Adsvar. Akun representatif kami akan segera menghubungi{" "}
-                <span className="text-white font-medium">{phone || email || name}</span> untuk finalisasi scope.
+                Your package request has been registered in Adsvar CRM. Our account representative will reach out to{" "}
+                <span className="text-white font-medium">{phone || email || name}</span> shortly to finalize onboarding.
               </p>
 
               {/* Recap Card */}
@@ -205,7 +205,7 @@ export default function PackageModal({
                   <span className="text-white font-medium">{billingLabel}</span>
                 </div>
                 <div className="flex justify-between text-[#8E8EA0]">
-                  <span>Nama Klien:</span>
+                  <span>Client Name:</span>
                   <span className="text-white font-medium truncate ml-2">{name}</span>
                 </div>
                 {phone && (
@@ -230,14 +230,14 @@ export default function PackageModal({
                   className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-[12px] bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-[12.5px] sm:text-[13px] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 fill-current shrink-0" />
-                  <span>Konfirmasi via WhatsApp Sekarang</span>
+                  <span>Confirm on WhatsApp Now</span>
                 </a>
                 <button
                   type="button"
                   onClick={handleResetAndClose}
                   className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-[12px] bg-[#212233] hover:bg-[#2A2B3D] text-white text-[12.5px] sm:text-[13px] font-medium transition-colors cursor-pointer"
                 >
-                  Tutup
+                  Close
                 </button>
               </div>
             </div>
@@ -396,7 +396,7 @@ export default function PackageModal({
                   <div>
                     <label className="block text-[12px] sm:text-[13px] font-medium text-white mb-1 flex items-center justify-between">
                       <span>Package Tier</span>
-                      <span className="text-[10px] sm:text-[11px] text-[#7A7A8E]">Ganti tier jika diinginkan</span>
+                      <span className="text-[10px] sm:text-[11px] text-[#7A7A8E]">Switch tier if desired</span>
                     </label>
                     <select
                       value={activePlan?.id || ""}
@@ -424,7 +424,7 @@ export default function PackageModal({
                     rows={2}
                     value={brandDescription}
                     onChange={(e) => setBrandDescription(e.target.value)}
-                    placeholder="Ceritakan target pertumbuhan brand, timeline kampanye, atau link media sosial..."
+                    placeholder="Tell us about your brand goals, campaign timeline, or social media links..."
                     className="w-full h-[70px] sm:h-[82px] p-3 sm:p-3.5 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13px] sm:text-[13.5px] text-white placeholder-[#5A5A72] resize-none outline-none transition-all"
                   />
                 </div>
@@ -436,7 +436,7 @@ export default function PackageModal({
                   className="w-full h-[46px] sm:h-[50px] mt-2 rounded-[14px] bg-[#FF5500] hover:bg-[#E04B00] active:scale-[0.99] text-[13.5px] sm:text-[14px] font-medium text-white shadow-[0_4px_18px_rgba(255,85,0,0.35)] flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Menyimpan ke CRM...</span>
+                    <span>Submitting to CRM...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4 stroke-[2]" />

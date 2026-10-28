@@ -4,7 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import PricingSection from "@/components/PricingSection";
+import PricingSection, { PlatformKey } from "@/components/PricingSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import Footer from "@/components/Footer";
 import BottomBar from "@/components/BottomBar";
@@ -34,6 +34,7 @@ export default function HomePageClient({
   const [isPackageOpen, setIsPackageOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "project">("monthly");
+  const [selectedPlatform, setSelectedPlatform] = useState<PlatformKey>("Meta");
 
   const handleOpenConsultation = (
     item?: Service | Project | PricingPlan | null,
@@ -65,15 +66,18 @@ export default function HomePageClient({
           onOpenContact={() => handleOpenConsultation(null, "Free Strategy Consultation")}
         />
 
-        {/* 3. Core Services Section with dynamic SQLite services */}
+        {/* 3. Core Services Section with dynamic SQLite services and direct platform navigation */}
         <ServicesSection
           services={initialServices}
           onOpenContact={(service) => handleOpenConsultation(service)}
+          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
         />
 
         {/* 4. Pricing Matrix Section with Choose this package pop up tailored for CRM */}
         <PricingSection
           plans={initialPlans}
+          selectedPlatform={selectedPlatform}
+          onSelectPlatform={setSelectedPlatform}
           onOpenContact={(plan, cycle) => handleOpenPackage(plan, cycle || "monthly")}
           onOpenConsultation={(title) => handleOpenConsultation(null, title || "Package Recommendation")}
         />
