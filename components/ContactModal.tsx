@@ -296,11 +296,11 @@ export default function ContactModal({
                       className="w-full h-[42px] sm:h-[46px] px-3.5 sm:px-4 pr-10 rounded-[12px] bg-[#171826] border border-[#28293D] focus:border-[#FF5500] focus:ring-1 focus:ring-[#FF5500] text-[13px] sm:text-[13.5px] text-white outline-none appearance-none transition-all cursor-pointer"
                     >
                       <option value="" className="bg-[#171826] text-[#5A5A72]">
-                        Pilih Paket atau Layanan...
+                        Select a Package or Service...
                       </option>
 
                       {availablePlans.length > 0 ? (
-                        <optgroup label="Paket Scaling (Pricing Tiers)" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        <optgroup label="Scaling Packages (Pricing Tiers)" className="bg-[#171826] text-[#FF5500] font-semibold">
                           {availablePlans.map((p) => (
                             <option key={p.id} value={p.name.replace("\n", " ")} className="bg-[#171826] text-white font-normal">
                               {p.number ? `${p.number} ` : ""}{p.name.replace("\n", " ")} ({p.priceMonthly || p.priceProject})
@@ -308,7 +308,7 @@ export default function ContactModal({
                           ))}
                         </optgroup>
                       ) : (
-                        <optgroup label="Paket Populer" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        <optgroup label="Popular Packages" className="bg-[#171826] text-[#FF5500] font-semibold">
                           {DEFAULT_PACKAGES.map((pkg, idx) => (
                             <option key={idx} value={pkg} className="bg-[#171826] text-white font-normal">
                               {pkg}
@@ -318,7 +318,7 @@ export default function ContactModal({
                       )}
 
                       {availableServices.length > 0 && (
-                        <optgroup label="Layanan Utama" className="bg-[#171826] text-[#FF5500] font-semibold">
+                        <optgroup label="Core Platform Services" className="bg-[#171826] text-[#FF5500] font-semibold">
                           {availableServices.map((s) => (
                             <option key={s.id} value={s.name.replace("\n", " ")} className="bg-[#171826] text-white font-normal">
                               {s.name.replace("\n", " ")}

@@ -11,11 +11,11 @@ export const dummyServices: ServiceInput[] = [
     name: "From chat to\ncheckout.",
     tag: "META ADS",
     description:
-      "Iklan Facebook dan Instagram untuk mencari pembeli baru, mendatangkan kembali pengunjung lama (retargeting), dan mengarahkan audiens langsung ke WhatsApp atau toko marketplace Anda.",
+      "Facebook and Instagram ads to find new customers, retarget previous visitors, and direct shoppers straight to WhatsApp or your online storefront.",
     image: "/services/meta_ads.jpg",
     href: "#layanan",
     points: [
-      "Bisnis jasa, F&B, brand online",
+      "Service businesses, F&B, online brands",
       "Prospecting + Retargeting",
       "Direct WhatsApp & Marketplace",
     ],
@@ -27,11 +27,11 @@ export const dummyServices: ServiceInput[] = [
     name: "Be there when\nthey search.",
     tag: "GOOGLE ADS",
     description:
-      "Iklan Search, Performance Max, dan YouTube untuk satu situs web, dilengkapi pelacakan konversi (conversion tracking) untuk formulir, panggilan telepon, dan WhatsApp.",
+      "Search, Performance Max, and YouTube ads for a single website, complete with conversion tracking for lead forms, phone calls, and WhatsApp.",
     image: "/services/google_ads.jpg",
     href: "#layanan",
     points: [
-      "Klinik, properti, sekolah, B2B",
+      "Clinics, real estate, schools, B2B",
       "Search + Performance Max + YouTube",
       "Form, Call & WhatsApp Tracking",
     ],
@@ -43,11 +43,11 @@ export const dummyServices: ServiceInput[] = [
     name: "Short videos.\nReal leads.",
     tag: "TIKTOK ADS",
     description:
-      "Iklan video pendek yang mengarahkan penonton ke situs web atau formulir prospek (lead form), dengan fitur Spark Ads untuk mempromosikan video organik di akun Anda.",
+      "Short-form video ads driving qualified traffic to your website or lead form, featuring Spark Ads to amplify top-performing organic videos on your handle.",
     image: "/services/tiktok_ads.jpg",
     href: "#layanan",
     points: [
-      "Brand yang berjualan via website / leads",
+      "Brands selling via website or capturing leads",
       "Short-Form Video Performance",
       "Spark Ads Organic Amplification",
     ],
@@ -59,12 +59,12 @@ export const dummyServices: ServiceInput[] = [
     name: "More videos.\nMore GMV.",
     tag: "TIKTOK SHOP GMV MAX",
     description:
-      "Iklan otomatis TikTok Shop dengan target ROI yang diatur berdasarkan margin produk Anda, kurasi video afiliasi, dan LIVE GMV Max.",
+      "Automated TikTok Shop ads calibrated to your target profit margins, affiliate creator video curation, and LIVE GMV Max scaling.",
     image: "/services/tiktok_shop.jpg",
     href: "#layanan",
     points: [
-      "Penjual TikTok Shop & Tokopedia",
-      "Target ROI dari margin produk",
+      "TikTok Shop & Tokopedia merchants",
+      "Target ROI calibrated to margins",
       "Affiliate Curation & LIVE GMV Max",
     ],
     sortOrder: 4,
@@ -75,11 +75,11 @@ export const dummyServices: ServiceInput[] = [
     name: "Rank higher.\nStay profitable.",
     tag: "SHOPEE ADS",
     description:
-      "Iklan pencarian (search), produk serupa (similar-product), dan iklan toko (shop ads), dengan penyesuaian bid terjadwal serta saran voucher untuk kampanye tanggal kembar (twin-date sales).",
+      "Search, discovery, and shop ads with scheduled bid optimizations and strategic voucher planning for twin-date promotional campaigns.",
     image: "/services/shopee_ads.jpg",
     href: "#layanan",
     points: [
-      "Penjual marketplace Shopee",
+      "Shopee marketplace sellers",
       "Search, Similar-Product & Shop Ads",
       "Twin-Date Sales Campaign Voucher",
     ],
