@@ -75,6 +75,7 @@ export default function HomePageClient({
         <PricingSection
           plans={initialPlans}
           onOpenContact={(plan, cycle) => handleOpenPackage(plan, cycle || "monthly")}
+          onOpenConsultation={(title) => handleOpenConsultation(null, title || "Package Recommendation")}
         />
 
         {/* 5. Portfolio Section with dynamic SQLite projects */}

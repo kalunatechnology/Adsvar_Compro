@@ -244,7 +244,7 @@ export default function RootLayout({
             "@type": "SiteNavigationElement",
             "position": 1,
             "name": "Services",
-            "description": "One Ads and Content Solution.",
+            "description": "One Creative Engine Solution.",
             "url": `${siteUrl}/#layanan`,
           },
           {
