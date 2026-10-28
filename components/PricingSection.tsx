@@ -8,7 +8,6 @@ import {
   Sparkles,
   ShieldCheck,
   X,
-  Globe,
   ArrowRight,
 } from "lucide-react";
 import type { PricingPlan } from "@/lib/types";
@@ -61,73 +60,73 @@ interface PlatformMetaInfo {
 export const PLATFORM_META: Record<PlatformKey, PlatformMetaInfo> = {
   Meta: {
     displayName: "Meta Ads",
-    intro: "Iklan Facebook & Instagram, dari chat hingga penjualan berulang.",
-    setupFee: "Gratis (Free Setup)",
+    intro: "Facebook and Instagram ads, from first sale to repeat buyers.",
+    setupFee: "Free Setup",
     standardFeatures: [
-      "Konsultasi kickoff & audit akun komprehensif",
-      "Penentuan tolok ukur (benchmarks) & target KPI",
-      "Perhitungan Break-even ROAS & target biaya per konversi",
-      "Ad copywriting (headline, caption, hook) & A/B testing",
-      "Pemantauan anggaran harian & laporan analitik",
-      "Grup WhatsApp koordinasi + Account Manager berdedikasi",
-      "Kalender promosi & arahan materi kreatif bulanan",
-      "Kepemilikan penuh 100% atas akun iklan, Pixel, dan data",
+      "Kickoff strategy call & comprehensive account audit",
+      "Benchmark & KPI establishment at kickoff",
+      "Break-even ROAS & target cost-per-result calibration",
+      "Ad copywriting (headline, body, hook) & A/B testing",
+      "Daily budget & live performance monitoring",
+      "Dedicated WhatsApp coordination group & Account Manager",
+      "Monthly promo calendar & creative direction briefs",
+      "100% full client ownership of ad accounts, pixel, and data",
     ],
   },
   Google: {
     displayName: "Google Ads (1 Website)",
-    intro: "Iklan Search, Performance Max, dan YouTube untuk bisnis dengan 1 situs web.",
-    setupFee: "IDR 200.000 (sekali bayar)",
+    intro: "Search, Performance Max and YouTube ads for businesses with one website.",
+    setupFee: "IDR 200,000 (one-time setup)",
     standardFeatures: [
-      "Audit Google Business Profile & struktur akun iklan",
-      "Konsultasi kickoff, audit KPI & perhitungan Break-even ROAS",
-      "Pelacakan konversi formulir, telepon, WhatsApp & Google Analytics 4",
-      "Ad copywriting, penyiapan seluruh ekstensi sitelinks & A/B testing",
-      "Penyaringan kata kunci negatif (negative keywords) & pantau bid harian",
-      "Grup WhatsApp koordinasi + Account Manager berdedikasi",
-      "Kepemilikan penuh 100% atas akun Google Ads, tag, dan data",
+      "Google Business Profile check & ad account audit",
+      "Kickoff call, KPI audit & Break-even ROAS calculation",
+      "Conversion tracking for forms, calls, WhatsApp & GA4",
+      "Ad copywriting, all sitelink extensions & A/B testing",
+      "Negative keyword scrubbing & daily bid monitoring",
+      "Dedicated WhatsApp group & dedicated Account Manager",
+      "100% full ownership of Google Ads account, tags, and data",
     ],
   },
   TikTok: {
     displayName: "TikTok Ads",
-    intro: "Iklan video untuk brand yang berjualan lewat website atau mengumpulkan prospek.",
-    setupFee: "Gratis (Free Setup)",
+    intro: "For brands selling through a website or collecting leads.",
+    setupFee: "Free Setup",
     standardFeatures: [
-      "Fitur Spark Ads untuk memperluas jangkauan video organik akun Anda",
-      "Konsultasi kickoff & audit akun iklan TikTok",
-      "Targeting audiens spesifik & minat perilaku audiens",
-      "Copywriting materi iklan & variasi hook pembuka",
-      "Pemantauan anggaran harian & optimasi performa",
-      "Grup WhatsApp koordinasi + Account Manager berdedikasi",
-      "Kepemilikan penuh 100% atas akun TikTok Ads dan Pixel",
+      "Spark Ads feature to amplify organic videos on your handle",
+      "Kickoff strategy call & TikTok ad account audit",
+      "Specific audience targeting & behavioral interest segments",
+      "Ad copywriting & opening hook variations",
+      "Daily budget monitoring & performance optimization",
+      "Dedicated WhatsApp group & dedicated Account Manager",
+      "100% full ownership of TikTok ad account and Pixel",
     ],
   },
   "GMV Max": {
     displayName: "TikTok Shop GMV Max",
-    intro: "Iklan otomatis untuk penjual TikTok Shop dan Tokopedia.",
-    setupFee: "IDR 200.000 (sekali bayar)",
+    intro: "For TikTok Shop and Tokopedia sellers.",
+    setupFee: "IDR 200,000 (one-time setup)",
     standardFeatures: [
-      "Kurasi dan optimasi video kreator afiliasi",
-      "Target ROI diatur presisi berdasarkan margin produk Anda",
-      "Konsultasi kickoff & audit katalog TikTok Shop",
-      "Rekomendasi hero product bulanan & jadwal LIVE belanja",
-      "Pemantauan performa harian & analisis omzet per produk",
-      "Grup WhatsApp koordinasi + Account Manager berdedikasi",
-      "Kepemilikan penuh 100% atas toko dan aset iklan",
+      "Affiliate creator video curation and optimization",
+      "Target ROI calibrated directly to your product margins",
+      "Kickoff consultation & TikTok Shop catalog audit",
+      "Monthly hero product recommendations & LIVE schedules",
+      "Daily performance monitoring & per-product revenue tracking",
+      "Dedicated WhatsApp group & dedicated Account Manager",
+      "100% full ownership of shop and ad assets",
     ],
   },
   Shopee: {
     displayName: "Shopee Ads",
-    intro: "Iklan marketplace untuk peringkat produk lebih tinggi dan tetap menguntungkan.",
-    setupFee: "Gratis (Free Setup)",
+    intro: "For Shopee sellers looking to rank higher and stay profitable.",
+    setupFee: "Free Setup",
     standardFeatures: [
-      "Audit toko saat kickoff (kualitas foto, ulasan, strategi harga)",
-      "Iklan Pencarian Produk, Produk Serupa, dan Iklan Toko (Shop Ads)",
-      "Penyesuaian bid terjadwal & strategi voucher kampanye tanggal kembar",
-      "Copywriting & optimasi penempatan kata kunci produk",
-      "Pemantauan performa harian & laporan bulanan komprehensif",
-      "Grup WhatsApp koordinasi + Account Manager berdedikasi",
-      "Kepemilikan penuh 100% atas akun toko Shopee Seller Anda",
+      "Shop audit at kickoff (photo quality, reviews, pricing strategy)",
+      "Search Ads, Similar Products, and Shop Ads",
+      "Scheduled bid tuning & twin-date voucher strategy",
+      "Ad copywriting & product keyword placement optimization",
+      "Daily performance monitoring & comprehensive monthly report",
+      "Dedicated WhatsApp group & dedicated Account Manager",
+      "100% full ownership of your Shopee Seller account",
     ],
   },
 };
@@ -138,59 +137,59 @@ export const TIERS: TierDefinition[] = [
     numericId: 1,
     number: "01",
     track: "ads-only",
-    name: "Hanya Iklan · Starter",
-    subtitle: "Untuk bisnis yang baru memulai periklanan berbayar",
+    name: "Ads Only · Starter",
+    subtitle: "Businesses just starting with ads",
     badge: "",
     isPopular: false,
     platforms: {
       Meta: {
         price: "4.000.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 15 Juta",
-          "2 kampanye: prospecting + retargeting",
-          "Targeting minat & audiens broad",
-          "Laporan bulanan & dukungan jam operasional",
-          "Gratis setup & integrasi tracking",
+          "Ad spend managed up to IDR 15M",
+          "2 campaigns: prospecting + retargeting",
+          "Interest & broad audiences",
+          "Monthly report · Business-hours support",
+          "Free setup & tracking included",
         ],
       },
       Google: {
         price: "4.000.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 15 Juta",
-          "2 kampanye Search: brand + layanan",
-          "Kelola hingga 40 kata kunci (keywords)",
-          "Pelacakan konversi formulir, telepon & WhatsApp",
-          "Biaya setup IDR 200.000 (sekali bayar)",
+          "Ad spend managed up to IDR 15M",
+          "2 search campaigns: brand + services",
+          "Up to 40 keywords managed",
+          "Form, phone & WhatsApp conversion tracking",
+          "Setup fee IDR 200,000 (one-time)",
         ],
       },
       TikTok: {
         price: "4.000.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 15 Juta",
-          "1 kampanye, 2 grup iklan (ad groups)",
-          "Targeting minat & audiens luas",
-          "Termasuk Spark Ads · Gratis setup",
-          "Laporan performa bulanan",
+          "Ad spend managed up to IDR 15M",
+          "1 campaign, 2 ad groups",
+          "Interest & broad audiences",
+          "Spark Ads included · Free setup",
+          "Monthly performance report",
         ],
       },
       "GMV Max": {
         price: "4.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 15 Juta",
-          "Kampanye Product GMV Max",
-          "Target ROI diatur dari margin produk",
-          "Rekomendasi hero product bulanan",
-          "Biaya setup IDR 200.000 (sekali bayar)",
+          "Ad spend managed up to IDR 15M",
+          "Product GMV Max campaign",
+          "Target ROI calibrated from product margin",
+          "Monthly hero product recommendations",
+          "Setup fee IDR 200,000 (one-time)",
         ],
       },
       Shopee: {
         price: "4.000.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 15 Juta",
-          "Iklan Pencarian + Produk Serupa",
-          "Hingga 5 produk diiklankan",
-          "Gratis setup & audit toko saat kickoff",
-          "Laporan performa bulanan",
+          "Ad spend managed up to IDR 15M",
+          "Search Ads + Similar Product Ads",
+          "Up to 5 products advertised",
+          "Free setup & shop audit at kickoff",
+          "Monthly performance report",
         ],
       },
     },
@@ -200,59 +199,59 @@ export const TIERS: TierDefinition[] = [
     numericId: 2,
     number: "02",
     track: "ads-only",
-    name: "Hanya Iklan · Growth",
-    subtitle: "Iklan sudah berjalan dan siap naik ke tingkat lanjut",
+    name: "Ads Only · Growth",
+    subtitle: "Ads already running, ready for the next level",
     badge: "",
     isPopular: false,
     platforms: {
       Meta: {
         price: "4.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "3 kampanye (+ WhatsApp / CPAS)",
-          "Targeting Lookalike audiens pembeli loyal",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "3 campaigns (+ WhatsApp / CPAS)",
+          "Buyer lookalikes audiences",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       Google: {
         price: "4.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "3 kampanye (+ Performance Max / remarketing)",
-          "Kelola hingga 80 kata kunci (keywords)",
-          "Pelacakan Google Analytics 4 (GA4)",
-          "Laporan mingguan & evaluasi strategi bulanan",
+          "Ad spend managed up to IDR 40M",
+          "3 campaigns (+ Performance Max / remarketing)",
+          "Up to 80 keywords managed",
+          "Google Analytics 4 tracking included",
+          "Weekly + monthly reports · Monthly 30m review",
         ],
       },
       TikTok: {
         price: "4.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "1 kampanye, 2 grup iklan + retargeting penonton",
-          "3 variasi hook per video materi iklan",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "1 campaign, 2 ad groups + retargeting viewers",
+          "3 hook variations per video",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       "GMV Max": {
         price: "5.400.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "Product GMV Max + kurasi video afiliasi",
-          "Target ROI presisi berdasarkan margin produk",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "Product GMV Max + affiliate curation",
+          "Target ROI set from product margin",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       Shopee: {
         price: "4.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "Tambah Iklan Toko (Shop Ads) · Hingga 15 produk",
-          "Rekomendasi voucher & strategi promo bulanan",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "Adds Shop Ads · Up to 15 products",
+          "Monthly voucher & promo recommendations",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
     },
@@ -262,59 +261,59 @@ export const TIERS: TierDefinition[] = [
     numericId: 3,
     number: "03",
     track: "ads-only",
-    name: "Hanya Iklan · Scale",
-    subtitle: "Anggaran besar dengan optimasi harian yang intensif",
+    name: "Ads Only · Scale",
+    subtitle: "Large ad budgets with daily optimization",
     badge: "SCALE",
     isPopular: false,
     platforms: {
       Meta: {
         price: "7.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "4 kampanye (+ katalog produk Advantage+)",
-          "Lookalike bertingkat & eksklusi pembeli lama",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "4 campaigns (+ Advantage+ product catalog)",
+          "Tiered lookalikes & past-buyer exclusion",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       Google: {
         price: "7.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "4–5 kampanye (+ YouTube & Display)",
-          "Hingga 150 keywords & custom Google Tag Manager",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "4–5 campaigns (+ YouTube & Display)",
+          "Up to 150 keywords · Custom GTM tracking",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       TikTok: {
         price: "7.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "2 kampanye, 4 grup iklan + lookalike",
-          "Riset tren berkala 2x per bulan",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "2 campaigns, 4 ad groups + lookalikes",
+          "Trend research 2x/month",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       "GMV Max": {
         price: "8.000.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
+          "Ad spend managed up to IDR 75M",
           "Product GMV Max + LIVE GMV Max",
-          "Target ROI disesuaikan per produk unggulan",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & analisis produk",
+          "Target ROI set per hero product",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + per-product report",
         ],
       },
       Shopee: {
         price: "7.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "Hingga 30 produk · Strategi tanggal kembar",
-          "Riset kata kunci 2x/bln & audit kuartalan",
-          "Optimasi bid harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "Up to 30 products · Twin-date strategy",
+          "Keyword research 2x/month · Quarterly audit",
+          "Daily bid tuning · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
     },
@@ -324,59 +323,59 @@ export const TIERS: TierDefinition[] = [
     numericId: 4,
     number: "04",
     track: "ads-content",
-    name: "Iklan + Konten · Growth",
-    subtitle: "Solusi lengkap iklan sekaligus produksi materi konten",
-    badge: "TERPOPULER",
+    name: "Ads + Content · Growth",
+    subtitle: "Brands that need ads and content together",
+    badge: "MOST POPULAR",
     isPopular: true,
     platforms: {
       Meta: {
         price: "7.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "6 video iklan (2 dengan talent) + 4 desain materi",
-          "3 kampanye (+ WhatsApp / CPAS)",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "6 ad videos (2 with talent) + 4 designs/carousels",
+          "3 campaigns (+ WhatsApp / CPAS)",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       Google: {
         price: "6.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "Copywriting lengkap + semua ekstensi · 6 desain iklan",
-          "3 kampanye (+ Performance Max / remarketing)",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "Full ad copy + all extensions · 6 ad designs",
+          "3 campaigns (+ Performance Max / remarketing)",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       TikTok: {
         price: "7.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "8 video iklan/bulan (2 dengan talent)",
-          "Penyegaran kreatif mingguan · Riset tren 2x/bln",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "8 ad videos/month (2 with talent)",
+          "Creatives refreshed weekly · Trend research 2x/mo",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       "GMV Max": {
         price: "9.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "12 video produk/bulan (4 dengan talent)",
-          "Product GMV Max + kurasi video afiliasi",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "12 product videos/month (4 with talent)",
+          "Product GMV Max + affiliate curation",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
       Shopee: {
         price: "8.400.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 40 Juta",
-          "12 desain (banner, voucher) + 4 video produk",
-          "Optimasi judul & deskripsi untuk 10 produk",
-          "Laporan mingguan & bulanan",
-          "Sesi evaluasi strategi bulanan (30 menit)",
+          "Ad spend managed up to IDR 40M",
+          "12 designs (photos, banners, vouchers) + 4 videos",
+          "Title & description optimization for 10 products",
+          "Weekly + monthly reports",
+          "Monthly 30-min strategy review call",
         ],
       },
     },
@@ -386,59 +385,59 @@ export const TIERS: TierDefinition[] = [
     numericId: 5,
     number: "05",
     track: "ads-content",
-    name: "Iklan + Konten · Pro",
-    subtitle: "Brand yang siap mendominasi pasar dengan konten masif",
+    name: "Ads + Content · Pro",
+    subtitle: "Brands ready to scale on every front",
     badge: "SCALE PRO",
     isPopular: false,
     platforms: {
       Meta: {
         price: "12.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "12 video iklan (4 dengan talent) + 8 desain/karusel",
-          "5 variasi copywriting per materi kreatif",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "12 ad videos (4 with talent) + 8 designs/carousels",
+          "5 copy variations per ad creative",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       Google: {
         price: "10.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "10 desain iklan + 4 video YouTube",
-          "4–5 kampanye (+ YouTube & Display)",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "10 ad designs + 4 YouTube videos",
+          "4–5 campaigns (+ YouTube & Display)",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       TikTok: {
         price: "11.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "14 video iklan/bulan (4 dengan talent)",
-          "Riset tren mingguan & penyegaran materi berkala",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "14 ad videos/month (4 with talent)",
+          "Weekly trend research & weekly creative refresh",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
       "GMV Max": {
         price: "14.900.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "20 video produk/bulan (10 dengan talent)",
+          "Ad spend managed up to IDR 75M",
+          "20 product videos/month (10 with talent)",
           "Product GMV Max + LIVE GMV Max",
-          "Optimasi harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & laporan per produk",
+          "Daily optimization · Priority support",
+          "Monthly strategy meeting + per-product report",
         ],
       },
       Shopee: {
         price: "12.500.000",
         features: [
-          "Kelola anggaran iklan hingga IDR 75 Juta",
-          "20 desain materi + 8 video produk",
-          "Optimasi judul & deskripsi untuk 20 produk",
-          "Optimasi bid harian · Dukungan Prioritas",
-          "Meeting strategi bulanan & rencana kuartalan",
+          "Ad spend managed up to IDR 75M",
+          "20 designs + 8 product videos",
+          "Title & description optimization for 20 products",
+          "Daily bid tuning · Priority support",
+          "Monthly strategy meeting + quarterly plan",
         ],
       },
     },
@@ -448,24 +447,24 @@ export const TIERS: TierDefinition[] = [
 const CUSTOM_CARD = {
   id: "custom",
   numericId: 6,
-  number: "Kustom",
+  number: "Custom",
   track: "custom" as const,
-  name: "Paket Kustom (Enterprise)",
-  subtitle: "Dirancang khusus mengikuti skala kebutuhan bisnis Anda.",
+  name: "Custom Scope",
+  subtitle: "Built around your brand.",
   badge: "ENTERPRISE",
   isPopular: false,
   description:
-    "Anggaran iklan bulanan di atas IDR 75 Juta, mengelola multi-brand sekaligus, atau memerlukan tim produksi syuting langsung di lokasi? Kami buatkan skema layanan yang pas.",
+    "Spending more than IDR 75M a month, running several brands, or need an on-location film crew? Let's build a bespoke package together.",
   features: [
-    "Anggaran iklan bulanan tidak terbatas (unlimited spend)",
-    "Manajemen lintas platform terpadu (omnichannel ads)",
-    "Tim produksi konten & syuting on-location",
-    "Dedicated Account Director & tim analis khusus",
-    "Perjanjian SLA terjamin & durasi kontrak fleksibel",
+    "Unlimited monthly ad spend management",
+    "Omnichannel cross-platform campaigns",
+    "On-location filming & production crew",
+    "Dedicated Account Director & senior team",
+    "Custom SLAs & flexible contract terms",
   ],
 };
 
-// 8 Syarat & Ketentuan dalam 2 Bahasa (Indonesian & English)
+// 8 Syarat & Ketentuan / Terms & Conditions in 2 Languages
 interface TermItem {
   id: number;
   title: string;
@@ -570,14 +569,14 @@ const TERMS_DATA: Record<"id" | "en", { heading: string; subtitle: string; items
 export default function PricingSection({
   onOpenContact,
   onOpenConsultation,
-  eyebrow = "PAKET & HARGA",
-  heading = "Pilihan Paket Periklanan Digital.",
-  subheading = "Pilih platform dan tingkatan paket yang dirancang untuk menghasilkan pertumbuhan terukur bagi bisnis Anda.",
+  eyebrow = "PLANS & PRICING",
+  heading = "Transparent Packages Built for Scale.",
+  subheading = "Choose a platform and tier tailored to drive measurable return on investment for your brand.",
 }: PricingSectionProps) {
   const [activePlatform, setActivePlatform] = useState<PlatformKey>("Meta");
   const [activeTrack, setActiveTrack] = useState<TrackKey>("all");
   const [isTermsOpen, setIsTermsOpen] = useState(false);
-  const [termsLanguage, setTermsLanguage] = useState<"id" | "en">("id");
+  const [termsLanguage, setTermsLanguage] = useState<"en" | "id">("en");
 
   const currentMeta = PLATFORM_META[activePlatform];
 
@@ -659,7 +658,7 @@ export default function PricingSection({
                   : "text-[#8B8B97] hover:text-white"
               }`}
             >
-              Semua Paket
+              All Packages
             </button>
             <button
               type="button"
@@ -670,7 +669,7 @@ export default function PricingSection({
                   : "text-[#8B8B97] hover:text-white"
               }`}
             >
-              Hanya Iklan
+              Ads Only
             </button>
             <button
               type="button"
@@ -681,7 +680,7 @@ export default function PricingSection({
                   : "text-[#8B8B97] hover:text-white"
               }`}
             >
-              Iklan + Konten
+              Ads + Content
             </button>
           </div>
         </div>
@@ -752,14 +751,14 @@ export default function PricingSection({
                       {platformData.price}
                     </span>
                     <span className="text-[11.5px] text-[#8B8B97] font-normal">
-                      /bulan
+                      /month
                     </span>
                   </div>
 
                   {/* Features List */}
                   <div className="mb-6">
                     <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#8B8B97] mb-3">
-                      Termasuk dalam paket:
+                      Included in this tier:
                     </div>
                     <ul className="space-y-2.5 text-[12px] text-[#C4C4D4]">
                       {platformData.features.map((feat, fIdx) => (
@@ -786,7 +785,7 @@ export default function PricingSection({
                         : "bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white"
                     }`}
                   >
-                    <span>Pilih Paket Ini</span>
+                    <span>Choose this package</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -827,7 +826,7 @@ export default function PricingSection({
 
                 <div className="flex items-baseline gap-1.5 mb-5 pb-5 border-b border-white/[0.06]">
                   <span className="text-[20px] font-bold text-white tracking-[-0.02em]">
-                    Kustom Sesuai Kebutuhan
+                    Customized to Your Scale
                   </span>
                 </div>
 
@@ -837,7 +836,7 @@ export default function PricingSection({
 
                 <div className="mb-6">
                   <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#8B8B97] mb-3">
-                    Keunggulan Enterprise:
+                    Enterprise Highlights:
                   </div>
                   <ul className="space-y-2.5 text-[12px] text-[#C4C4D4]">
                     {CUSTOM_CARD.features.map((feat, fIdx) => (
@@ -855,7 +854,7 @@ export default function PricingSection({
                   type="button"
                   className="w-full py-2.5 px-4 rounded-[8px] bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.12] text-white text-[12.5px] font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <span>Konsultasi Paket Kustom</span>
+                  <span>Discuss Custom Scope</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -863,12 +862,12 @@ export default function PricingSection({
           )}
         </div>
 
-        {/* Fitur Standar Termasuk di Platform Ini */}
+        {/* Standard Features Included Bar */}
         <div className="mt-8 p-5 sm:p-6 rounded-[14px] bg-[#121216] border border-white/[0.06]">
           <div className="flex items-center gap-2 mb-3">
             <ShieldCheck className="w-4 h-4 text-[#E35F21]" />
             <h4 className="text-[12px] font-semibold text-white uppercase tracking-wider">
-              Fitur Standar Termasuk di Semua Paket {currentMeta.displayName}:
+              Standard features included across all {currentMeta.displayName} packages:
             </h4>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-[11.5px] text-[#8B8B97]">
@@ -881,7 +880,7 @@ export default function PricingSection({
           </div>
         </div>
 
-        {/* Syarat & Ketentuan Button (Membuka Modal Pop-up 2 Bahasa) */}
+        {/* Terms & Conditions Button (Opens Dual-Language Modal: EN / ID) */}
         <div className="mt-8 flex justify-center">
           <button
             type="button"
@@ -889,9 +888,9 @@ export default function PricingSection({
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[9px] bg-[#121216] hover:bg-[#181820] border border-white/[0.1] hover:border-white/[0.24] text-[12.5px] font-medium text-white transition-all cursor-pointer shadow-sm group"
           >
             <FileText className="w-4 h-4 text-[#E35F21] group-hover:scale-105 transition-transform" />
-            <span>Syarat &amp; Ketentuan Layanan</span>
+            <span>Terms &amp; Conditions</span>
             <span className="text-[10px] font-mono text-[#8B8B97] bg-white/[0.06] px-1.5 py-0.5 rounded">
-              ID / EN
+              EN / ID
             </span>
           </button>
         </div>
@@ -902,13 +901,13 @@ export default function PricingSection({
             <div className="max-w-xl">
               <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-[#E35F21]/15 text-[#E35F21] text-[10px] font-bold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3 h-3" />
-                <span>KONSULTASI &amp; AUDIT</span>
+                <span>CONSULTATION &amp; AUDIT</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-[-0.02em] leading-snug">
-                Belum yakin paket mana yang paling tepat?
+                Not sure which package fits?
               </h3>
               <p className="mt-2 text-[12.5px] sm:text-[13px] text-[#8B8B97] leading-relaxed">
-                Sampaikan platform dan estimasi anggaran bulanan Anda. Tim Adsvar akan merekomendasikan strategi dan paket paling efisien dalam satu sesi konsultasi gratis.
+                Tell us your platform and monthly ad spend. We&apos;ll recommend the most effective package and strategy in one free call.
               </p>
             </div>
 
@@ -917,32 +916,32 @@ export default function PricingSection({
                 type="button"
                 onClick={() => {
                   if (onOpenConsultation) {
-                    onOpenConsultation("Konsultasi Rekomendasi Paket");
+                    onOpenConsultation("Package Recommendation Consultation");
                   } else {
                     onOpenContact(undefined, "monthly");
                   }
                 }}
                 className="px-6 py-3 rounded-[8px] bg-[#E35F21] hover:bg-[#D05318] text-white font-medium text-[13px] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
-                <span>Jadwalkan Konsultasi Gratis</span>
+                <span>Book a free consultation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <a
-                href="https://wa.me/6282322308719?text=Halo%20Adsvar,%20saya%20ingin%20konsultasi%20paket%20iklan%20yang%20paling%20sesuai%20untuk%20brand%20saya"
+                href="https://wa.me/6282322308719?text=Hello%20Adsvar,%20I%20would%20like%20to%20consult%20about%20the%20best%20ad%20package%20for%20my%20brand"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3 rounded-[8px] bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] text-white font-medium text-[13px] transition-all flex items-center justify-center gap-2 cursor-pointer text-center"
               >
                 <MessageSquare className="w-4 h-4 text-[#25D366]" />
-                <span>Chat via WhatsApp</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Pop-up Modal: Syarat & Ketentuan (Dual Language: ID / EN) */}
+      {/* Pop-up Modal: Terms & Conditions (Dual Language: EN / ID) */}
       {isTermsOpen && (
         <div
           role="dialog"
@@ -973,17 +972,6 @@ export default function PricingSection({
                 <div className="flex items-center gap-1 p-0.5 rounded-[7px] bg-white/[0.06] border border-white/[0.08]">
                   <button
                     type="button"
-                    onClick={() => setTermsLanguage("id")}
-                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${
-                      termsLanguage === "id"
-                        ? "bg-[#E35F21] text-white font-bold"
-                        : "text-[#8B8B97] hover:text-white"
-                    }`}
-                  >
-                    🇮🇩 ID
-                  </button>
-                  <button
-                    type="button"
                     onClick={() => setTermsLanguage("en")}
                     className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${
                       termsLanguage === "en"
@@ -993,13 +981,24 @@ export default function PricingSection({
                   >
                     🇬🇧 EN
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => setTermsLanguage("id")}
+                    className={`px-2.5 py-1 rounded-[5px] text-[11px] font-medium transition-all cursor-pointer ${
+                      termsLanguage === "id"
+                        ? "bg-[#E35F21] text-white font-bold"
+                        : "text-[#8B8B97] hover:text-white"
+                    }`}
+                  >
+                    🇮🇩 ID
+                  </button>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setIsTermsOpen(false)}
                   className="w-8 h-8 rounded-[6px] bg-white/[0.05] hover:bg-white/[0.1] text-[#8B8B97] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-                  aria-label="Tutup"
+                  aria-label="Close"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -1031,16 +1030,16 @@ export default function PricingSection({
             {/* Modal Footer */}
             <div className="pt-4 mt-5 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#8B8B97]">
               <span>
-                {termsLanguage === "id"
-                  ? "Berlaku untuk semua paket resmi Adsvar."
-                  : "Applies to all official Adsvar packages."}
+                {termsLanguage === "en"
+                  ? "Applies to all official Adsvar packages."
+                  : "Berlaku untuk semua paket resmi Adsvar."}
               </span>
               <button
                 type="button"
                 onClick={() => setIsTermsOpen(false)}
                 className="px-4 py-1.5 rounded-[6px] bg-white/[0.08] hover:bg-white/[0.14] text-white font-medium transition-all cursor-pointer"
               >
-                {termsLanguage === "id" ? "Tutup" : "Close"}
+                {termsLanguage === "en" ? "Close" : "Tutup"}
               </button>
             </div>
           </div>
