@@ -43,7 +43,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
             </button>
             
             <a
-              href="https://wa.me/6282322308719"
+              href="https://wa.me/6282322308719?text=Hello%2C%20I%20would%20like%20to%20consult%20with%20your%20team%20regarding%20Adsvar%20Digital%27s%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-7 py-3 rounded-[8px] bg-transparent border border-[#555] hover:border-[#888] hover:bg-white/5 text-white font-medium text-[14px] transition-all cursor-pointer text-center"
@@ -100,7 +100,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
               <div className="space-y-4">
                 {/* Nomor WhatsApp */}
                 <a
-                  href="https://wa.me/6282322308719"
+                  href="https://wa.me/6282322308719?text=Hello%2C%20I%20would%20like%20to%20consult%20with%20your%20team%20regarding%20Adsvar%20Digital%27s%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-[#D1D1D6] hover:text-[#FF5500] transition-colors cursor-pointer text-[14px]"

@@ -128,14 +128,15 @@ export default function ContactModal({
     onClose();
   };
 
+  const effectivePackage = packageChoice || "Free Ads Audit & Consultation";
   const waText = encodeURIComponent(
-    `Halo Adsvar Digital, saya ${name || "Klien"}.\n` +
-    `Saya telah mengisi formulir Book a Free Consultation:\n` +
-    `• Telepon: ${phone || "-"}\n` +
+    `Hello, I would like to consult with your team regarding Adsvar Digital's services.\n\n` +
+    `• Name: ${name || "Client"}\n` +
+    `• Package: ${effectivePackage}\n` +
+    `• WhatsApp / Phone: ${phone || "-"}\n` +
     `• Email: ${email || "-"}\n` +
-    `• Pilihan Paket: ${packageChoice || "Free Ads Audit & Consultation"}\n` +
-    `• Catatan Brand: ${brandDescription || "-"}\n\n` +
-    `Mohon info jadwal konsultasi lebih lanjut. Terima kasih!`
+    `• Brand Notes: ${brandDescription || "-"}\n\n` +
+    `Could you assist me? Thank you!`
   );
 
   return (

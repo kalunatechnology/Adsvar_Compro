@@ -133,12 +133,12 @@ export default function PackageModal({
   const billingLabel = billingCycle === "monthly" ? "Monthly" : "Annual (Save 20%)";
 
   const waText = encodeURIComponent(
-    `Hello Adsvar Digital CRM Team, I am ${name || "Client"}.\n` +
-    `I would like to choose the package:\n` +
+    `Hello, I am interested in the *${packageName}* package from Adsvar Digital. Could you assist me?\n\n` +
     `• Package: ${packageName}\n` +
     `• Billing Cycle: ${billingLabel}\n` +
     `• Price: ${currentPrice}\n` +
-    `• WhatsApp: ${phone || "-"}\n` +
+    `• Name: ${name || "Client"}\n` +
+    `• WhatsApp / Phone: ${phone || "-"}\n` +
     `• Email: ${email || "-"}\n` +
     `• Brand Notes: ${brandDescription || "-"}\n\n` +
     `Please proceed with onboarding & proposal. Thank you!`

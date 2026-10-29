@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
 import { sendMarkaEvent } from "@/lib/marka-crm";
 import { inquiriesRepo } from "@/lib/repositories/inquiries";
+import { sendInquiryNotification } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,8 +27,8 @@ export async function POST(req: NextRequest) {
         phone: phone ? String(phone).trim() : "",
         email: String(email).trim(),
         contact: phone || email,
-        service: "Contact Us Form",
-        packageChoice: "General Contact",
+        service: subject ? String(subject).trim() : "Contact Us Form",
+        packageChoice: subject ? String(subject).trim() : "General Contact",
         billingCycle: "-",
         price: targetBudget ? `Rp ${Number(targetBudget).toLocaleString("id-ID")}` : "-",
         message: message ? String(message).trim() : "",
@@ -36,6 +37,24 @@ export async function POST(req: NextRequest) {
       });
     } catch (dbErr) {
       console.warn("Failed to save local inquiry in /api/contact:", dbErr);
+    }
+
+    // Send email notification to corporate@adsvar.id using Google SMTP
+    try {
+      await sendInquiryNotification({
+        name: String(name).trim(),
+        phone: phone ? String(phone).trim() : "",
+        email: String(email).trim(),
+        service: subject ? String(subject).trim() : "Contact Us Form",
+        packageChoice: subject ? String(subject).trim() : "General Contact",
+        billingCycle: "-",
+        price: targetBudget ? `Rp ${Number(targetBudget).toLocaleString("id-ID")}` : "-",
+        message: message ? String(message).trim() : "",
+        brandDescription: message ? String(message).trim() : "",
+        source: "contact_form",
+      });
+    } catch (mailErr) {
+      console.warn("Failed to dispatch email notification in /api/contact:", mailErr);
     }
 
     // Send event to Marka CRM

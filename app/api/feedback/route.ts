@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
 import { sendMarkaEvent } from "@/lib/marka-crm";
+import { sendFeedbackNotification } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -29,6 +30,18 @@ export async function POST(req: NextRequest) {
     }
 
     const eventId = `fb-${Date.now()}-${randomUUID().slice(0, 8)}`;
+
+    // Send email notification to corporate@adsvar.id using Google SMTP
+    try {
+      await sendFeedbackNotification({
+        customerCode: String(customerCode).trim(),
+        rating: numRating,
+        feedbackText: feedbackText ? String(feedbackText).trim() : "",
+        salesOrderId: salesOrderId && String(salesOrderId).trim() ? String(salesOrderId).trim() : undefined,
+      });
+    } catch (mailErr) {
+      console.warn("Failed to dispatch feedback email notification:", mailErr);
+    }
 
     const result = await sendMarkaEvent(eventId, "feedback.submitted", {
       customer_code: String(customerCode).trim(),

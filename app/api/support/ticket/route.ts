@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
 import { sendMarkaEvent } from "@/lib/marka-crm";
 import { crmRepo } from "@/lib/repositories/crm";
+import { sendTicketNotification } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,6 +28,19 @@ export async function POST(req: NextRequest) {
       });
     } catch (dbErr) {
       console.warn("Failed to save local ticket:", dbErr);
+    }
+
+    // Send email notification to corporate@adsvar.id using Google SMTP
+    try {
+      await sendTicketNotification({
+        subject: String(subject).trim(),
+        description: String(description).trim(),
+        customerEmail: customerEmail ? String(customerEmail).trim() : undefined,
+        serialNumber: serialNumber ? String(serialNumber).trim() : undefined,
+        eventId,
+      });
+    } catch (mailErr) {
+      console.warn("Failed to dispatch ticket email notification:", mailErr);
     }
 
     // Send event to Marka CRM

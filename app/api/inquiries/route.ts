@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { inquiriesRepo } from "@/lib/repositories/inquiries";
+import { sendInquiryNotification } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -47,6 +48,24 @@ export async function POST(request: NextRequest) {
       brandDescription: (brandDescription || message || "").trim(),
       source: (source || "book_consultation").trim(),
     });
+
+    // Send email notification to corporate@adsvar.id using Google SMTP
+    try {
+      await sendInquiryNotification({
+        name: name.trim(),
+        phone: (phone || "").trim(),
+        email: (email || "").trim(),
+        service: (service || packageChoice || "Umum").trim(),
+        packageChoice: (packageChoice || service || "").trim(),
+        billingCycle: (billingCycle || "").trim(),
+        price: (price || "").trim(),
+        message: (message || brandDescription || "").trim(),
+        brandDescription: (brandDescription || message || "").trim(),
+        source: (source || "book_consultation").trim(),
+      });
+    } catch (mailErr) {
+      console.warn("Failed to dispatch email notification:", mailErr);
+    }
 
     return NextResponse.json({ success: true, data: inquiry });
   } catch (error) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMarkaEvent } from "@/lib/marka-crm";
 import { crmRepo } from "@/lib/repositories/crm";
+import { sendChatMessageNotification } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {
@@ -29,6 +30,19 @@ export async function POST(req: NextRequest) {
       });
     } catch (dbErr) {
       console.warn("Failed to save local chat message:", dbErr);
+    }
+
+    // Send email notification to corporate@adsvar.id using Google SMTP
+    try {
+      await sendChatMessageNotification({
+        visitorName: visitorName || "Pengunjung Website",
+        visitorId: cleanVisitorId,
+        threadId,
+        messageText: String(messageText).trim(),
+        messageId: cleanMsgId,
+      });
+    } catch (mailErr) {
+      console.warn("Failed to dispatch live chat email notification:", mailErr);
     }
 
     // Send event to Marka CRM
