@@ -9,7 +9,7 @@ export const dummyServices: ServiceInput[] = [
   {
     slug: "meta-ads",
     name: "Meta Ads",
-    tag: "META ADS",
+    tag: "",
     description:
       "Facebook and Instagram ads to find new customers, retarget previous visitors, and direct shoppers straight to WhatsApp or your online storefront.",
     image: "/services/meta_ads_ticket.jpg",

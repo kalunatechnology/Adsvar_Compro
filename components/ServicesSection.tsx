@@ -32,7 +32,7 @@ export const DEFAULT_SERVICES: Service[] = [
   {
     id: 1,
     slug: "meta-ads",
-    tag: "META ADS",
+    tag: "",
     name: "Meta Ads",
     description:
       "Facebook and Instagram ads to find new customers, retarget previous visitors, and direct shoppers straight to WhatsApp or your online storefront.",
@@ -163,9 +163,13 @@ export default function ServicesSection({
             >
               <div>
                 {/* Card Top Category Tag */}
-                <div className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#8B8B97] group-hover:text-[#E35F21] transition-colors duration-300 mb-[12px]">
-                  {item.tag}
-                </div>
+                {item.slug !== "meta-ads" && item.tag ? (
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#8B8B97] group-hover:text-[#E35F21] transition-colors duration-300 mb-[12px]">
+                    {item.tag}
+                  </div>
+                ) : (
+                  <div className="h-[15px] mb-[12px]" aria-hidden="true" />
+                )}
 
                 {/* Card Media: Rasio 304:170 proporsional */}
                 <div className="relative w-full aspect-[304/170] rounded-[6px] overflow-hidden bg-black mb-[16px] border border-white/[0.04]">
