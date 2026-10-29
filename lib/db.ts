@@ -8,7 +8,7 @@ import {
   dummyStats,
 } from "@/data/dummy";
 
-const CURRENT_SEED_VERSION = "v11_adsvar_ticket_images_oct2026";
+const CURRENT_SEED_VERSION = "v12_adsvar_portfolio_update_oct2026";
 
 const globalForDb = globalThis as unknown as { __adsvarDb?: Database.Database };
 

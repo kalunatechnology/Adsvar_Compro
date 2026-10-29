@@ -1,18 +1,53 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo/brand";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const origin = process.env.PUBLIC_ORIGIN_DOMAIN
-    ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
-    : "https://adsvar-compro.vercel.app";
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
+  const baseUrl = SITE_URL;
   const now = new Date();
 
+  // Core Pages & 6-Pack Primary Sitelinks
   return [
     {
-      url: `${baseUrl}`,
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/#layanan`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 1.0,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#paket`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#portofolio`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#tentang`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#konsultasi`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/crm`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.8,
     },
   ];
 }

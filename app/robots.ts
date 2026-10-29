@@ -1,10 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo/brand";
 
 export default function robots(): MetadataRoute.Robots {
-  const origin = process.env.PUBLIC_ORIGIN_DOMAIN
-    ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
-    : "https://adsvar-compro.vercel.app";
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || origin;
+  const baseUrl = SITE_URL;
 
   return {
     rules: [
@@ -20,13 +18,14 @@ export default function robots(): MetadataRoute.Robots {
           "/icon-192x192.png",
           "/icon-512x512.png",
           "/og-image.png",
+          "/b76c10e5d4a63b7890a5463e71524f8b.txt",
         ],
-        disallow: ["/api/*", "/_next/*", "/crm*", "/crm/*"],
+        disallow: ["/api/*", "/_next/*"],
       },
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/*", "/crm*", "/crm/*"],
+        disallow: ["/api/*"],
       },
       {
         userAgent: "Googlebot-Favicon",
@@ -50,7 +49,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/api/*", "/crm*", "/crm/*"],
+        disallow: ["/api/*"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

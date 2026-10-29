@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Adsvar | Creative Digital Agency & Production Studio",
+    name: "Adsvar | Performance Ads Agency + Creative Engine",
     short_name: "Adsvar",
     description:
-      "Scale brand Anda bersama Adsvar. Agensi kreatif dan studio produksi digital spesialis strategi konten AI, video reels berkinerja tinggi, arsitektur brand premium, dan akuisisi audiens terukur.",
+      "Scale your brand with Adsvar. Performance marketing agency and creative production studio specializing in Meta Ads, Google Ads, TikTok Shop GMV Max, and Shopee Ads.",
     start_url: "/",
     display: "standalone",
     background_color: "#08080C",
