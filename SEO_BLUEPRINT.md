@@ -28,8 +28,7 @@ Tujuan utama dari strategi ini adalah mendominasi halaman pertama saat pengguna 
 |  KNOWLEDGE PANEL (Sisi Kanan Desktop / Bagian Atas Mobile)                            |
 |  [Logo Adsvar]                                                                        |
 |  Adsvar Digital Agency                                                                |
-|  Performance Marketing Agency & Production Studio di Jakarta                          |
-|  Kantor: Menara Rajawali 26th Floor, Mega Kuningan, Jakarta Selatan                   |
+|  Performance Marketing Agency & Production Studio                                      |
 |  Kontak: +62 823-2230-8719 | corporate@adsvar.id                                      |
 |  Profil Media Sosial: LinkedIn | Instagram | YouTube | Twitter/X                      |
 +---------------------------------------------------------------------------------------+
@@ -74,7 +73,7 @@ graph TD
 ```
 
 1. **`Organization` & `Corporation` (Entity Root - `#organization`):**
-   - Legal identity (`PT Sinergi Muda Arsa`), founder (`Rian Destianto`), tahun pendirian (`2024`), logo resmi, email (`corporate@adsvar.id`), WhatsApp Business (+62 823-2230-8719), koordinat fisik Jakarta (Menara Rajawali Mega Kuningan: `-6.2297, 106.8294`), area cakupan (`ID`, `Global`), dan link media sosial (`sameAs`).
+   - Brand entity (`Adsvar Digital Agency`), tahun pendirian (`2024`), logo resmi, email (`corporate@adsvar.id`), WhatsApp Business (+62 823-2230-8719), area cakupan (`ID`, `Global`), penawaran harga transparan, dan link media sosial terverifikasi (`sameAs`).
 2. **`WebSite` (`#website`):**
    - Menghubungkan situs dengan entitas `Organization` sebagai penerbit resmi dan mendeklarasikan array `hasPart` yang memetakan 6 rute utama.
    - **Google Sitelinks SearchBox (Apple.com & Artic Analytica Standard):** Dilengkapi `potentialAction: SearchAction` mengarah ke query endpoint `adsvar.id/?q={search_term_string}` untuk memicu kotak pencarian langsung di SERP Google.
@@ -115,6 +114,6 @@ Mengikuti modul `lib/seo/indexnow.ts` dari Artic Analytica, Adsvar dilengkapi pr
    - Klik **Request Indexing**.
 4. **Tes Validasi Rich Results Google:**
    - Uji URL di [Google Rich Results Test](https://search.google.com/test/rich-results) untuk memastikan tidak ada warning atau error pada skema `Organization`, `WebSite`, `BreadcrumbList`, dan `SiteNavigationElement`.
-5. **Konsistensi NAP & Google Business Profile (GBP):**
-   - Pastikan nama, alamat (Menara Rajawali Lt. 26 Mega Kuningan Jakarta Selatan), dan nomor telepon (+62 823-2230-8719) terdaftar identik di Google Business Profile, LinkedIn Company Page, dan bio media sosial Adsvar.
+5. **Konsistensi Profil Bisnis:**
+   - Pastikan nama dan nomor telepon (+62 823-2230-8719) terdaftar identik di LinkedIn Company Page, Google Business Profile, dan bio media sosial Adsvar.
 

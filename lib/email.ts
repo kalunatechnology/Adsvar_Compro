@@ -110,7 +110,7 @@ function emailWrapper(title: string, badge: string, contentHtml: string): string
                 Timestamp: ${dateStr} (Jakarta Time / WIB)
               </p>
               <p style="margin: 0; font-size: 11px; color: #52525B;">
-                &copy; ${new Date().getFullYear()} Adsvar Digital · PT SINERGI MUDA ARSA. All rights reserved.
+                &copy; ${new Date().getFullYear()} Adsvar Digital Agency. All rights reserved.
               </p>
             </td>
           </tr>

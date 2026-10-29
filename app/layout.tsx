@@ -36,7 +36,6 @@ export const metadata: Metadata = {
     "Adsvar",
     "Adsvar Digital",
     "Adsvar Digital Agency",
-    "PT Sinergi Muda Arsa",
     "performance marketing agency Indonesia",
     "Meta ads agency Indonesia",
     "Google Ads agency Indonesia",
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: BRAND.name, url: SITE_URL }],
   creator: BRAND.name,
-  publisher: BRAND.legalName,
+  publisher: BRAND.name,
   robots: {
     index: true,
     follow: true,

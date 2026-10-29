@@ -122,20 +122,6 @@ export function buildOrganizationJsonLd() {
     alternateName: BRAND.alternateNames,
     url: BRAND.url,
     foundingDate: BRAND.foundingDate,
-    founder: {
-      "@type": "Person",
-      name: BRAND.founder,
-      jobTitle: "Founder & Chief Executive Officer",
-      url: `${BRAND.url}/#tentang`,
-    },
-    member: [
-      {
-        "@type": "Person",
-        name: "Rian Destianto",
-        jobTitle: "Founder & Chief Executive Officer",
-        url: `${BRAND.url}/#tentang`,
-      },
-    ],
     logo: {
       "@type": "ImageObject",
       "@id": `${BRAND.url}/#logo`,
@@ -148,19 +134,6 @@ export function buildOrganizationJsonLd() {
     telephone: BRAND.phone,
     email: BRAND.email,
     priceRange: BRAND.priceRange,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: BRAND.address.streetAddress,
-      addressLocality: BRAND.address.addressLocality,
-      addressRegion: BRAND.address.addressRegion,
-      postalCode: BRAND.address.postalCode,
-      addressCountry: BRAND.address.addressCountry,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: BRAND.geo.latitude,
-      longitude: BRAND.geo.longitude,
-    },
     areaServed: BRAND.areaServed,
     serviceType: [
       "Meta Ads Management",
@@ -314,8 +287,9 @@ export function buildFullGraphJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      buildWebSiteJsonLd(),
       buildOrganizationJsonLd(),
+      buildWebSiteJsonLd(),
+      ...buildSiteNavigationElementJsonLd(),
       {
         "@type": "ItemList",
         "@id": `${BRAND.url}/#sitelinks`,

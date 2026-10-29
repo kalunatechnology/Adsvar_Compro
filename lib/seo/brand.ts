@@ -3,16 +3,15 @@ const origin = process.env.PUBLIC_ORIGIN_DOMAIN
   ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
   : "https://adsvar-compro.vercel.app";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || origin;
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || origin).replace(/\/$/, "");
 
 /**
- * Entity-First Brand Identity for Adsvar.
- * Follows enterprise Knowledge Graph & Organization Schema (schema.org) standards
- * aligned with the Arsalynk and Artic Analytica ecosystems.
+ * Entity Brand Identity for Adsvar.
+ * Follows schema.org standards for professional digital & performance agencies.
  */
 export const BRAND = {
   name: "Adsvar",
-  legalName: "PT Sinergi Muda Arsa",
+  legalName: "Adsvar Digital Agency",
   tagline: "Performance Ads Agency + Creative Engine",
   url: SITE_URL,
   alternateNames: [
@@ -21,12 +20,10 @@ export const BRAND = {
     "Adsvar Agency",
     "Adsvar Digital Agency",
     "Adsvar Production Studio",
-    "PT Sinergi Muda Arsa",
     "adsvar.id",
   ],
   phone: "+62-823-2230-8719",
   email: "corporate@adsvar.id",
-  founder: "Rian Destianto",
   foundingDate: "2024",
   areaServed: ["ID", "Global"],
   logo: `${SITE_URL}/icon-512x512.png`,
@@ -39,17 +36,6 @@ export const BRAND = {
     youtube: "https://youtube.com/@adsvar",
     facebook: "https://facebook.com/adsvar",
     twitter: "https://twitter.com/adsvar",
-  },
-  address: {
-    streetAddress: "Menara Rajawali 26th Floor, Mega Kuningan",
-    addressLocality: "Jakarta Selatan",
-    addressRegion: "DKI Jakarta",
-    postalCode: "12950",
-    addressCountry: "ID",
-  },
-  geo: {
-    latitude: -6.2297,
-    longitude: 106.8294,
   },
   knowsAbout: [
     "Performance Marketing & Paid Advertising",
@@ -66,4 +52,3 @@ export const BRAND = {
 } as const;
 
 export type BrandIdentity = typeof BRAND;
-
