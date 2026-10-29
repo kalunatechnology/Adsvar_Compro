@@ -25,7 +25,7 @@ export const dummyServices: ServiceInput[] = [
   {
     slug: "google-ads",
     name: "Google Ads",
-    tag: "GOOGLE ADS",
+    tag: "",
     description:
       "Search, Performance Max, and YouTube ads for a single website, complete with conversion tracking for lead forms, phone calls, and WhatsApp.",
     image: "/services/google_ads_ticket.jpg",
@@ -41,7 +41,7 @@ export const dummyServices: ServiceInput[] = [
   {
     slug: "tiktok-ads",
     name: "TikTok Ads",
-    tag: "TIKTOK ADS",
+    tag: "",
     description:
       "Short-form video ads driving qualified traffic to your website or lead form, featuring Spark Ads to amplify top-performing organic videos on your handle.",
     image: "/services/tiktok_ads_ticket.jpg",
@@ -57,7 +57,7 @@ export const dummyServices: ServiceInput[] = [
   {
     slug: "tiktok-shop-gmv-max",
     name: "TikTok Shop GMV Max",
-    tag: "TIKTOK SHOP GMV MAX",
+    tag: "",
     description:
       "Automated TikTok Shop ads calibrated to your target profit margins, affiliate creator video curation, and LIVE GMV Max scaling.",
     image: "/services/tiktok_shop_ticket.jpg",
@@ -73,7 +73,7 @@ export const dummyServices: ServiceInput[] = [
   {
     slug: "shopee-ads",
     name: "Shopee Ads",
-    tag: "SHOPEE ADS",
+    tag: "",
     description:
       "Search, discovery, and shop ads with scheduled bid optimizations and strategic voucher planning for twin-date promotional campaigns.",
     image: "/services/shopee_ads_ticket.jpg",

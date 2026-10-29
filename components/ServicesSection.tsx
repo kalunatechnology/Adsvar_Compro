@@ -45,7 +45,7 @@ export const DEFAULT_SERVICES: Service[] = [
   {
     id: 2,
     slug: "google-ads",
-    tag: "GOOGLE ADS",
+    tag: "",
     name: "Google Ads",
     description:
       "Search, Performance Max, and YouTube ads for a single website, complete with conversion tracking for lead forms, phone calls, and WhatsApp.",
@@ -58,7 +58,7 @@ export const DEFAULT_SERVICES: Service[] = [
   {
     id: 3,
     slug: "tiktok-ads",
-    tag: "TIKTOK ADS",
+    tag: "",
     name: "TikTok Ads",
     description:
       "Short-form video ads driving qualified traffic to your website or lead form, featuring Spark Ads to amplify top-performing organic videos on your handle.",
@@ -71,7 +71,7 @@ export const DEFAULT_SERVICES: Service[] = [
   {
     id: 4,
     slug: "tiktok-shop-gmv-max",
-    tag: "TIKTOK SHOP GMV MAX",
+    tag: "",
     name: "TikTok Shop GMV Max",
     description:
       "Automated TikTok Shop ads calibrated to your target profit margins, affiliate creator video curation, and LIVE GMV Max scaling.",
@@ -84,7 +84,7 @@ export const DEFAULT_SERVICES: Service[] = [
   {
     id: 5,
     slug: "shopee-ads",
-    tag: "SHOPEE ADS",
+    tag: "",
     name: "Shopee Ads",
     description:
       "Search, discovery, and shop ads with scheduled bid optimizations and strategic voucher planning for twin-date promotional campaigns.",
@@ -162,14 +162,12 @@ export default function ServicesSection({
               className="adsvar-card group relative flex flex-col justify-between w-full min-h-[360px] sm:min-h-[380px] p-[18px] sm:p-[20px] rounded-[16px] bg-[#121216] border border-white/[0.08] hover:border-white/[0.28] focus:outline-none focus:border-white/[0.28] transition-all duration-300 cursor-pointer text-left"
             >
               <div>
-                {/* Card Top Category Tag */}
-                {item.slug !== "meta-ads" && item.tag ? (
+                {/* Card Top Category Tag (if present) */}
+                {item.tag ? (
                   <div className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#8B8B97] group-hover:text-[#E35F21] transition-colors duration-300 mb-[12px]">
                     {item.tag}
                   </div>
-                ) : (
-                  <div className="h-[15px] mb-[12px]" aria-hidden="true" />
-                )}
+                ) : null}
 
                 {/* Card Media: Rasio 304:170 proporsional */}
                 <div className="relative w-full aspect-[304/170] rounded-[6px] overflow-hidden bg-black mb-[16px] border border-white/[0.04]">
