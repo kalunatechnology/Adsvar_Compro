@@ -102,7 +102,7 @@ export default function PackageModal({
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || "Gagal menyimpan pesanan paket ke CRM.");
+        throw new Error(result.error || "Failed to submit package request.");
       }
 
       if (result.data?.id) {
@@ -112,7 +112,7 @@ export default function PackageModal({
       setIsSuccess(true);
     } catch (err: unknown) {
       const errObj = err as Error;
-      setErrorMessage(errObj.message || "Terjadi kesalahan saat memproses pesanan paket.");
+      setErrorMessage(errObj.message || "An error occurred while processing your package request.");
     } finally {
       setIsSubmitting(false);
     }

@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     console.error("Failed to fetch services:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memuat layanan" },
+      { success: false, error: "Failed to load services" },
       { status: 500 }
     );
   }

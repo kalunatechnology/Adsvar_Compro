@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     }
     console.error("Failed to fetch projects:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memuat proyek" },
+      { success: false, error: "Failed to load projects" },
       { status: 500 }
     );
   }

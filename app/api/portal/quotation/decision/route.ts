@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
     if (!quotationId || !decision) {
       return NextResponse.json(
-        { error: "quotationId dan decision (ACCEPTED / REJECTED) wajib diisi" },
+        { error: "quotationId and decision (ACCEPTED / REJECTED) are required" },
         { status: 400 }
       );
     }
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     const cleanDecision = String(decision).toUpperCase().trim();
     if (cleanDecision !== "ACCEPTED" && cleanDecision !== "REJECTED") {
       return NextResponse.json(
-        { error: "decision harus bernilai ACCEPTED atau REJECTED" },
+        { error: "decision must be ACCEPTED or REJECTED" },
         { status: 400 }
       );
     }
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
       { status: result.success ? 202 : result.status || 500 }
     );
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal memproses keputusan quotation";
+    const msg = err instanceof Error ? err.message : "Failed to process quotation decision";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

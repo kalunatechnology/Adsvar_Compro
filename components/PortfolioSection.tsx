@@ -164,7 +164,7 @@ export default function PortfolioSection({
                       e.stopPropagation();
                       setDetailProject(project);
                     }}
-                    aria-label={`Lihat proyek ${project.title}`}
+                    aria-label={`View project ${project.title}`}
                     className="w-8 h-8 rounded-full bg-transparent border border-[#52525E] text-[#9898A6] group-hover:bg-[#FF5400] group-hover:border-[#FF5400] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300"
                   >
                     <ArrowRight className="w-3.5 h-3.5 transform group-hover:-rotate-45 transition-transform duration-300 stroke-[2]" />

@@ -6,14 +6,14 @@ export async function GET(req: NextRequest) {
   const threadId = searchParams.get("threadId");
 
   if (!threadId) {
-    return NextResponse.json({ error: "threadId diperlukan" }, { status: 400 });
+    return NextResponse.json({ error: "threadId is required" }, { status: 400 });
   }
 
   try {
     const messages = crmRepo.getChatMessages(threadId);
     return NextResponse.json({ success: true, messages });
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal memuat pesan chat";
+    const msg = err instanceof Error ? err.message : "Failed to load chat messages";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

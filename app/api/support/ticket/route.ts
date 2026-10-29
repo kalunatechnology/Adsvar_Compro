@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
 
     if (!subject || !description) {
       return NextResponse.json(
-        { error: "Subjek dan deskripsi keluhan wajib diisi" },
+        { error: "Subject and description are required" },
         { status: 400 }
       );
     }
@@ -57,14 +57,14 @@ export async function POST(req: NextRequest) {
         eventId,
         status: result.status,
         message: result.success
-          ? "Tiket berhasil dibuat di CRM Marka"
-          : "Gagal membuat tiket di CRM Marka",
+          ? "Ticket successfully created in Marka CRM"
+          : "Failed to create ticket in Marka CRM",
         markaResponse: result.data || result.error,
       },
       { status: result.success ? 202 : result.status || 500 }
     );
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal memproses tiket";
+    const msg = err instanceof Error ? err.message : "Failed to process ticket";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
@@ -74,7 +74,7 @@ export async function GET() {
     const tickets = crmRepo.getTickets();
     return NextResponse.json({ success: true, tickets });
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal memuat tiket";
+    const msg = err instanceof Error ? err.message : "Failed to load tickets";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

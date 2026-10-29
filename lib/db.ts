@@ -8,17 +8,70 @@ import {
   dummyStats,
 } from "@/data/dummy";
 
-const DB_PATH = process.env.ADSVAR_DB_PATH
-  ? path.resolve(process.env.ADSVAR_DB_PATH)
-  : path.join(process.cwd(), "data", "adsvar.db");
-const DB_DIR = path.dirname(DB_PATH);
-
 const CURRENT_SEED_VERSION = "v11_adsvar_ticket_images_oct2026";
 
 const globalForDb = globalThis as unknown as { __adsvarDb?: Database.Database };
 
+export function getDbPath(): string {
+  if (process.env.ADSVAR_DB_PATH) {
+    return path.resolve(process.env.ADSVAR_DB_PATH);
+  }
+
+  const isVercel = process.env.VERCEL === "1" || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+
+  if (isVercel) {
+    const tmpPath = path.join("/tmp", "adsvar.db");
+    if (!fs.existsSync(tmpPath)) {
+      const candidates = [
+        path.join(process.cwd(), "data", "adsvar.db"),
+        path.resolve("data", "adsvar.db"),
+      ];
+      for (const src of candidates) {
+        if (fs.existsSync(/*turbopackIgnore: true*/ src)) {
+          try {
+            fs.copyFileSync(src, tmpPath);
+            break;
+          } catch (e) {
+            console.warn("[DB] Failed copying seed DB to /tmp:", e);
+          }
+        }
+      }
+    }
+    return tmpPath;
+  }
+
+  const localCandidates = [
+    path.join(process.cwd(), "data", "adsvar.db"),
+    path.resolve("data", "adsvar.db"),
+    path.resolve(__dirname, "..", "data", "adsvar.db"),
+    path.resolve(__dirname, "..", "..", "data", "adsvar.db"),
+  ];
+
+  for (const c of localCandidates) {
+    if (fs.existsSync(/*turbopackIgnore: true*/ c)) {
+      return c;
+    }
+  }
+
+  const defaultPath = path.join(process.cwd(), "data", "adsvar.db");
+  const dir = path.dirname(defaultPath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  return defaultPath;
+}
+
 function init(db: Database.Database) {
-  db.pragma("journal_mode = WAL");
+  try {
+    db.pragma("journal_mode = WAL");
+  } catch {
+    try {
+      db.pragma("journal_mode = DELETE");
+    } catch {
+      // fallback if pragma fails
+    }
+  }
+  db.pragma("busy_timeout = 10000");
   db.pragma("foreign_keys = ON");
 
   db.exec(`
@@ -200,11 +253,44 @@ function init(db: Database.Database) {
 }
 
 export function getDb(): Database.Database {
-  if (!globalForDb.__adsvarDb) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
-    const db = new Database(DB_PATH);
-    init(db);
-    globalForDb.__adsvarDb = db;
+  if (globalForDb.__adsvarDb && globalForDb.__adsvarDb.open) {
+    return globalForDb.__adsvarDb;
   }
+
+  const dbPath = getDbPath();
+  const dbDir = path.dirname(dbPath);
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+
+  let dbInstance: Database.Database | null = null;
+  let lastErr: unknown = null;
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      dbInstance = new Database(dbPath, {
+        timeout: 10000,
+        fileMustExist: false,
+      });
+      init(dbInstance);
+      break;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`[DB] Attempt ${attempt} failed to open SQLite database at ${dbPath}:`, err);
+      if (attempt < 3) {
+        const start = Date.now();
+        while (Date.now() - start < 200) {
+          // small pause to release file locks on Windows
+        }
+      }
+    }
+  }
+
+  if (!dbInstance) {
+    console.error(`[DB] Failed to open SQLite database after 3 attempts at ${dbPath}`);
+    throw lastErr;
+  }
+
+  globalForDb.__adsvarDb = dbInstance;
   return globalForDb.__adsvarDb;
 }

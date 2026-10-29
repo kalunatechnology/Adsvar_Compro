@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     if (!customerCode || rating === undefined || rating === null) {
       return NextResponse.json(
-        { error: "Kode Customer (customer_code) dan rating (1-5) wajib diisi" },
+        { error: "Customer code and rating (1-5) are required" },
         { status: 400 }
       );
     }
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const numRating = Number(rating);
     if (isNaN(numRating) || numRating < 1 || numRating > 5) {
       return NextResponse.json(
-        { error: "Rating harus berupa angka antara 1 sampai 5" },
+        { error: "Rating must be a number between 1 and 5" },
         { status: 400 }
       );
     }
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
       { status: result.success ? 202 : result.status || 500 }
     );
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal mengirim feedback";
+    const msg = err instanceof Error ? err.message : "Failed to submit feedback";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

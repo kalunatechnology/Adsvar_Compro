@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 
     if (!name || !email || !subject) {
       return NextResponse.json(
-        { error: "Nama, email, dan subjek wajib diisi" },
+        { error: "Name, email, and subject are required" },
         { status: 400 }
       );
     }
@@ -81,8 +81,8 @@ export async function POST(req: NextRequest) {
       { status: result.success ? 202 : result.status || 500 }
     );
   } catch (error: unknown) {
-    const errMsg = error instanceof Error ? error.message : "Gagal memproses formulir kontak";
-    console.error("Gagal mengirim inquiry ke Marka:", errMsg);
+    const errMsg = error instanceof Error ? error.message : "Failed to process contact form";
+    console.error("Failed to send inquiry to Marka:", errMsg);
     return NextResponse.json(
       { error: errMsg },
       { status: 500 }

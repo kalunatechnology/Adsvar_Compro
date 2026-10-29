@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     console.error("Failed to fetch pricing plans:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memuat paket harga" },
+      { success: false, error: "Failed to load pricing plans" },
       { status: 500 }
     );
   }

@@ -23,55 +23,59 @@ export async function POST(request: NextRequest) {
 
     if (!name || !name.trim()) {
       return NextResponse.json(
-        { success: false, error: "Nama wajib diisi" },
+        { success: false, error: "Name is required" },
         { status: 400 }
       );
     }
 
     if (!effectiveContact) {
       return NextResponse.json(
-        { success: false, error: "Nomor WhatsApp atau Email wajib diisi" },
+        { success: false, error: "WhatsApp number or Email is required" },
         { status: 400 }
       );
     }
 
-    const inquiry = inquiriesRepo.create({
+    const payload = {
       name: name.trim(),
       phone: (phone || "").trim(),
       email: (email || "").trim(),
       contact: effectiveContact,
-      service: (service || packageChoice || "Umum").trim(),
+      service: (service || packageChoice || "General").trim(),
       packageChoice: (packageChoice || service || "").trim(),
       billingCycle: (billingCycle || "").trim(),
       price: (price || "").trim(),
       message: (message || brandDescription || "").trim(),
       brandDescription: (brandDescription || message || "").trim(),
       source: (source || "book_consultation").trim(),
-    });
+    };
+
+    let inquiry = null;
+    try {
+      inquiry = inquiriesRepo.create(payload);
+    } catch (dbErr) {
+      console.error("[Inquiry] SQLite record error:", dbErr);
+    }
 
     // Send email notification to corporate@adsvar.id using Google SMTP
     try {
-      await sendInquiryNotification({
-        name: name.trim(),
-        phone: (phone || "").trim(),
-        email: (email || "").trim(),
-        service: (service || packageChoice || "Umum").trim(),
-        packageChoice: (packageChoice || service || "").trim(),
-        billingCycle: (billingCycle || "").trim(),
-        price: (price || "").trim(),
-        message: (message || brandDescription || "").trim(),
-        brandDescription: (brandDescription || message || "").trim(),
-        source: (source || "book_consultation").trim(),
-      });
+      await sendInquiryNotification(payload);
     } catch (mailErr) {
-      console.warn("Failed to dispatch email notification:", mailErr);
+      console.warn("[Inquiry] Failed to dispatch email notification:", mailErr);
     }
 
-    return NextResponse.json({ success: true, data: inquiry });
+    return NextResponse.json({
+      success: true,
+      data: inquiry || {
+        id: Date.now(),
+        ...payload,
+        status: "pending",
+        createdAt: new Date().toISOString(),
+      },
+    });
   } catch (error) {
-    console.error("Failed to record inquiry:", error);
+    console.error("Failed to process inquiry:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal menyimpan data ke sistem CRM" },
+      { success: false, error: "Failed to process consultation form" },
       { status: 500 }
     );
   }
@@ -88,7 +92,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error("Failed to fetch inquiries:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memuat data konsultasi CRM" },
+      { success: false, error: "Failed to load CRM inquiries" },
       { status: 500 }
     );
   }
@@ -101,7 +105,7 @@ export async function PATCH(request: NextRequest) {
 
     if (!id || !status) {
       return NextResponse.json(
-        { success: false, error: "ID dan status wajib disertakan" },
+        { success: false, error: "ID and status are required" },
         { status: 400 }
       );
     }
@@ -109,16 +113,16 @@ export async function PATCH(request: NextRequest) {
     const success = inquiriesRepo.updateStatus(Number(id), status);
     if (!success) {
       return NextResponse.json(
-        { success: false, error: "Data inquiry tidak ditemukan" },
+        { success: false, error: "Inquiry not found" },
         { status: 404 }
       );
     }
 
-    return NextResponse.json({ success: true, message: "Status CRM diperbarui" });
+    return NextResponse.json({ success: true, message: "CRM status updated" });
   } catch (error) {
     console.error("Failed to update inquiry status:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memperbarui status inquiry" },
+      { success: false, error: "Failed to update inquiry status" },
       { status: 500 }
     );
   }
@@ -131,17 +135,17 @@ export async function DELETE(request: NextRequest) {
 
     if (!id) {
       return NextResponse.json(
-        { success: false, error: "ID inquiry wajib disertakan" },
+        { success: false, error: "Inquiry ID is required" },
         { status: 400 }
       );
     }
 
     const success = inquiriesRepo.delete(Number(id));
-    return NextResponse.json({ success, message: "Data inquiry CRM dihapus" });
+    return NextResponse.json({ success, message: "CRM inquiry deleted" });
   } catch (error) {
     console.error("Failed to delete inquiry:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal menghapus data inquiry" },
+      { success: false, error: "Failed to delete inquiry" },
       { status: 500 }
     );
   }

@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     console.error("Failed to fetch company stats:", error);
     return NextResponse.json(
-      { success: false, error: "Gagal memuat statistik" },
+      { success: false, error: "Failed to load statistics" },
       { status: 500 }
     );
   }

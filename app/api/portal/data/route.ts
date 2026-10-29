@@ -9,14 +9,14 @@ export async function GET(req: NextRequest) {
 
   if (!type || !id || !token) {
     return NextResponse.json(
-      { error: "Parameter type (quotations/tickets), id, dan token wajib disertakan" },
+      { error: "Parameters type (quotations/tickets), id, and token are required" },
       { status: 400 }
     );
   }
 
   if (type !== "quotations" && type !== "tickets") {
     return NextResponse.json(
-      { error: "Parameter type harus 'quotations' atau 'tickets'" },
+      { error: "Parameter type must be 'quotations' or 'tickets'" },
       { status: 400 }
     );
   }
@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     const result = await fetchMarkaPortalData(type, id, token);
     return NextResponse.json(result, { status: result.status || 200 });
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal membaca data portal Marka";
+    const msg = err instanceof Error ? err.message : "Failed to load Marka portal data";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

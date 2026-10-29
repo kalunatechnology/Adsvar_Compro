@@ -50,7 +50,7 @@ const transporter = nodemailer.createTransport({
 });
 
 function getJakartaDate(): string {
-  return new Date().toLocaleString("id-ID", {
+  return new Date().toLocaleString("en-US", {
     dateStyle: "full",
     timeStyle: "short",
     timeZone: "Asia/Jakarta",
@@ -61,7 +61,7 @@ function emailWrapper(title: string, badge: string, contentHtml: string): string
   const dateStr = getJakartaDate();
   return `
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,7 +107,7 @@ function emailWrapper(title: string, badge: string, contentHtml: string): string
           <tr>
             <td style="background-color: #101118; padding: 20px 28px; border-top: 1px solid #232433; text-align: center;">
               <p style="margin: 0 0 4px 0; font-size: 11.5px; color: #71717A;">
-                Waktu Masuk: ${dateStr} WIB
+                Timestamp: ${dateStr} (Jakarta Time / WIB)
               </p>
               <p style="margin: 0; font-size: 11px; color: #52525B;">
                 &copy; ${new Date().getFullYear()} Adsvar Digital · PT SINERGI MUDA ARSA. All rights reserved.
@@ -124,7 +124,7 @@ function emailWrapper(title: string, badge: string, contentHtml: string): string
   `;
 }
 
-// 1. Template Inquiry / Pemilihan Paket / Kontak
+// 1. Template Inquiry / Package Selection / Consultation Form
 export async function sendInquiryNotification(payload: InquiryEmailPayload) {
   try {
     const {
@@ -141,7 +141,7 @@ export async function sendInquiryNotification(payload: InquiryEmailPayload) {
     } = payload;
 
     const effectivePackage = packageChoice || service || "General Consultation";
-    const effectiveMessage = message || brandDescription || "Tidak ada catatan tambahan.";
+    const effectiveMessage = message || brandDescription || "No additional notes provided.";
     const cleanPhone = (phone || "").replace(/[^0-9]/g, "");
     const waTarget = cleanPhone.startsWith("0")
       ? `62${cleanPhone.slice(1)}`
@@ -153,31 +153,31 @@ export async function sendInquiryNotification(payload: InquiryEmailPayload) {
 
     const contentHtml = `
       <h1 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em;">
-        Pesan / Permintaan Baru Masuk
+        New Client Inquiry Received
       </h1>
       <p style="margin: 0 0 24px 0; font-size: 13.5px; color: #9E9EB0; line-height: 1.55;">
-        Calon klien telah mengirimkan formulir konsultasi / pemesanan paket melalui website Adsvar:
+        A prospective client has submitted an inquiry or package request through the Adsvar website:
       </p>
 
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #181926; border-radius: 14px; border: 1px solid #28293D; margin-bottom: 24px; overflow: hidden;">
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Nama Klien</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Client Name</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 14px; font-weight: 700; color: #FFFFFF;">${name}</td>
         </tr>
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">WhatsApp / Telepon</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">WhatsApp / Phone</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; color: #FFFFFF;">
-            ${phone ? `<a href="https://wa.me/${waTarget}" style="color: #25D366; text-decoration: none; font-weight: 600;">${phone} &rarr; Chat Langsung</a>` : "-"}
+            ${phone ? `<a href="https://wa.me/${waTarget}" style="color: #25D366; text-decoration: none; font-weight: 600;">${phone} &rarr; Direct WhatsApp Chat</a>` : "-"}
           </td>
         </tr>
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Email</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Email Address</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; color: #FF8F52;">
             ${email ? `<a href="mailto:${email}" style="color: #FF8F52; text-decoration: none; font-weight: 500;">${email}</a>` : "-"}
           </td>
         </tr>
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Paket / Layanan</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Package / Service</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; font-weight: 600; color: #FFFFFF;">
             <span style="display: inline-block; background-color: rgba(255,85,0,0.12); color: #FF5500; padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid rgba(255,85,0,0.3);">
               ${effectivePackage}
@@ -186,23 +186,23 @@ export async function sendInquiryNotification(payload: InquiryEmailPayload) {
         </tr>
         ${billingCycle && billingCycle !== "-" ? `
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Siklus Billing</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Billing Cycle</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; color: #FFFFFF;">${billingCycle}</td>
         </tr>` : ""}
         ${price && price !== "-" ? `
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Estimasi Harga</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Estimated Price / Budget</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; font-weight: 700; color: #FF5500;">${price}</td>
         </tr>` : ""}
         <tr>
-          <td style="padding: 14px 18px; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Sumber Formulir</td>
+          <td style="padding: 14px 18px; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Form Source</td>
           <td style="padding: 14px 18px; font-size: 13px; color: #A1A1B2;">${source || "Website Inquiries"}</td>
         </tr>
       </table>
 
       <div style="margin-bottom: 26px;">
         <label style="display: block; font-size: 12.5px; font-weight: 600; color: #8E8EA0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">
-          Catatan Brand / Pesan Klien:
+          Brand Notes / Client Message:
         </label>
         <div style="background-color: #181926; border-left: 3px solid #FF5500; border-top: 1px solid #28293D; border-right: 1px solid #28293D; border-bottom: 1px solid #28293D; border-radius: 0 10px 10px 0; padding: 16px; font-size: 13.5px; line-height: 1.6; color: #D1D1DB; white-space: pre-wrap;">
           ${effectiveMessage}
@@ -217,13 +217,13 @@ export async function sendInquiryNotification(payload: InquiryEmailPayload) {
                 ${email ? `
                 <td style="padding-right: 10px;">
                   <a href="mailto:${email}" style="display: inline-block; background-color: #FF5500; color: #FFFFFF; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 14px rgba(255,85,0,0.35);">
-                    Balas Email Klien &rarr;
+                    Reply via Email &rarr;
                   </a>
                 </td>` : ""}
                 ${waTarget ? `
                 <td>
                   <a href="https://wa.me/${waTarget}" style="display: inline-block; background-color: #25D366; color: #000000; text-decoration: none; padding: 12px 22px; border-radius: 10px; font-size: 13px; font-weight: 700;">
-                    Chat WhatsApp &rarr;
+                    Chat on WhatsApp &rarr;
                   </a>
                 </td>` : ""}
               </tr>
@@ -252,22 +252,22 @@ export async function sendInquiryNotification(payload: InquiryEmailPayload) {
   }
 }
 
-// 2. Template Live Chat Pesan Masuk
+// 2. Template Live Chat Message
 export async function sendChatMessageNotification(payload: ChatMessagePayload) {
   try {
     const { visitorName, visitorId, threadId, messageText } = payload;
 
     const contentHtml = `
       <h1 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em;">
-        Pesan Live Chat Baru Masuk
+        New Live Chat Message
       </h1>
       <p style="margin: 0 0 24px 0; font-size: 13.5px; color: #9E9EB0; line-height: 1.55;">
-        Pengunjung website telah mengirimkan pesan live chat:
+        A website visitor has sent a live chat message:
       </p>
 
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #181926; border-radius: 14px; border: 1px solid #28293D; margin-bottom: 24px; overflow: hidden;">
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Pengirim</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Sender Name</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 14px; font-weight: 700; color: #FFFFFF;">${visitorName}</td>
         </tr>
         <tr>
@@ -282,7 +282,7 @@ export async function sendChatMessageNotification(payload: ChatMessagePayload) {
 
       <div style="margin-bottom: 24px;">
         <label style="display: block; font-size: 12.5px; font-weight: 600; color: #8E8EA0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">
-          Isi Pesan Chat:
+          Message Content:
         </label>
         <div style="background-color: #181926; border-left: 3px solid #25D366; border-top: 1px solid #28293D; border-right: 1px solid #28293D; border-bottom: 1px solid #28293D; border-radius: 0 10px 10px 0; padding: 16px; font-size: 14px; line-height: 1.6; color: #FFFFFF; white-space: pre-wrap;">
           ${messageText}
@@ -308,34 +308,34 @@ export async function sendChatMessageNotification(payload: ChatMessagePayload) {
   }
 }
 
-// 3. Template Support Ticket Baru
+// 3. Template Support Ticket
 export async function sendTicketNotification(payload: TicketPayload) {
   try {
     const { subject, description, customerEmail, serialNumber, eventId } = payload;
 
     const contentHtml = `
       <h1 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em;">
-        Tiket Bantuan / Support Baru
+        New Support Ticket
       </h1>
       <p style="margin: 0 0 24px 0; font-size: 13.5px; color: #9E9EB0; line-height: 1.55;">
-        Tiket support baru telah dibuat di sistem Adsvar CRM:
+        A new support ticket has been submitted to Adsvar CRM:
       </p>
 
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #181926; border-radius: 14px; border: 1px solid #28293D; margin-bottom: 24px; overflow: hidden;">
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Subjek Tiket</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; width: 34%; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Ticket Subject</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 14px; font-weight: 700; color: #FFFFFF;">${subject}</td>
         </tr>
         ${customerEmail ? `
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Email Customer</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Customer Email</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13.5px; color: #FF8F52;">
             <a href="mailto:${customerEmail}" style="color: #FF8F52; text-decoration: none;">${customerEmail}</a>
           </td>
         </tr>` : ""}
         ${serialNumber ? `
         <tr>
-          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Nomor / Serial Ref</td>
+          <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 12.5px; font-weight: 600; color: #8E8EA0;">Reference / Serial No</td>
           <td style="padding: 14px 18px; border-bottom: 1px solid #242538; font-size: 13px; color: #A1A1B2;">${serialNumber}</td>
         </tr>` : ""}
         ${eventId ? `
@@ -347,7 +347,7 @@ export async function sendTicketNotification(payload: TicketPayload) {
 
       <div style="margin-bottom: 24px;">
         <label style="display: block; font-size: 12.5px; font-weight: 600; color: #8E8EA0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">
-          Deskripsi Keluhan / Kebutuhan:
+          Issue Description:
         </label>
         <div style="background-color: #181926; border-left: 3px solid #FF5500; border-top: 1px solid #28293D; border-right: 1px solid #28293D; border-bottom: 1px solid #28293D; border-radius: 0 10px 10px 0; padding: 16px; font-size: 13.5px; line-height: 1.6; color: #E4E4E7; white-space: pre-wrap;">
           ${description}
@@ -382,10 +382,10 @@ export async function sendFeedbackNotification(payload: FeedbackPayload) {
 
     const contentHtml = `
       <h1 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em;">
-        Review / Feedback Klien Baru
+        New Customer Feedback Received
       </h1>
       <p style="margin: 0 0 24px 0; font-size: 13.5px; color: #9E9EB0; line-height: 1.55;">
-        Klien telah mengirimkan evaluasi rating dan ulasan layanan:
+        A client has submitted service rating and feedback:
       </p>
 
       <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #181926; border-radius: 14px; border: 1px solid #28293D; margin-bottom: 24px; overflow: hidden;">
@@ -409,7 +409,7 @@ export async function sendFeedbackNotification(payload: FeedbackPayload) {
       ${feedbackText ? `
       <div style="margin-bottom: 24px;">
         <label style="display: block; font-size: 12.5px; font-weight: 600; color: #8E8EA0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">
-          Isi Ulasan / Testimoni:
+          Review / Testimonial:
         </label>
         <div style="background-color: #181926; border-left: 3px solid #FFB800; border-top: 1px solid #28293D; border-right: 1px solid #28293D; border-bottom: 1px solid #28293D; border-radius: 0 10px 10px 0; padding: 16px; font-size: 13.5px; line-height: 1.6; color: #E4E4E7; white-space: pre-wrap;">
           ${feedbackText}

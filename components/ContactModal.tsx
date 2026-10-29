@@ -95,8 +95,8 @@ export default function ContactModal({
           phone: phone.trim(),
           email: email.trim(),
           contact: `${phone.trim()} | ${email.trim()}`.trim(),
-          packageChoice: packageChoice || "Konsultasi Umum",
-          service: packageChoice || "Konsultasi Umum",
+          packageChoice: packageChoice || "General Consultation",
+          service: packageChoice || "General Consultation",
           brandDescription: brandDescription.trim(),
           message: brandDescription.trim(),
           source: "book_consultation",
@@ -106,13 +106,13 @@ export default function ContactModal({
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.error || "Gagal mengirim formulir konsultasi.");
+        throw new Error(result.error || "Failed to submit consultation form.");
       }
 
       setIsSuccess(true);
     } catch (err: unknown) {
       const errObj = err as Error;
-      setErrorMessage(errObj.message || "Terjadi kesalahan saat menyimpan formulir.");
+      setErrorMessage(errObj.message || "An error occurred while submitting the form.");
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +158,7 @@ export default function ContactModal({
           type="button"
           onClick={handleResetAndClose}
           className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-20 w-8 h-8 rounded-full bg-[#1C1D2C]/90 hover:bg-[#27283D] text-[#8E8EA0] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/5 shadow-md"
-          aria-label="Tutup modal"
+          aria-label="Close modal"
         >
           <X className="w-4 h-4" />
         </button>
@@ -175,21 +175,21 @@ export default function ContactModal({
                 Consultation Scheduled!
               </h3>
               <p className="text-[12.5px] sm:text-[13px] text-[#8B8B9E] leading-relaxed max-w-sm mx-auto mb-5 sm:mb-6">
-                Data Anda telah tersinkronisasi ke sistem CRM Adsvar. Tim konsultan kami akan segera menghubungi{" "}
-                <span className="text-white font-medium">{phone || email || name}</span>.
+                Your request has been received. Our consulting team will reach out to{" "}
+                <span className="text-white font-medium">{phone || email || name}</span> shortly.
               </p>
 
               <div className="p-3.5 sm:p-4 rounded-[14px] bg-[#181926] border border-[#262738] mb-5 sm:mb-6 text-left text-xs space-y-1.5">
                 <div className="text-[10px] sm:text-[10.5px] uppercase font-bold tracking-wider text-[#FF5500] mb-2">
-                  Ringkasan CRM Lead
+                  CRM Lead Summary
                 </div>
                 <div className="flex justify-between text-[#8E8EA0]">
-                  <span>Nama:</span>
+                  <span>Name:</span>
                   <span className="text-white font-medium truncate ml-2">{name}</span>
                 </div>
                 <div className="flex justify-between text-[#8E8EA0]">
-                  <span>Pilihan Paket:</span>
-                  <span className="text-white font-medium truncate ml-2">{packageChoice || "Umum"}</span>
+                  <span>Selected Package:</span>
+                  <span className="text-white font-medium truncate ml-2">{packageChoice || "General"}</span>
                 </div>
                 {phone && (
                   <div className="flex justify-between text-[#8E8EA0]">
@@ -207,14 +207,14 @@ export default function ContactModal({
                   className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-[12px] bg-[#25D366] hover:bg-[#20ba59] text-black font-semibold text-[12.5px] sm:text-[13px] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 fill-current shrink-0" />
-                  <span>Chat Langsung via WhatsApp</span>
+                  <span>Direct Chat via WhatsApp</span>
                 </a>
                 <button
                   type="button"
                   onClick={handleResetAndClose}
                   className="w-full sm:w-auto px-5 py-2.5 sm:py-3 rounded-[12px] bg-[#212233] hover:bg-[#2A2B3D] text-white text-[12.5px] sm:text-[13px] font-medium transition-colors cursor-pointer"
                 >
-                  Selesai
+                  Done
                 </button>
               </div>
             </div>
@@ -353,7 +353,7 @@ export default function ContactModal({
                   className="w-full h-[46px] sm:h-[50px] mt-2 rounded-[14px] bg-[#FF5500] hover:bg-[#E04B00] active:scale-[0.99] text-[13.5px] sm:text-[14px] font-medium text-white shadow-[0_4px_18px_rgba(255,85,0,0.35)] flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Menyimpan ke Sistem...</span>
+                    <span>Submitting...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4 stroke-[2]" />

@@ -21,10 +21,10 @@ export async function GET() {
       publicOriginDomain: config.publicOriginDomain,
       signingSecretMasked: config.signingSecret
         ? `${config.signingSecret.slice(0, 4)}...${config.signingSecret.slice(-4)}`
-        : "(kosong)",
+        : "(empty)",
       outboundSecretMasked: config.outboundSecret
         ? `${config.outboundSecret.slice(0, 4)}...`
-        : "(kosong)",
+        : "(empty)",
     },
   });
 }
@@ -41,13 +41,13 @@ export async function POST(req: NextRequest) {
       const eventId = `test-inq-${Date.now()}`;
       results.inquiry = await sendMarkaEvent(eventId, "inquiry.submitted", {
         customer: {
-          name: "Tester Otomatis Adsvar",
+          name: "Adsvar Automated Tester",
           email: "tester.adsvar@example.com",
           phone: "081234567890",
         },
         requirements: {
-          subject: "Uji Coba Integrasi CRM Adsvar",
-          description: "Pesan pengujian otomatis dari Diagnostic Test Suite Adsvar",
+          subject: "Adsvar CRM Integration Test",
+          description: "Automated test message from Adsvar Diagnostic Test Suite",
           target_budget: 7500000,
         },
       });
@@ -62,11 +62,11 @@ export async function POST(req: NextRequest) {
         sender: {
           type: "EXTERNAL",
           value: "test-suite-visitor",
-          display_name: "Tester Live Chat",
+          display_name: "Live Chat Tester",
         },
         message: {
           type: "TEXT",
-          text: "Pesan tes uji coba Live Chatbox Adsvar ke Marka CRM",
+          text: "Test trial message from Adsvar Live Chatbox to Marka CRM",
         },
       });
     }
@@ -75,8 +75,8 @@ export async function POST(req: NextRequest) {
     if (testType === "all" || testType === "ticket") {
       const eventId = `test-tkt-${Date.now()}`;
       results.ticket = await sendMarkaEvent(eventId, "ticket.created", {
-        subject: "Tes Tiket Dukungan & Garansi Adsvar",
-        description: "Keluhan simulasi uji coba alur tiket CRM",
+        subject: "Adsvar Support & Warranty Ticket Test",
+        description: "Simulated issue for testing CRM ticket workflow",
         serial_number: "ADS-TEST-9988",
         customer_email: "tester.adsvar@example.com",
       });
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
       const fbResult = await sendMarkaEvent(eventId, "feedback.submitted", {
         customer_code: String(customerCode).trim(),
         rating: 5,
-        feedback_text: "Pelayanan sangat luar biasa, website cepat dan modern!",
+        feedback_text: "Outstanding service, modern and high performance website!",
         feedback_type: "CUSTOMER_REVIEW",
       });
       results.feedback = fbResult;
@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
       results.quotation = await sendMarkaEvent(eventId, "quotation.decision", {
         quotation_id: targetQuotationId,
         decision: "ACCEPTED",
-        reason: "Disetujui via test console Adsvar",
+        reason: "Approved via Adsvar test console",
       });
     }
 

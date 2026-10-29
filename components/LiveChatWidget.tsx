@@ -33,7 +33,7 @@ export default function LiveChatWidget() {
       }
       setVisitorId(vid);
 
-      const savedName = localStorage.getItem("adsvar_chat_visitor_name") || "Tamu";
+      const savedName = localStorage.getItem("adsvar_chat_visitor_name") || "Guest";
       setVisitorName(savedName);
     }
   }, []);
@@ -65,7 +65,7 @@ export default function LiveChatWidget() {
               messageId: "welcome-1",
               senderType: "BOT",
               senderName: "Adsvar Assistant",
-              text: "Halo! Selamat datang di Adsvar. Ada yang bisa kami bantu seputar layanan scaling bisnis Anda? Pesan Anda akan terhubung langsung ke sistem CRM Marka kami.",
+              text: "Hello! Welcome to Adsvar. How can we help scale your business? Your message connects directly with our CRM team.",
               createdAt: new Date().toISOString(),
             },
           ]);
@@ -100,7 +100,7 @@ export default function LiveChatWidget() {
     const newMsg: ChatMessage = {
       messageId: tempMsgId,
       senderType: "EXTERNAL",
-      senderName: visitorName || "Tamu",
+      senderName: visitorName || "Guest",
       text: textToSend,
       createdAt: new Date().toISOString(),
       status: "sending",
@@ -116,7 +116,7 @@ export default function LiveChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           visitorId,
-          visitorName: visitorName || "Tamu Website",
+          visitorName: visitorName || "Website Visitor",
           messageId: tempMsgId,
           messageText: textToSend,
         }),
@@ -260,7 +260,7 @@ export default function LiveChatWidget() {
                         {m.status === "sending" ? (
                           <Loader2 className="w-2.5 h-2.5 animate-spin text-[#8E8EA0]" />
                         ) : m.status === "error" ? (
-                          <span className="text-red-400 text-[9px]">Gagal</span>
+                          <span className="text-red-400 text-[9px]">Failed</span>
                         ) : (
                           <CheckCheck className="w-2.5 h-2.5 text-emerald-400" />
                         )}
@@ -282,7 +282,7 @@ export default function LiveChatWidget() {
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
-              placeholder="Ketik pesan untuk staf CRM..."
+              placeholder="Type a message for our CRM team..."
               className="flex-1 h-10 px-3.5 rounded-xl bg-[#0E0F18] border border-[#232435] text-xs text-white placeholder-[#6E6E82] focus:outline-none focus:border-[#FF5500] transition-colors"
             />
             <button
@@ -301,7 +301,7 @@ export default function LiveChatWidget() {
           {/* Footer badge */}
           <div className="px-3 py-1.5 bg-[#0A0A10] text-[9px] text-center text-[#6E6E82] flex items-center justify-center gap-1.5">
             <Sparkles className="w-3 h-3 text-[#FF5500]" />
-            <span>Terkoneksi ke Marka ERP & CRM Inbox via HMAC-SHA256</span>
+            <span>Connected to CRM Inbox via secure HMAC-SHA256</span>
           </div>
         </div>
       )}

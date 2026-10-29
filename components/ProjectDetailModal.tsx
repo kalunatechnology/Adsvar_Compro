@@ -67,7 +67,7 @@ export default function ProjectDetailModal({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={`Detail proyek ${project.title}`}
+      aria-label={`Project details for ${project.title}`}
     >
       <div
         className="relative w-full max-w-[1040px] max-h-[92dvh] sm:max-h-[90vh] rounded-[20px] sm:rounded-[28px] border border-white/[0.08] bg-[#16161F] shadow-2xl overflow-hidden flex flex-col"
@@ -88,7 +88,7 @@ export default function ProjectDetailModal({
             <button
               type="button"
               onClick={onClose}
-              aria-label="Tutup detail proyek"
+              aria-label="Close project details"
               className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 backdrop-blur text-zinc-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-white/10 shadow-lg"
             >
               <X className="w-4 h-4" />

@@ -76,7 +76,7 @@ export default function CrmDashboardPage() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm("Hapus data inquiry ini dari CRM?")) return;
+    if (!confirm("Delete this inquiry from CRM?")) return;
     try {
       const res = await fetch(`/api/inquiries?id=${id}`, { method: "DELETE" });
       if (res.ok) {
@@ -91,16 +91,16 @@ export default function CrmDashboardPage() {
     if (inquiries.length === 0) return;
     const headers = [
       "ID",
-      "Tanggal",
+      "Date",
       "Nama",
       "WhatsApp/Phone",
       "Email",
-      "Paket/Layanan",
+      "Package/Service",
       "Billing Cycle",
-      "Estimasi Harga",
-      "Sumber Form",
+      "Estimated Price",
+      "Form Source",
       "Status",
-      "Catatan",
+      "Notes",
     ];
 
     const rows = filteredInquiries.map((i) => [
@@ -207,7 +207,7 @@ export default function CrmDashboardPage() {
               <Users className="w-4 h-4 text-[#FF5500]" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-white">{totalCount}</div>
-            <div className="text-[11px] text-[#6E6E82] mt-1">Semua lead masuk</div>
+            <div className="text-[11px] text-[#6E6E82] mt-1">All incoming leads</div>
           </div>
 
           <div className="p-4 sm:p-5 rounded-[18px] bg-[#12131D] border border-[#202130]">
@@ -216,7 +216,7 @@ export default function CrmDashboardPage() {
               <Briefcase className="w-4 h-4 text-[#FF5500]" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-[#FF5500]">{packageCount}</div>
-            <div className="text-[11px] text-[#6E6E82] mt-1">Lead pesanan paket scaling</div>
+            <div className="text-[11px] text-[#6E6E82] mt-1">Scaling package order leads</div>
           </div>
 
           <div className="p-4 sm:p-5 rounded-[18px] bg-[#12131D] border border-[#202130]">
@@ -225,7 +225,7 @@ export default function CrmDashboardPage() {
               <MessageSquare className="w-4 h-4 text-[#FF5500]" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-white">{consultationCount}</div>
-            <div className="text-[11px] text-[#6E6E82] mt-1">Form konsultasi umum</div>
+            <div className="text-[11px] text-[#6E6E82] mt-1">General consultation forms</div>
           </div>
 
           <div className="p-4 sm:p-5 rounded-[18px] bg-[#12131D] border border-[#202130]">
@@ -246,7 +246,7 @@ export default function CrmDashboardPage() {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Cari nama, WhatsApp, email, paket, atau catatan..."
+              placeholder="Search name, WhatsApp, email, package, or notes..."
               className="w-full h-10 pl-10 pr-4 rounded-xl bg-[#181926] border border-[#262738] text-xs text-white placeholder-[#6E6E82] focus:border-[#FF5500] focus:outline-none transition-colors"
             />
           </div>
@@ -259,7 +259,7 @@ export default function CrmDashboardPage() {
                 onChange={(e) => setSourceFilter(e.target.value)}
                 className="bg-transparent text-white outline-none cursor-pointer"
               >
-                <option value="all" className="bg-[#181926]">Semua Sumber</option>
+                <option value="all" className="bg-[#181926]">All Sources</option>
                 <option value="choose_package" className="bg-[#181926]">Choose Package</option>
                 <option value="book_consultation" className="bg-[#181926]">Book Consultation</option>
               </select>
@@ -271,7 +271,7 @@ export default function CrmDashboardPage() {
                 onChange={(e) => setStatusFilter(e.target.value)}
                 className="bg-transparent text-white outline-none cursor-pointer"
               >
-                <option value="all" className="bg-[#181926]">Semua Status</option>
+                <option value="all" className="bg-[#181926]">All Statuses</option>
                 <option value="pending" className="bg-[#181926]">Pending</option>
                 <option value="contacted" className="bg-[#181926]">Contacted</option>
                 <option value="deal" className="bg-[#181926]">Deal</option>
@@ -286,20 +286,20 @@ export default function CrmDashboardPage() {
         {loading ? (
           <div className="py-20 text-center text-[#8E8EA0] text-sm flex items-center justify-center gap-2">
             <RefreshCw className="w-5 h-5 animate-spin text-[#FF5500]" />
-            <span>Memuat data CRM inquiries...</span>
+            <span>Loading CRM inquiries...</span>
           </div>
         ) : filteredInquiries.length === 0 ? (
           <div className="py-20 text-center p-8 rounded-[20px] bg-[#12131D] border border-[#202130]">
             <Sparkles className="w-10 h-10 text-[#FF5500] mx-auto mb-3 opacity-60" />
-            <h3 className="text-lg font-bold text-white mb-1">Belum Ada Data Inquiry</h3>
+            <h3 className="text-lg font-bold text-white mb-1">No Inquiry Data Yet</h3>
             <p className="text-xs text-[#8E8EA0] max-w-md mx-auto mb-4">
-              Silakan coba submit form &quot;Book A Consultation&quot; atau klik &quot;Choose this package&quot; pada website Adsvar untuk menguji pencatatan CRM real-time.
+              Please submit the &quot;Book A Consultation&quot; form or click &quot;Choose this package&quot; on the Adsvar website to test real-time CRM recording.
             </p>
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FF5500] text-white text-xs font-semibold hover:bg-[#E04B00] transition-colors"
             >
-              Buka Halaman Utama
+              Back to Home
             </Link>
           </div>
         ) : (
@@ -309,9 +309,9 @@ export default function CrmDashboardPage() {
               const cleanPhone = (item.phone || item.contact || "").replace(/[^\d+]/g, "");
               const waUrl = cleanPhone
                 ? `https://wa.me/${cleanPhone.replace("+", "")}?text=${encodeURIComponent(
-                    `Halo ${item.name}, kami dari Adsvar Digital ingin mengonfirmasi permintaan konsultasi/paket ${
+                    `Hello ${item.name}, this is Adsvar Digital regarding your inquiry for ${
                       item.packageChoice || item.service
-                    }. Apakah ada waktu luang untuk berdiskusi?`
+                    }. Do you have some time to discuss your growth goals?`
                   )}`
                 : null;
 
@@ -419,7 +419,7 @@ export default function CrmDashboardPage() {
                           className="px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-black text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
                         >
                           <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                          <span>Chat WA</span>
+                          <span>WhatsApp Chat</span>
                         </a>
                       )}
 
@@ -427,7 +427,7 @@ export default function CrmDashboardPage() {
                       <button
                         onClick={() => handleDelete(item.id)}
                         className="p-1.5 rounded-lg bg-[#181926] hover:bg-red-500/20 text-[#6E6E82] hover:text-red-400 transition-colors cursor-pointer"
-                        title="Hapus Lead"
+                        title="Delete Lead"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>

@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
     if (!visitorId || !messageText) {
       return NextResponse.json(
-        { error: "visitorId dan messageText wajib diisi" },
+        { error: "visitorId and messageText are required" },
         { status: 400 }
       );
     }
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         threadId,
         messageId: cleanMsgId,
         senderType: "EXTERNAL",
-        senderName: visitorName || "Pengunjung Website",
+        senderName: visitorName || "Website Visitor",
         text: String(messageText).trim(),
       });
     } catch (dbErr) {
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     // Send email notification to corporate@adsvar.id using Google SMTP
     try {
       await sendChatMessageNotification({
-        visitorName: visitorName || "Pengunjung Website",
+        visitorName: visitorName || "Website Visitor",
         visitorId: cleanVisitorId,
         threadId,
         messageText: String(messageText).trim(),
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       sender: {
         type: "EXTERNAL",
         value: cleanVisitorId,
-        display_name: visitorName || "Pengunjung Website",
+        display_name: visitorName || "Website Visitor",
       },
       message: {
         type: "TEXT",
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       { status: result.success ? 202 : result.status || 500 }
     );
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Gagal mengirim chat ke Marka CRM";
+    const msg = err instanceof Error ? err.message : "Failed to send chat to Marka CRM";
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

@@ -240,10 +240,10 @@ export default function ExternalCrmTestingSuite() {
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight font-heading">
-              Integrasi External CRM Marka
+              External Marka CRM Integration
             </h2>
             <p className="text-xs text-[#8E8EA0] max-w-2xl mt-1 leading-relaxed">
-              Website Adsvar terhubung langsung dengan sistem CRM Marka melalui arsitektur Webhook Inbound & Outbound terenkripsi. Uji seluruh 7 fitur integrasi secara real-time di bawah ini.
+              Adsvar website connects directly to Marka CRM via encrypted Inbound & Outbound Webhooks. Test all 7 integration features in real-time below.
             </p>
           </div>
 
@@ -254,12 +254,12 @@ export default function ExternalCrmTestingSuite() {
               className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FF5500] to-[#E04B00] hover:from-[#E04B00] hover:to-[#C03E00] text-white text-xs font-semibold flex items-center gap-2 shadow-lg shadow-[#FF5500]/20 transition-all cursor-pointer disabled:opacity-50"
             >
               <Zap className={`w-4 h-4 ${runningSuite ? "animate-spin text-white" : ""}`} />
-              <span>{runningSuite ? "Menjalankan Pengujian..." : "⚡ 1-Click Uji Semua Fitur"}</span>
+              <span>{runningSuite ? "Running Diagnostics..." : "⚡ 1-Click Test All Features"}</span>
             </button>
             <button
               onClick={fetchLogs}
               className="p-2.5 rounded-xl bg-[#181926] hover:bg-[#232435] border border-[#27283B] text-[#8E8EA0] hover:text-white transition-colors cursor-pointer"
-              title="Refresh Riwayat Log"
+              title="Refresh Log History"
             >
               <RefreshCw className={`w-4 h-4 ${loadingLogs ? "animate-spin text-[#FF5500]" : ""}`} />
             </button>
@@ -274,7 +274,7 @@ export default function ExternalCrmTestingSuite() {
               Webhook Endpoint
             </div>
             <div className="font-mono text-white text-[11px] truncate" title={config?.webhookUrl}>
-              {config?.webhookUrl ? "api/v1/integrations/webhooks/events" : "Belum diatur"}
+              {config?.webhookUrl ? "api/v1/integrations/webhooks/events" : "Not configured"}
             </div>
             <div className="text-[10px] text-emerald-400 mt-0.5">Port 202 Accepted</div>
           </div>
@@ -285,7 +285,7 @@ export default function ExternalCrmTestingSuite() {
               Key ID / Integration ID
             </div>
             <div className="font-mono text-white text-[11px] truncate" title={config?.keyId}>
-              {config?.keyId || "Belum diatur"}
+              {config?.keyId || "Not configured"}
             </div>
             <div className="text-[10px] text-[#8E8EA0] truncate mt-0.5" title={config?.integrationId}>
               {config?.integrationId ? `${config.integrationId.slice(0, 8)}...` : ""}
@@ -300,7 +300,7 @@ export default function ExternalCrmTestingSuite() {
             <div className="font-mono text-white text-[11px] truncate">
               {config?.publicOriginDomain || "adsvar-compro.vercel.app"}
             </div>
-            <div className="text-[10px] text-emerald-400 mt-0.5">Tervalidasi di Marka</div>
+            <div className="text-[10px] text-emerald-400 mt-0.5">Validated in Marka</div>
           </div>
 
           <div className="p-3 rounded-xl bg-[#0E0F18]/80 border border-[#202130]">
@@ -309,9 +309,9 @@ export default function ExternalCrmTestingSuite() {
               Signing Secret
             </div>
             <div className="font-mono text-white text-[11px]">
-              {config?.signingSecretMasked || "Tersimpan di .env"}
+              {config?.signingSecretMasked || "Configured in .env"}
             </div>
-            <div className="text-[10px] text-[#8E8EA0] mt-0.5">Server-Side Only (Aman)</div>
+            <div className="text-[10px] text-[#8E8EA0] mt-0.5">Server-Side Only (Secure)</div>
           </div>
         </div>
       </div>
@@ -322,13 +322,13 @@ export default function ExternalCrmTestingSuite() {
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4 text-[#FF5500]" />
-              <h3 className="text-sm font-bold text-white">Hasil Diagnostic Test Suite Real-Time</h3>
+              <h3 className="text-sm font-bold text-white">Real-Time Diagnostic Test Suite Results</h3>
             </div>
             <button
               onClick={() => setSuiteResults(null)}
               className="text-xs text-[#8E8EA0] hover:text-white"
             >
-              Tutup
+              Close
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -357,7 +357,7 @@ export default function ExternalCrmTestingSuite() {
                     HTTP {val?.status || (isAccepted ? 202 : 400)}
                   </div>
                   <div className="text-[10px] text-[#8E8EA0] truncate mt-0.5">
-                    {val?.latencyMs ? `${val.latencyMs}ms` : ""} {val?.data?.accepted ? "Accepted" : val?.error ? JSON.stringify(val.error).slice(0, 30) : "Terkirim"}
+                    {val?.latencyMs ? `${val.latencyMs}ms` : ""} {val?.data?.accepted ? "Accepted" : val?.error ? JSON.stringify(val.error).slice(0, 30) : "Sent"}
                   </div>
                 </div>
               );
@@ -369,14 +369,14 @@ export default function ExternalCrmTestingSuite() {
       {/* Subtab Navigation for 7 Features + Logs */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none border-b border-[#1E1F2E]">
         {[
-          { id: "overview", label: "Ringkasan", icon: Activity },
-          { id: "inquiry", label: "Fitur 1: Form Kontak", icon: FileText },
-          { id: "chat", label: "Fitur 2: Live Chat", icon: MessageSquare },
-          { id: "ticket", label: "Fitur 3: Tiket Garansi", icon: LifeBuoy },
-          { id: "feedback", label: "Fitur 4: Feedback & Review", icon: Star },
-          { id: "quotation", label: "Fitur 5: Approval Quotation", icon: CheckSquare },
-          { id: "outbound", label: "Fitur 6: Webhook Balik", icon: ArrowDownLeft },
-          { id: "portal", label: "Fitur 7: Portal Data", icon: Globe },
+          { id: "overview", label: "Overview", icon: Activity },
+          { id: "inquiry", label: "Feature 1: Contact Form", icon: FileText },
+          { id: "chat", label: "Feature 2: Live Chat", icon: MessageSquare },
+          { id: "ticket", label: "Feature 3: Support Ticket", icon: LifeBuoy },
+          { id: "feedback", label: "Feature 4: Feedback & Review", icon: Star },
+          { id: "quotation", label: "Feature 5: Quotation Approval", icon: CheckSquare },
+          { id: "outbound", label: "Feature 6: Inbound Webhook", icon: ArrowDownLeft },
+          { id: "portal", label: "Feature 7: Portal Data", icon: Globe },
           { id: "logs", label: `Audit Log (${logs.length})`, icon: Terminal },
         ].map((tab) => {
           const Icon = tab.icon;
@@ -408,16 +408,16 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <FileText className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 1: Form &quot;Hubungi Kami&quot; (`inquiry.submitted`)
+                Test Feature 1: &quot;Contact Us&quot; Form (`inquiry.submitted`)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Mengirim prospek baru langsung ke **CRM &gt; Incoming Inquiry** di Marka.
+                Sends new prospect leads directly to **CRM &gt; Incoming Inquiry** in Marka.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Nama Prospek</label>
+                <label className="text-[#8E8EA0] block mb-1">Prospect Name</label>
                 <input
                   type="text"
                   value={inquiryForm.name}
@@ -437,7 +437,7 @@ export default function ExternalCrmTestingSuite() {
                   />
                 </div>
                 <div>
-                  <label className="text-[#8E8EA0] block mb-1">Nomor WhatsApp</label>
+                  <label className="text-[#8E8EA0] block mb-1">WhatsApp Number</label>
                   <input
                     type="text"
                     value={inquiryForm.phone}
@@ -448,7 +448,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Subjek / Kebutuhan</label>
+                <label className="text-[#8E8EA0] block mb-1">Subject / Requirement</label>
                 <input
                   type="text"
                   value={inquiryForm.subject}
@@ -468,7 +468,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Pesan Lengkap</label>
+                <label className="text-[#8E8EA0] block mb-1">Full Message</label>
                 <textarea
                   rows={3}
                   value={inquiryForm.message}
@@ -483,7 +483,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>{actionLoading ? "Mengirim ke CRM..." : "Kirim Inquiry ke Marka CRM (POST /api/contact)"}</span>
+                <span>{actionLoading ? "Sending to CRM..." : "Send Inquiry to Marka CRM (POST /api/contact)"}</span>
               </button>
             </div>
           </div>
@@ -499,10 +499,10 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 2: Chatbox / Live Chat (`message.received`)
+                Test Feature 2: Live Chatbox (`message.received`)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Pesan langsung masuk ke **CRM &gt; Customer Inbox** Marka secara real-time.
+                Messages flow directly into Marka **CRM &gt; Customer Inbox** in real-time.
               </p>
             </div>
 
@@ -518,7 +518,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Nama Pengunjung</label>
+                <label className="text-[#8E8EA0] block mb-1">Visitor Name</label>
                 <input
                   type="text"
                   value={chatForm.visitorName}
@@ -528,7 +528,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Isi Pesan Chat</label>
+                <label className="text-[#8E8EA0] block mb-1">Chat Message Content</label>
                 <textarea
                   rows={4}
                   value={chatForm.messageText}
@@ -543,7 +543,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>{actionLoading ? "Mengirim Chat..." : "Kirim Pesan ke CRM Inbox (POST /api/chat/send)"}</span>
+                <span>{actionLoading ? "Sending Chat..." : "Send Message to CRM Inbox (POST /api/chat/send)"}</span>
               </button>
             </div>
           </div>
@@ -559,16 +559,16 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <LifeBuoy className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 3: Tiket Dukungan &amp; Garansi (`ticket.created`)
+                Test Feature 3: Support &amp; Warranty Ticket (`ticket.created`)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Laporan kendala atau klaim garansi otomatis masuk ke **CRM &gt; Support &amp; Garansi**.
+                Issues or warranty claims automatically enter **CRM &gt; Support &amp; Warranty**.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Subjek Kendala</label>
+                <label className="text-[#8E8EA0] block mb-1">Issue Subject</label>
                 <input
                   type="text"
                   value={ticketForm.subject}
@@ -578,18 +578,18 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Nomor Seri / Serial Number (Opsional)</label>
+                <label className="text-[#8E8EA0] block mb-1">Serial Number (Optional)</label>
                 <input
                   type="text"
                   value={ticketForm.serialNumber}
                   onChange={(e) => setTicketForm({ ...ticketForm, serialNumber: e.target.value })}
                   className="w-full h-9 px-3 rounded-lg bg-[#181926] border border-[#262738] text-white font-mono"
-                  placeholder="SN-XXX (Otomatis validasi garansi di Marka)"
+                  placeholder="SN-XXX (Auto warranty validation in Marka)"
                 />
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Email Pelanggan</label>
+                <label className="text-[#8E8EA0] block mb-1">Customer Email</label>
                 <input
                   type="email"
                   value={ticketForm.customerEmail}
@@ -599,7 +599,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Deskripsi Kendala</label>
+                <label className="text-[#8E8EA0] block mb-1">Issue Description</label>
                 <textarea
                   rows={4}
                   value={ticketForm.description}
@@ -614,7 +614,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>{actionLoading ? "Membuat Tiket..." : "Buat Tiket di CRM (POST /api/support/ticket)"}</span>
+                <span>{actionLoading ? "Creating Ticket..." : "Create Ticket in CRM (POST /api/support/ticket)"}</span>
               </button>
             </div>
           </div>
@@ -630,16 +630,16 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Star className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 4: Review &amp; Feedback Pelanggan (`feedback.submitted`)
+                Test Feature 4: Customer Review &amp; Feedback (`feedback.submitted`)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Rating dan testimoni kepuasan pelanggan masuk ke **CRM &gt; Engagement**.
+                Customer ratings and testimonials flow into **CRM &gt; Engagement**.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Kode Customer (party_code dari Marka)</label>
+                <label className="text-[#8E8EA0] block mb-1">Customer Code (party_code from Marka)</label>
                 <input
                   type="text"
                   value={feedbackForm.customerCode}
@@ -648,12 +648,12 @@ export default function ExternalCrmTestingSuite() {
                   placeholder="CUST-BRIDAK-058769"
                 />
                 <p className="text-[10px] text-amber-400/90 mt-1">
-                  💡 Isi dengan kode customer (party_code) yang terdaftar dan aktif di Marka pada company yang sama.
+                  💡 Enter a valid registered customer code (party_code) active in Marka under the same organization.
                 </p>
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Rating Kepuasan (1 - 5 Bintang)</label>
+                <label className="text-[#8E8EA0] block mb-1">Satisfaction Rating (1 - 5 Stars)</label>
                 <div className="flex items-center gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -674,7 +674,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Sales Order ID (Opsional, UUID Marka; kosongkan jika tidak ada)</label>
+                <label className="text-[#8E8EA0] block mb-1">Sales Order ID (Optional, Marka UUID; leave blank if none)</label>
                 <input
                   type="text"
                   value={feedbackForm.salesOrderId}
@@ -684,7 +684,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Testimoni / Saran</label>
+                <label className="text-[#8E8EA0] block mb-1">Testimonial / Feedback</label>
                 <textarea
                   rows={3}
                   value={feedbackForm.feedbackText}
@@ -699,7 +699,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>{actionLoading ? "Mengirim Review..." : "Kirim Feedback ke CRM (POST /api/feedback)"}</span>
+                <span>{actionLoading ? "Submitting Review..." : "Submit Feedback to CRM (POST /api/feedback)"}</span>
               </button>
             </div>
           </div>
@@ -715,16 +715,16 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <CheckSquare className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 5: Approval Penawaran Harga (`quotation.decision`)
+                Test Feature 5: Quotation Approval (`quotation.decision`)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Pelanggan menyetujui atau menolak Surat Penawaran (Quotation) dari portal.
+                Customer approves or rejects Quotations directly from the portal.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Quotation ID (UUID Quotation dari Marka ERP)</label>
+                <label className="text-[#8E8EA0] block mb-1">Quotation ID (Marka ERP Quotation UUID)</label>
                 <input
                   type="text"
                   value={quotationForm.quotationId}
@@ -733,12 +733,12 @@ export default function ExternalCrmTestingSuite() {
                   placeholder="c7a8e912-3456-4789-a012-3456789abcde"
                 />
                 <p className="text-[10px] text-emerald-400/90 mt-1">
-                  💡 Format UUID: Marka memvalidasi string UUID standar (36 karakter hex) untuk penawaran harga.
+                  💡 UUID format: Marka validates standard UUID format (36-character hex) for quotations.
                 </p>
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Keputusan Pelanggan</label>
+                <label className="text-[#8E8EA0] block mb-1">Customer Decision</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
@@ -750,7 +750,7 @@ export default function ExternalCrmTestingSuite() {
                     }`}
                   >
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>SETUJU (ACCEPTED)</span>
+                    <span>ACCEPT (ACCEPTED)</span>
                   </button>
                   <button
                     type="button"
@@ -762,13 +762,13 @@ export default function ExternalCrmTestingSuite() {
                     }`}
                   >
                     <XCircle className="w-4 h-4" />
-                    <span>TOLAK (REJECTED)</span>
+                    <span>REJECT (REJECTED)</span>
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Catatan / Alasan</label>
+                <label className="text-[#8E8EA0] block mb-1">Notes / Reason</label>
                 <textarea
                   rows={3}
                   value={quotationForm.reason}
@@ -783,7 +783,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>{actionLoading ? "Memproses..." : "Kirim Keputusan (POST /api/portal/quotation/decision)"}</span>
+                <span>{actionLoading ? "Processing..." : "Submit Decision (POST /api/portal/quotation/decision)"}</span>
               </button>
             </div>
           </div>
@@ -799,24 +799,24 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <ArrowDownLeft className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 6: Webhook Balik dari Marka (Outbound Receiver)
+                Test Feature 6: Webhook from Marka (Outbound Receiver)
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Endpoint penerima di website: `POST /api/webhooks/marka`. Endpoint ini memverifikasi signature `x-marka-signature` dan memperbarui state lokal.
+                Inbound receiver endpoint on website: `POST /api/webhooks/marka`. This endpoint verifies `x-marka-signature` and updates local state.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Jenis Event Keluar Marka</label>
+                <label className="text-[#8E8EA0] block mb-1">Marka Outbound Event Type</label>
                 <select
                   value={outboundForm.eventType}
                   onChange={(e) => setOutboundForm({ ...outboundForm, eventType: e.target.value })}
                   className="w-full h-9 px-3 rounded-lg bg-[#181926] border border-[#262738] text-white cursor-pointer"
                 >
-                  <option value="message.reply_requested">message.reply_requested (Staf membalas chat)</option>
-                  <option value="ticket.status_updated">ticket.status_updated (Status tiket diperbarui)</option>
-                  <option value="quotation.approved">quotation.approved (Quotation disetujui internal)</option>
+                  <option value="message.reply_requested">message.reply_requested (Staff replies to chat)</option>
+                  <option value="ticket.status_updated">ticket.status_updated (Ticket status updated)</option>
+                  <option value="quotation.approved">quotation.approved (Quotation approved internally)</option>
                 </select>
               </div>
 
@@ -831,7 +831,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Nama Staf Pengirim</label>
+                <label className="text-[#8E8EA0] block mb-1">Staff Sender Name</label>
                 <input
                   type="text"
                   value={outboundForm.repliedBy}
@@ -841,7 +841,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Pesan Balasan Staf CRM</label>
+                <label className="text-[#8E8EA0] block mb-1">CRM Staff Reply Message</label>
                 <textarea
                   rows={3}
                   value={outboundForm.replyText}
@@ -869,7 +869,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <ArrowDownLeft className="w-3.5 h-3.5" />
-                <span>Simulasi Kirim Webhook dari Marka ke Website</span>
+                <span>Simulate Webhook from Marka to Website</span>
               </button>
             </div>
           </div>
@@ -885,28 +885,28 @@ export default function ExternalCrmTestingSuite() {
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <Globe className="w-4 h-4 text-[#FF5500]" />
-                Uji Fitur 7: Portal Pelanggan Baca Data
+                Test Feature 7: Customer Portal Data Access
               </h3>
               <p className="text-xs text-[#8E8EA0] mt-1">
-                Membaca data Quotation atau Tiket langsung dari Marka API menggunakan Portal Scoped Token.
+                Read Quotation or Ticket data directly from Marka API using Portal Scoped Token.
               </p>
             </div>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="text-[#8E8EA0] block mb-1">Jenis Entitas</label>
+                <label className="text-[#8E8EA0] block mb-1">Entity Type</label>
                 <select
                   value={portalForm.type}
                   onChange={(e) => setPortalForm({ ...portalForm, type: e.target.value as any })}
                   className="w-full h-9 px-3 rounded-lg bg-[#181926] border border-[#262738] text-white cursor-pointer"
                 >
                   <option value="quotations">Quotation (/api/v1/portal/quotations/:id)</option>
-                  <option value="tickets">Tiket (/api/v1/portal/tickets/:id)</option>
+                  <option value="tickets">Ticket (/api/v1/portal/tickets/:id)</option>
                 </select>
               </div>
 
               <div>
-                <label className="text-[#8E8EA0] block mb-1">ID Entitas</label>
+                <label className="text-[#8E8EA0] block mb-1">Entity ID</label>
                 <input
                   type="text"
                   value={portalForm.id}
@@ -939,7 +939,7 @@ export default function ExternalCrmTestingSuite() {
                 className="w-full py-2.5 rounded-xl bg-[#FF5500] hover:bg-[#E04B00] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Search className="w-3.5 h-3.5" />
-                <span>Baca Data dari API Marka</span>
+                <span>Read Data from Marka API</span>
               </button>
             </div>
           </div>
@@ -957,7 +957,7 @@ export default function ExternalCrmTestingSuite() {
             </div>
             <h4 className="text-sm font-bold text-white mb-1">Inbound Events (Outbox)</h4>
             <p className="text-xs text-[#8E8EA0] leading-relaxed">
-              Website Anda secara aman membungkus event formulir, live chat, tiket, dan feedback menggunakan tanda tangan HMAC-SHA256, lalu mengirimkannya ke port 202 Marka CRM.
+              Your website securely signs form inquiries, live chats, tickets, and feedback using HMAC-SHA256 and transmits them to Marka CRM port 202.
             </p>
           </div>
 
@@ -965,9 +965,9 @@ export default function ExternalCrmTestingSuite() {
             <div className="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-3">
               <ShieldCheck className="w-4 h-4" />
             </div>
-            <h4 className="text-sm font-bold text-white mb-1">Keamanan Signature Nonce</h4>
+            <h4 className="text-sm font-bold text-white mb-1">Nonce Signature Security</h4>
             <p className="text-xs text-[#8E8EA0] leading-relaxed">
-              Setiap request menyertakan nonce unik 16-byte dan timestamp detik untuk memblokir replay attack secara matematis tanpa menyimpan state di browser.
+              Each request includes a unique 16-byte nonce and epoch timestamp to mathematically prevent replay attacks without client state storage.
             </p>
           </div>
 
@@ -977,7 +977,7 @@ export default function ExternalCrmTestingSuite() {
             </div>
             <h4 className="text-sm font-bold text-white mb-1">Outbound Webhook Hub</h4>
             <p className="text-xs text-[#8E8EA0] leading-relaxed">
-              Saat staf CRM membalas pesan di Marka, Marka menembakkan webhook ke `/api/webhooks/marka` dengan verifikasi signature waktu-konstan (`timingSafeEqual`).
+              When CRM staff replies in Marka, a webhook is fired to `/api/webhooks/marka` with constant-time signature verification (`timingSafeEqual`).
             </p>
           </div>
         </div>
@@ -989,10 +989,10 @@ export default function ExternalCrmTestingSuite() {
           <div>
             <div className="flex items-center gap-2">
               <Terminal className="w-4 h-4 text-[#FF5500]" />
-              <h3 className="text-sm font-bold text-white">Audit Log Integrasi Webhook (Real-Time SQLite)</h3>
+              <h3 className="text-sm font-bold text-white">Webhook Integration Audit Log (Real-Time SQLite)</h3>
             </div>
             <p className="text-xs text-[#8E8EA0] mt-0.5">
-              Setiap event keluar &amp; masuk tercatat dengan status kode HTTP, respon JSON, dan timestamp presisi.
+              Every inbound &amp; outbound event is logged with HTTP status, JSON response, and high-precision timestamp.
             </p>
           </div>
 
@@ -1010,29 +1010,29 @@ export default function ExternalCrmTestingSuite() {
                 className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-xs font-medium flex items-center gap-1.5 cursor-pointer border border-red-500/20"
               >
                 <Trash2 className="w-3.5 h-3.5" />
-                <span>Bersihkan</span>
+                <span>Clear</span>
               </button>
             )}
           </div>
         </div>
 
         {loadingLogs ? (
-          <div className="py-12 text-center text-xs text-[#8E8EA0]">Memuat log audit CRM...</div>
+          <div className="py-12 text-center text-xs text-[#8E8EA0]">Loading CRM audit logs...</div>
         ) : logs.length === 0 ? (
           <div className="py-12 text-center text-xs text-[#6E6E82]">
-            Belum ada aktivitas webhook tercatat. Silakan coba salah satu form di atas atau jalankan 1-Click Diagnostics.
+            No webhook activity recorded yet. Try submitting one of the test forms above or run 1-Click Diagnostics.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
                 <tr className="border-b border-[#1E1F2E] text-[#6E6E82] text-[10px] uppercase tracking-wider">
-                  <th className="py-2.5 px-3">Waktu</th>
-                  <th className="py-2.5 px-3">Arah</th>
+                  <th className="py-2.5 px-3">Timestamp</th>
+                  <th className="py-2.5 px-3">Direction</th>
                   <th className="py-2.5 px-3">Event Type</th>
                   <th className="py-2.5 px-3">Event ID</th>
                   <th className="py-2.5 px-3 text-center">HTTP Status</th>
-                  <th className="py-2.5 px-3 text-right">Aksi</th>
+                  <th className="py-2.5 px-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#1A1B28]">
@@ -1108,7 +1108,7 @@ export default function ExternalCrmTestingSuite() {
               <div>
                 <h4 className="text-sm font-bold text-white flex items-center gap-2">
                   <Code2 className="w-4 h-4 text-[#FF5500]" />
-                  Detail Event: {selectedLog.eventType}
+                  Event Details: {selectedLog.eventType}
                 </h4>
                 <p className="text-[11px] font-mono text-[#8E8EA0] mt-0.5">
                   ID: {selectedLog.eventId}
@@ -1125,13 +1125,13 @@ export default function ExternalCrmTestingSuite() {
             <div className="p-4 overflow-y-auto space-y-4 text-xs font-mono">
               <div>
                 <div className="flex items-center justify-between text-[#8E8EA0] mb-1 font-sans">
-                  <span>Payload Body yang Dikirim:</span>
+                  <span>Payload Body Sent:</span>
                   <button
                     onClick={() => copyToClipboard(selectedLog.payloadJson)}
                     className="text-[10px] text-[#FF5500] hover:underline flex items-center gap-1"
                   >
                     {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                    Salin
+                    Copy
                   </button>
                 </div>
                 <pre className="p-3 rounded-xl bg-[#06070B] border border-[#1E1F2E] text-emerald-400 overflow-x-auto text-[11px] leading-relaxed">
@@ -1140,7 +1140,7 @@ export default function ExternalCrmTestingSuite() {
               </div>
 
               <div>
-                <div className="text-[#8E8EA0] mb-1 font-sans">Respons dari Marka Server:</div>
+                <div className="text-[#8E8EA0] mb-1 font-sans">Marka Server Response:</div>
                 <pre className="p-3 rounded-xl bg-[#06070B] border border-[#1E1F2E] text-cyan-300 overflow-x-auto text-[11px] leading-relaxed">
                   {tryFormatJson(selectedLog.responseJson)}
                 </pre>
@@ -1152,7 +1152,7 @@ export default function ExternalCrmTestingSuite() {
                 onClick={() => setSelectedLog(null)}
                 className="px-4 py-1.5 rounded-lg bg-[#1E1F2E] hover:bg-[#2A2B3E] text-xs font-medium text-white transition-colors cursor-pointer"
               >
-                Tutup
+                Close
               </button>
             </div>
           </div>
@@ -1167,9 +1167,9 @@ function ResponseInspector({ actionResponse }: { actionResponse: any }) {
     return (
       <div className="p-6 rounded-[20px] bg-[#0E0F18] border border-[#202130] flex flex-col items-center justify-center text-center">
         <Code2 className="w-10 h-10 text-[#2D2E42] mb-3" />
-        <h4 className="text-xs font-bold text-[#8E8EA0]">Panel Response Inspector</h4>
+        <h4 className="text-xs font-bold text-[#8E8EA0]">Response Inspector Panel</h4>
         <p className="text-[11px] text-[#6E6E82] max-w-xs mt-1">
-          Klik tombol kirim di samping kiri untuk menguji endpoint dan melihat status HTTP serta balasan real-time dari Marka CRM.
+          Click any send button on the left to test endpoints and inspect HTTP status and real-time responses from Marka CRM.
         </p>
       </div>
     );
@@ -1190,7 +1190,7 @@ function ResponseInspector({ actionResponse }: { actionResponse: any }) {
             <AlertTriangle className="w-4 h-4 text-amber-400" />
           )}
           <span className="text-xs font-bold text-white">
-            Hasil Eksekusi: HTTP {actionResponse?.httpStatus || 200}
+            Execution Result: HTTP {actionResponse?.httpStatus || 200}
           </span>
         </div>
         <span
@@ -1207,7 +1207,7 @@ function ResponseInspector({ actionResponse }: { actionResponse: any }) {
       </pre>
 
       <div className="mt-3 text-[10px] text-[#6E6E82]">
-        Status 202 menandakan data valid dan otomatis masuk antrean pemrosesan di sistem Marka CRM.
+        Status 202 confirms the payload is valid and queued for asynchronous processing in Marka CRM.
       </div>
     </div>
   );
