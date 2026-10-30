@@ -38,7 +38,7 @@ export async function submitToIndexNow(
   try {
     host = new URL(SITE_URL).host;
   } catch {
-    host = "adsvar-compro.vercel.app";
+    host = "www.adsvar.id";
   }
 
   const normalizedUrls = urls.map((u) => {

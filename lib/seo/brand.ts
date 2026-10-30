@@ -1,9 +1,19 @@
-// Dynamic Base URL Resolution
-const origin = process.env.PUBLIC_ORIGIN_DOMAIN
-  ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
-  : "https://www.adsvar.id";
+// Primary Canonical Base URL: https://www.adsvar.id (or custom production domain)
+const rawEnvDomain = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.PUBLIC_ORIGIN_DOMAIN ||
+  ""
+)
+  .replace(/^https?:\/\//, "")
+  .replace(/\/$/, "");
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || origin).replace(/\/$/, "");
+// Ensure vercel.app is never used as the canonical production domain
+const canonicalDomain =
+  !rawEnvDomain || rawEnvDomain.includes("vercel.app")
+    ? "www.adsvar.id"
+    : rawEnvDomain;
+
+export const SITE_URL = `https://${canonicalDomain}`;
 
 /**
  * Entity Brand Identity for Adsvar.
@@ -21,13 +31,14 @@ export const BRAND = {
     "Adsvar Digital Agency",
     "Adsvar Production Studio",
     "adsvar.id",
+    "www.adsvar.id",
   ],
   phone: "+62-823-2230-8719",
   email: "corporate@adsvar.id",
   foundingDate: "2024",
   areaServed: ["ID", "Global"],
   logo: `${SITE_URL}/icon-512x512.png`,
-  favicon: `${SITE_URL}/icon.svg`,
+  favicon: `${SITE_URL}/favicon.ico`,
   heroImage: `${SITE_URL}/og-image.png`,
   priceRange: "IDR 4,900,000 - IDR 14,900,000",
   social: {

@@ -111,17 +111,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
     ],
+    shortcut: "/favicon.ico",
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
     other: [
-      { rel: "mask-icon", url: "/icon.svg", color: "#FF5500" },
+      { rel: "icon", url: "/icon.svg", type: "image/svg+xml" },
     ],
   },
 };
@@ -136,12 +136,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${funnelDisplay.variable} ${readexPro.variable} dark`}>
       <head>
-        {/* Explicit Favicon Tags for Web Standards & Google Search Favicon Crawler */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-        <link rel="icon" type="image/svg+xml" sizes="any" href="/icon.svg" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
 
         {/* Entity-First Schema.org Structured Data */}

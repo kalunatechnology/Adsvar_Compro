@@ -298,7 +298,7 @@ export default function ExternalCrmTestingSuite() {
               Allowlist Domain
             </div>
             <div className="font-mono text-white text-[11px] truncate">
-              {config?.publicOriginDomain || "adsvar-compro.vercel.app"}
+              {config?.publicOriginDomain || "www.adsvar.id"}
             </div>
             <div className="text-[10px] text-emerald-400 mt-0.5">Validated in Marka</div>
           </div>

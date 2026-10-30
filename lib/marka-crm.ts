@@ -33,7 +33,7 @@ export function getMarkaConfig(): MarkaConfig {
       .trim()
       .replace(/^["']|["']$/g, ""),
     publicOriginDomain: (
-      process.env.PUBLIC_ORIGIN_DOMAIN || "adsvar-compro.vercel.app"
+      process.env.PUBLIC_ORIGIN_DOMAIN || "www.adsvar.id"
     )
       .trim()
       .replace(/^["']|["']$/g, ""),
