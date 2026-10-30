@@ -1,7 +1,7 @@
 // Dynamic Base URL Resolution
 const origin = process.env.PUBLIC_ORIGIN_DOMAIN
   ? `https://${process.env.PUBLIC_ORIGIN_DOMAIN.replace(/^https?:\/\//, "").replace(/\/$/, "")}`
-  : "https://adsvar-compro.vercel.app";
+  : "https://www.adsvar.id";
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || origin).replace(/\/$/, "");
 
