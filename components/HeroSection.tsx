@@ -34,7 +34,7 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
       <div className="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-[5%] w-full max-w-[1920px]">
         {/* Label Atas (Kecil) */}
         <span className="text-[11px] sm:text-[12px] font-bold uppercase tracking-[0.2em] text-[#FF5500] mb-3 select-none">
-          PERFORMANCE ADS AGENCY
+          ADSVAR · PERFORMANCE ADS AGENCY
         </span>
 
         {/* Headline: Clean 2-line layout */}
@@ -51,8 +51,8 @@ export default function HeroSection({ stats = [], onOpenContact }: HeroSectionPr
 
         {/* Subheadline */}
         <p className="mt-5 text-[13px] sm:text-[14.5px] md:text-[15.5px] text-[#A1A1AA] font-normal text-center leading-[1.65] max-w-[760px] mx-auto">
-          We run your performance marketing, and produces them,
-          <br className="hidden md:block" /> from script to ready-to-launch video.
+          Adsvar runs your performance marketing and produces high-converting content,
+          <br className="hidden md:block" /> from strategy and script to ready-to-launch video.
         </p>
 
         {/* Action Buttons Group */}

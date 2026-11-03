@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Adsvar",
   },
   description:
-    "Adsvar runs your Meta, Google, TikTok, GMV Max, and Shopee ads, with built-in high-volume creative production engine and transparent monthly pricing from IDR 4.9M.",
+    "Adsvar (Adsvar Digital) is a performance ads agency & creative engine in Jakarta specializing in Meta Ads, Google Ads, TikTok Ads, GMV Max, and Shopee Ads with transparent monthly pricing from IDR 4.9M.",
   keywords: [
     "Adsvar",
     "Adsvar Digital",
