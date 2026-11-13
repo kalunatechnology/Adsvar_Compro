@@ -135,6 +135,20 @@ export function buildOrganizationJsonLd() {
     telephone: BRAND.phone,
     email: BRAND.email,
     priceRange: BRAND.priceRange,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BRAND.address.streetAddress,
+      addressLocality: BRAND.address.addressLocality,
+      addressRegion: BRAND.address.addressRegion,
+      postalCode: BRAND.address.postalCode,
+      addressCountry: BRAND.address.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: BRAND.geo.latitude,
+      longitude: BRAND.geo.longitude,
+    },
+    hasMap: BRAND.hasMap,
     areaServed: BRAND.areaServed,
     serviceType: [
       "Meta Ads Management",

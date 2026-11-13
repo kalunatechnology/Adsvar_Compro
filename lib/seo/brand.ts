@@ -37,6 +37,20 @@ export const BRAND = {
   email: "corporate@adsvar.id",
   foundingDate: "2024",
   areaServed: ["ID", "Global"],
+  address: {
+    streetAddress:
+      "Menara Rajawali, Jl. DR. Ide Anak Agung Gde Agung 26th Floor, RT.5/RW.2, Kuningan",
+    addressLocality: "Jakarta Selatan",
+    addressRegion: "DKI Jakarta",
+    postalCode: "12950",
+    addressCountry: "ID",
+  },
+  geo: {
+    latitude: -6.22818,
+    longitude: 106.8272,
+  },
+  hasMap:
+    "https://www.google.com/maps/place/Menara+Rajawali/@-6.22818,106.8272,17z",
   logo: `${SITE_URL}/icon-512x512.png`,
   favicon: `${SITE_URL}/favicon.ico`,
   heroImage: `${SITE_URL}/og-image.png`,
