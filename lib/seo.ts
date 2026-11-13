@@ -116,7 +116,12 @@ export function buildSiteNavigationElementJsonLd() {
  */
 export function buildOrganizationJsonLd() {
   return {
-    "@type": ["Organization", "Corporation", "ProfessionalService"],
+    "@type": [
+      "Organization",
+      "LocalBusiness",
+      "AdvertisingAgency",
+      "ProfessionalService",
+    ],
     "@id": `${BRAND.url}/#organization`,
     name: BRAND.name,
     legalName: BRAND.legalName,
@@ -149,6 +154,20 @@ export function buildOrganizationJsonLd() {
       longitude: BRAND.geo.longitude,
     },
     hasMap: BRAND.hasMap,
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
     areaServed: BRAND.areaServed,
     serviceType: [
       "Meta Ads Management",
@@ -166,6 +185,7 @@ export function buildOrganizationJsonLd() {
       BRAND.social.youtube,
       BRAND.social.facebook,
       BRAND.social.twitter,
+      BRAND.social.maps,
     ].filter(Boolean),
     knowsAbout: BRAND.knowsAbout,
     contactPoint: [

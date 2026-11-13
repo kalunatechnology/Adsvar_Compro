@@ -66,3 +66,4 @@ export async function GET() {
       "Send a POST request to this endpoint to push updated URLs to Bing, Yandex, Naver, and participating search engines via IndexNow.",
   });
 }
+

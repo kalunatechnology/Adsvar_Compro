@@ -61,6 +61,7 @@ export const BRAND = {
     youtube: "https://youtube.com/@adsvar",
     facebook: "https://facebook.com/adsvar",
     twitter: "https://twitter.com/adsvar",
+    maps: "https://www.google.com/maps/place/Menara+Rajawali/@-6.22818,106.8272,17z",
   },
   knowsAbout: [
     "Performance Marketing & Paid Advertising",

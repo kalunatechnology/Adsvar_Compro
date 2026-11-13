@@ -80,9 +80,15 @@ export default function ContactPageClient() {
             </div>
           </a>
 
-          <div className="p-8 rounded-2xl bg-zinc-950 border border-zinc-800/80 flex flex-col justify-between">
+          <a
+            href="https://www.google.com/maps/place/Menara+Rajawali/@-6.22818,106.8272,17z"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-8 rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-[#FF5500]/50 transition-all group flex flex-col justify-between"
+            aria-label="View Adsvar Headquarters on Google Maps"
+          >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#FF5500]/10 text-[#FF5500] flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-[#FF5500]/10 text-[#FF5500] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Headquarters</h3>
@@ -90,11 +96,14 @@ export default function ContactPageClient() {
                 Menara Rajawali 26th Floor, Mega Kuningan, Jakarta, Indonesia 12950
               </p>
             </div>
-            <div className="text-xs text-zinc-500 flex items-center gap-2 mt-4">
-              <Clock className="w-4 h-4" />
-              <span>Mon - Fri, 09:00 - 18:00 WIB</span>
+            <div className="text-xs text-zinc-500 flex items-center justify-between mt-4">
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4" />
+                <span>Mon - Fri, 09:00 - 18:00 WIB</span>
+              </span>
+              <span className="text-[#FF5500] font-semibold text-xs group-hover:underline">View Map &rarr;</span>
             </div>
-          </div>
+          </a>
         </div>
 
         {/* CTA Banner */}
