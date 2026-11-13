@@ -1,119 +1,154 @@
-# 🌐 Blueprint & Strategi Penyesuaian SEO Adsvar (Entity-First & 6-Pack Sitelinks)
+# 🌐 Blueprint & Arsitektur SEO Adsvar (Expanded 6-Pack Sitelinks & Paritas Artic/TheDraftRoom)
 
-> **Standar Penerapan:** Mengacu pada metodologi arsitektur SEO enterprise yang diterapkan di **Artic Analytica**, **Arsalynk**, dan **Kaluna Technology**.  
-> **Prinsip Utama:** Disesuaikan **100% tanpa mengubah desain visual apapun** (*Zero UI Impact*), bekerja murni pada lapisan struktural data Googlebot (`schema.org` JSON-LD, Metadata API Next.js, Semantic Navigation Hierarchy, Canonicalization, dan OpenGraph).
+> **Standar Penerapan:** Mengacu pada metodologi arsitektur SEO enterprise 3-Tier yang diterapkan di **TheDraftRoom** (`thedraftroom-compro`) dan **Artic Analytica** (`compro-artic`).  
+> **Prinsip Utama:** Disesuaikan **100% tanpa mengubah desain visual website** (*Zero UI Impact*), bekerja murni pada lapisan struktural data Googlebot (`schema.org` JSON-LD, Next.js Level-2 Canonical Routes, Semantic Microdata Navigation, 308 Alias Redirections, Canonicalization, dan IndexNow API).
 
 ---
 
-## 🎯 1. Target Tampilan SERP (Google Search Result)
+## 🎯 1. Target Tampilan SERP Google (Expanded 6-Pack Sitelinks)
 
-Tujuan utama dari strategi ini adalah mendominasi halaman pertama saat pengguna mencari keyword brand seperti **"Adsvar"**, **"Adsvar Digital"**, **"Adsvar Agency"**, atau **"Adsvar Performance Marketing"** dengan tampilan **Expanded 6-Pack Sitelinks** dan **Knowledge Panel**:
+Tujuan utama dari arsitektur ini adalah mendominasi peringkat #1 dan menampilkan **Google Expanded 6-Pack Sitelinks** saat pengguna mencari kata kunci brand seperti **"Adsvar"**, **"Adsvar Digital"**, **"Adsvar Agency"**, atau **"Adsvar Performance Marketing"**:
 
 ```text
 +---------------------------------------------------------------------------------------+
-|  🌐 Adsvar Digital Agency  https://adsvar.id                                          |
+|  🌐 https://www.adsvar.id                                                             |
 |  Adsvar | Performance Ads Agency + Creative Engine                                     |
 |  Ads that run. Content that sells. Meta, Google, TikTok Shop GMV Max, and Shopee       |
 |  Ads, handled by one dedicated growth team with transparent monthly pricing.          |
 |                                                                                       |
 |  Services                               Pricing & Packages                            |
 |  Full-funnel paid advertising on Meta.. Transparent monthly ad management packages... |
+|  https://www.adsvar.id/services         https://www.adsvar.id/packages                |
 |                                                                                       |
 |  Work & Case Studies                    About Adsvar                                  |
 |  Explore verified client track records. Performance marketing agency combining media..|
+|  https://www.adsvar.id/portfolio        https://www.adsvar.id/about                   |
 |                                                                                       |
-|  Free Ads Audit                         Client CRM & Portal                           |
-|  Get an in-depth ad account audit...    Real-time client lead tracking, inquiry hub...|
+|  Free Ads Audit                         Contact Us                                    |
+|  Get an in-depth ad account audit...    Get in touch with Adsvar performance team...  |
+|  https://www.adsvar.id/consultation     https://www.adsvar.id/contact                 |
 +---------------------------------------------------------------------------------------+
 |  KNOWLEDGE PANEL (Sisi Kanan Desktop / Bagian Atas Mobile)                            |
-|  [Logo Adsvar]                                                                        |
-|  Adsvar Digital Agency                                                                |
-|  Performance Marketing Agency & Production Studio                                      |
+|  [Logo Adsvar - Multi-Resolution Vector]                                              |
+|  Adsvar (Adsvar Digital)                                                              |
+|  Performance Marketing Agency + Creative Production Engine                            |
+|  Kantor: Menara Rajawali Lt. 26, Mega Kuningan, Jakarta Selatan                       |
 |  Kontak: +62 823-2230-8719 | corporate@adsvar.id                                      |
-|  Profil Media Sosial: LinkedIn | Instagram | YouTube | Twitter/X                      |
+|  Profil Media Sosial: Instagram | LinkedIn | YouTube | Twitter/X                      |
 +---------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 🏗️ 2. Arsitektur 6-Pack Sitelinks & Skema JSON-LD
+## 🏗️ 2. Arsitektur 6-Pack Sitelinks Google
 
-Google menampilkan sitelink berdasarkan kombinasi **popularitas tautan internal**, **hierarki navigasi yang jelas**, dan **deklarasi skema eksplisit**:
+Google Sitelinks secara ketat memprioritaskan **rute HTTP kanonikal bersih (Level-2 discrete paths)** dibandingkan penanda hash fragment (`/#...`). Oleh karena itu, Adsvar mengimplementasikan sistem hybrid:
 
-### 2.1 6 Pilar Sitelinks Adsvar
-Setiap entri navigasi dikonfigurasi dengan ringkasan padat (**110–140 karakter**) agar snippet dua baris di Google tidak terpotong (`...`):
+### 2.1 6 Rute Kanonikal Sitelinks
+Setiap rute memiliki landing page mandiri dengan `SectionPageJsonLd`, metadata OpenGraph & Twitter lengkap, deskripsi 110–140 karakter (agar tidak terpotong `...` di SERP), serta merender section terkait tanpa mengubah estetika visual Adsvar:
 
-1. **Services** (`/#layanan`)  
-   *Deskripsi:* Full-funnel paid advertising on Meta, Google, TikTok, GMV Max, and Shopee with a built-in creative production engine.
-2. **Pricing & Packages** (`/#paket`)  
-   *Deskripsi:* Transparent monthly ad management packages from Starter to Scaling with zero hidden fees and no long-term lock-in.
-3. **Work & Case Studies** (`/#portofolio`)  
-   *Deskripsi:* Explore verified client track records, real revenue scaling, and high-converting creative case studies across top brands.
-4. **About Adsvar** (`/#tentang`)  
-   *Deskripsi:* Performance marketing agency combining ruthless analytical media buying with high-volume creative production in Jakarta.
-5. **Free Ads Audit** (`/#konsultasi`)  
-   *Deskripsi:* Get an in-depth ad account audit, waste spend analysis, and customized 90-day growth roadmap from our senior media buyers.
-6. **Client CRM & Portal** (`/crm`)  
-   *Deskripsi:* Real-time client lead tracking, inquiry management, and transparent campaign communication pipeline via secure SQLite CRM.
+1. **Services** (`/services`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/services`
+   - *Deskripsi:* Full-funnel paid advertising on Meta, Google, TikTok, GMV Max, and Shopee with a built-in creative production engine.
+   - *Schema Type:* `ItemPage` + `ItemList` Service Catalog
+   - *Alias Redirect (308):* `/layanan` -> `/services`
+
+2. **Pricing & Packages** (`/packages`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/packages`
+   - *Deskripsi:* Transparent monthly ad management packages from Starter to Scaling with zero hidden fees and no long-term lock-in.
+   - *Schema Type:* `ItemPage` + `Offer` Catalog
+   - *Alias Redirects (308):* `/paket`, `/pricing`, `/harga` -> `/packages`
+
+3. **Work & Case Studies** (`/portfolio`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/portfolio`
+   - *Deskripsi:* Explore verified client track records, real revenue scaling, and high-converting creative case studies across top brands.
+   - *Schema Type:* `CollectionPage` + `ItemList` CreativeWork
+   - *Alias Redirects (308):* `/portofolio`, `/work`, `/case-studies` -> `/portfolio`
+
+4. **About Adsvar** (`/about`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/about`
+   - *Deskripsi:* Performance marketing agency combining ruthless analytical media buying with high-volume creative production in Jakarta.
+   - *Schema Type:* `AboutPage`
+   - *Alias Redirects (308):* `/tentang`, `/about-us` -> `/about`
+
+5. **Free Ads Audit** (`/consultation`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/consultation`
+   - *Deskripsi:* Get an in-depth ad account audit, waste spend analysis, and customized 90-day growth roadmap from our senior media buyers.
+   - *Schema Type:* `ContactPage`
+   - *Alias Redirects (308):* `/konsultasi`, `/audit`, `/free-audit` -> `/consultation`
+
+6. **Contact Us** (`/contact`)  
+   - *URL Kanonikal:* `https://www.adsvar.id/contact`
+   - *Deskripsi:* Get in touch with Adsvar performance marketing team, request partnership proposals, or connect with our media buying leads.
+   - *Schema Type:* `ContactPage`
+   - *Alias Redirects (308):* `/kontak` -> `/contact`
 
 ---
 
-### 2.2 Hirarki Entity-First Schema Graph (`@id` Berantai)
+## 🔍 3. Navigasi Semantik Googlebot (Zero UI Impact)
 
-Seluruh skema terhubung menggunakan `@id` URI permanen sehingga robot Google memahami hubungan relasional antar entitas secara utuh:
+Di halaman utama (`app/page.tsx`), ditambahkan kontainer semantik HTML5 dengan class `sr-only`:
+```tsx
+<section aria-labelledby="adsvar-brand-overview" className="sr-only">
+  <div>
+    <h2 id="adsvar-brand-overview">Adsvar (Adsvar Digital) — Performance Ads Agency + Creative Engine</h2>
+    <p>Adsvar runs your Meta, Google, TikTok, GMV Max, and Shopee ads...</p>
+    <nav aria-label="Explore Adsvar Sitelinks">
+      {SITE_NAVIGATION_ITEMS.map((item) => (
+        <Link key={item.href} href={item.href} itemProp="url" itemScope itemType="https://schema.org/SiteNavigationElement">
+          <span itemProp="name">{item.name}</span>
+          <p itemProp="description">{item.description}</p>
+        </Link>
+      ))}
+    </nav>
+  </div>
+</section>
+```
+- **Kelebihan:** 100% transparan bagi pengunjung website (tidak ada elemen baru yang terlihat atau merusak layout).
+- **Kelebihan Bot:** Googlebot dan Bingbot langsung merayapi (crawl) 6 tautan internal resmi bersama atribut microdata `SiteNavigationElement`.
+
+---
+
+## 🌐 4. Entity-First Schema Graph (`@id` Linking)
 
 ```mermaid
 graph TD
-    A["Organization / Corporation<br/>#organization"] -->|Publisher| B["WebSite<br/>#website"]
-    B -->|hasPart| C["SiteNavigationElement<br/>(6-Pack Sitelinks)"]
+    A["Organization / ProfessionalService<br/>#organization"] -->|Publisher| B["WebSite<br/>#website"]
+    B -->|hasPart| C["SiteNavigationElement<br/>(6 Discrete Routes)"]
     B -->|isPartOf| D["WebPage<br/>#webpage"]
     D -->|Breadcrumbs| E["BreadcrumbList<br/>#breadcrumb"]
-    A -->|Provider| F["OfferCatalog / Services<br/>#service-meta, #service-google..."]
-    A -->|Founder| G["Person / Leadership<br/>#founder"]
+    A -->|OfferCatalog| F["OfferCatalog / Services<br/>#service-meta, #service-google..."]
 ```
 
-1. **`Organization` & `Corporation` (Entity Root - `#organization`):**
-   - Brand entity (`Adsvar Digital Agency`), tahun pendirian (`2024`), logo resmi, email (`corporate@adsvar.id`), WhatsApp Business (+62 823-2230-8719), area cakupan (`ID`, `Global`), penawaran harga transparan, dan link media sosial terverifikasi (`sameAs`).
+1. **`Organization` & `ProfessionalService` (`#organization`):**
+   - Brand entity `Adsvar`, phone `+62-823-2230-8719`, email `corporate@adsvar.id`, logo resmi `icon-512x512.png`, area cakupan global & Indonesia, social profiles.
 2. **`WebSite` (`#website`):**
-   - Menghubungkan situs dengan entitas `Organization` sebagai penerbit resmi dan mendeklarasikan array `hasPart` yang memetakan 6 rute utama.
-   - **Google Sitelinks SearchBox (Apple.com & Artic Analytica Standard):** Dilengkapi `potentialAction: SearchAction` mengarah ke query endpoint `adsvar.id/?q={search_term_string}` untuk memicu kotak pencarian langsung di SERP Google.
-3. **`SiteNavigationElement` (Direct Sitelinks Trigger):**
-   - 6 entri skema eksplisit untuk mengarahkan algoritma sitelinks Google (Services, Pricing & Packages, Work & Case Studies, About Adsvar, Free Ads Audit, Client CRM & Portal).
-4. **Apple Web App & Mobile Standards:**
-   - Meta tag `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style: black-translucent`, `apple-mobile-web-app-title: Adsvar`, dan `format-detection: telephone=no, address=no, email=no`.
-5. **High-Intent Keyword Matrix:**
-   - Performance marketing agency Indonesia, Meta ads agency Indonesia, Google Ads agency Indonesia, TikTok Shop GMV Max agency, Shopee ads agency, jasa iklan Meta Ads, jasa GMV Max TikTok Shop, jasa Shopee Ads, creative production engine, direct response video agency, ROAS scaling Jakarta, e-commerce growth agency.
-6. **`BreadcrumbList` (`#breadcrumb`):**
-   - Dihasilkan secara hierarkis (Home -> Services -> Packages -> Work -> About -> Consultation).
-7. **`OfferCatalog` (`#service-*`):**
-   - Meta Ads (Facebook & Instagram), Google Ads (Search & Performance Max), TikTok Ads & Spark Ads, TikTok Shop GMV Max, dan Shopee Ads.
+   - Terhubung dengan `hasPart` memetakan `/services`, `/packages`, `/portfolio`, `/about`, `/consultation`, `/contact`.
+   - Mengandung `SearchAction` (Google Sitelinks SearchBox).
+3. **`SectionPageJsonLd` (`app/components/seo/SectionPageJsonLd.tsx`):**
+   - Secara otomatis menyuntikkan BreadcrumbList dan Page Schema spesifik (`AboutPage`, `ItemPage`, `CollectionPage`, `ContactPage`) pada setiap rute.
 
 ---
 
-### 2.3 IndexNow Protocol (Bing, Yandex, Naver, Seznam)
+## ⚡ 5. IndexNow Protocol & Instant Crawler Dispatch
 
-Mengikuti modul `lib/seo/indexnow.ts` dari Artic Analytica, Adsvar dilengkapi protokol IndexNow dengan verification key file:
-- File kunci publik: `/b76c10e5d4a63b7890a5463e71524f8b.txt`
-- Endpoint IndexNow: `https://api.indexnow.org/indexnow`
-- Memungkinkan indexing instan dalam hitungan menit untuk search engine berbasis Bing & partner.
+Endpoint otomatis tersedia di:
+- **API Endpoint:** `/api/seo/indexnow`
+- **GET Request:** Menginspeksi status dan daftar URL kanonikal yang siap disubmit.
+- **POST Request:** Mengirimkan payload instan ke `https://api.indexnow.org/indexnow` untuk crawler Bing, Yandex, Naver, dan Seznam.
+- **Verification Key:** `public/b76c10e5d4a63b7890a5463e71524f8b.txt`
 
 ---
 
-## 🔍 3. Checklist Verifikasi & Langkah Pasca-Deploy (GSC)
+## 🗺️ 6. Sitemap XML & Robots.txt
 
-1. **Verifikasi Google Search Console (GSC):**
-   - Buka [Google Search Console](https://search.google.com/search-console).
-   - Masukkan domain (misalnya `adsvar.id`) via verifikasi DNS TXT record atau set variabel `GOOGLE_SITE_VERIFICATION` di environment hosting (Vercel / VPS).
-2. **Submit Sitemap:**
-   - Masuk ke menu **Sitemaps** di GSC dan submit:
-     ```text
-     https://adsvar.id/sitemap.xml
-     ```
-3. **URL Inspection & Request Indexing:**
-   - Jalankan *URL Inspection* pada homepage `/`, `/#layanan`, `/#paket`, `/#portofolio`, `/#tentang`, `/#konsultasi`, dan `/crm`.
-   - Klik **Request Indexing**.
-4. **Tes Validasi Rich Results Google:**
-   - Uji URL di [Google Rich Results Test](https://search.google.com/test/rich-results) untuk memastikan tidak ada warning atau error pada skema `Organization`, `WebSite`, `BreadcrumbList`, dan `SiteNavigationElement`.
-5. **Konsistensi Profil Bisnis:**
-   - Pastikan nama dan nomor telepon (+62 823-2230-8719) terdaftar identik di LinkedIn Company Page, Google Business Profile, dan bio media sosial Adsvar.
-
+1. **Sitemap (`/sitemap.xml`):**
+   - `https://www.adsvar.id/` (priority: 1.0, daily)
+   - `https://www.adsvar.id/services` (priority: 0.9, weekly)
+   - `https://www.adsvar.id/packages` (priority: 0.9, weekly)
+   - `https://www.adsvar.id/portfolio` (priority: 0.9, weekly)
+   - `https://www.adsvar.id/about` (priority: 0.8, monthly)
+   - `https://www.adsvar.id/consultation` (priority: 0.9, weekly)
+   - `https://www.adsvar.id/contact` (priority: 0.8, monthly)
+2. **Robots (`/robots.txt`):**
+   - Mengizinkan rayapan penuh pada seluruh rute publik dan menghubungkan ke `https://www.adsvar.id/sitemap.xml`.

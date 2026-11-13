@@ -9,39 +9,39 @@ import { BRAND, SITE_URL } from "@/lib/seo/brand";
 export const SITE_NAVIGATION_ITEMS = [
   {
     name: "Services",
-    href: "/#layanan",
+    href: "/services",
     description:
       "Full-funnel paid advertising on Meta, Google, TikTok, GMV Max, and Shopee with a built-in creative production engine.",
   },
   {
     name: "Pricing & Packages",
-    href: "/#paket",
+    href: "/packages",
     description:
       "Transparent monthly ad management packages from Starter to Scaling with zero hidden fees and no long-term lock-in.",
   },
   {
     name: "Work & Case Studies",
-    href: "/#portofolio",
+    href: "/portfolio",
     description:
       "Explore verified client track records, real revenue scaling, and high-converting creative case studies across top brands.",
   },
   {
     name: "About Adsvar",
-    href: "/#tentang",
+    href: "/about",
     description:
       "Performance marketing agency combining ruthless analytical media buying with high-volume creative production in Jakarta.",
   },
   {
     name: "Free Ads Audit",
-    href: "/#konsultasi",
+    href: "/consultation",
     description:
       "Get an in-depth ad account audit, waste spend analysis, and customized 90-day growth roadmap from our senior media buyers.",
   },
   {
-    name: "Client CRM & Portal",
-    href: "/crm",
+    name: "Contact Us",
+    href: "/contact",
     description:
-      "Real-time client lead tracking, inquiry management, and transparent campaign communication pipeline via secure SQLite CRM.",
+      "Get in touch with Adsvar performance marketing team, request partnership proposals, or connect with our media buying leads.",
   },
 ] as const;
 
@@ -60,10 +60,11 @@ export type BreadcrumbItem = {
 export function buildBreadcrumbJsonLd(items?: BreadcrumbItem[]) {
   const defaultItems: BreadcrumbItem[] = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/#layanan" },
-    { name: "Pricing & Packages", path: "/#paket" },
-    { name: "Portfolio & Case Studies", path: "/#portofolio" },
-    { name: "About Adsvar", path: "/#tentang" },
+    { name: "Services", path: "/services" },
+    { name: "Pricing & Packages", path: "/packages" },
+    { name: "Work & Case Studies", path: "/portfolio" },
+    { name: "About Adsvar", path: "/about" },
+    { name: "Free Ads Audit", path: "/consultation" },
   ];
 
   const sourceItems = items && items.length > 0 ? items : defaultItems;
@@ -190,7 +191,7 @@ export function buildOfferCatalogJsonLd() {
           description:
             "Facebook and Instagram ads that find new buyers, bring back past visitors, and drive profitable conversions.",
           provider: { "@id": `${BRAND.url}/#organization` },
-          url: `${BRAND.url}/#layanan`,
+          url: `${BRAND.url}/services`,
         },
       },
       {
@@ -202,7 +203,7 @@ export function buildOfferCatalogJsonLd() {
           description:
             "Show up on Google the moment people search for what you offer, with full conversion tracking and keyword bid tuning.",
           provider: { "@id": `${BRAND.url}/#organization` },
-          url: `${BRAND.url}/#layanan`,
+          url: `${BRAND.url}/services`,
         },
       },
       {
@@ -214,7 +215,7 @@ export function buildOfferCatalogJsonLd() {
           description:
             "Short-form video ads driving traffic to website or leads, with creatives refreshed continuously to beat ad fatigue.",
           provider: { "@id": `${BRAND.url}/#organization` },
-          url: `${BRAND.url}/#layanan`,
+          url: `${BRAND.url}/services`,
         },
       },
       {
@@ -226,7 +227,7 @@ export function buildOfferCatalogJsonLd() {
           description:
             "Automated TikTok Shop ads with targets built on margin, LIVE schedule synchronization, and affiliate curation.",
           provider: { "@id": `${BRAND.url}/#organization` },
-          url: `${BRAND.url}/#layanan`,
+          url: `${BRAND.url}/services`,
         },
       },
       {
@@ -238,7 +239,7 @@ export function buildOfferCatalogJsonLd() {
           description:
             "Push products up Shopee search results with automated bid tuning, twin-date vouchers, and high ROAS profitability.",
           provider: { "@id": `${BRAND.url}/#organization` },
-          url: `${BRAND.url}/#layanan`,
+          url: `${BRAND.url}/services`,
         },
       },
     ],
