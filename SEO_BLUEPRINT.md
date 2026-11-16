@@ -32,7 +32,7 @@ Tujuan utama dari arsitektur ini adalah mendominasi peringkat #1 dan menampilkan
 |  [Logo Adsvar - Multi-Resolution Vector]                                              |
 |  Adsvar (Adsvar Digital)                                                              |
 |  Performance Marketing Agency + Creative Production Engine                            |
-|  Kantor: Menara Rajawali Lt. 26, Mega Kuningan, Jakarta Selatan                       |
+|  Kantor: Menara Rajawali 26th Floor Jl. DR. Ide Anak Agung Gde Agung, Jakarta, indonesia |
 |  Kontak: +62 823-2230-8719 | corporate@adsvar.id                                      |
 |  Profil Media Sosial: Instagram | LinkedIn | YouTube | Twitter/X                      |
 +---------------------------------------------------------------------------------------+

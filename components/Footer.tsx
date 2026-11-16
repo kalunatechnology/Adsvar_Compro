@@ -134,10 +134,10 @@ export default function Footer({ onOpenContact }: FooterProps) {
                 href="https://www.google.com/maps/place/Menara+Rajawali/@-6.22818,106.8272,17z"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#D1D1D6] hover:text-[#FF5500] transition-colors text-[14px] leading-[1.7] max-w-[220px]"
+                className="text-[#D1D1D6] hover:text-[#FF5500] transition-colors text-[14px] leading-[1.7] max-w-[280px]"
                 aria-label="View Adsvar Office on Google Maps"
               >
-                Menara Rajawali 26th Floor, Mega Kuningan, Jakarta, Indonesia 12950
+                Menara Rajawali 26th Floor Jl. DR. Ide Anak Agung Gde Agung, Jakarta, indonesia
               </a>
             </div>
             

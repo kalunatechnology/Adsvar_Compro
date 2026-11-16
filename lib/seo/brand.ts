@@ -39,11 +39,13 @@ export const BRAND = {
   areaServed: ["ID", "Global"],
   address: {
     streetAddress:
-      "Menara Rajawali, Jl. DR. Ide Anak Agung Gde Agung 26th Floor, RT.5/RW.2, Kuningan",
-    addressLocality: "Jakarta Selatan",
+      "Menara Rajawali 26th Floor Jl. DR. Ide Anak Agung Gde Agung",
+    addressLocality: "Jakarta",
     addressRegion: "DKI Jakarta",
     postalCode: "12950",
     addressCountry: "ID",
+    formattedAddress:
+      "Menara Rajawali 26th Floor Jl. DR. Ide Anak Agung Gde Agung, Jakarta, indonesia",
   },
   geo: {
     latitude: -6.22818,
